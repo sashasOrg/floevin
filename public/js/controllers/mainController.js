@@ -7,5 +7,4 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
       $state.reload();
     })
   }
-  $scope.getSymbols();
 })
