@@ -1,5 +1,8 @@
 angular.module('SashasApp', ['ui.router'])
 
+<<<<<<< HEAD
+angular.config(function($stateProvider, $urlRouterProvider) {
+=======
 angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
@@ -28,4 +31,5 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       controller: 'userController'
     })
     $urlRouterProvider.otherwise('/')
+>>>>>>> master
 })
