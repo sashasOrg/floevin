@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+var Portfolio = require('./portfolio');
 
 var userSchema = new schema({
 	firstName: {type: String, lowercase: true, required: true},
