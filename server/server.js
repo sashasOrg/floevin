@@ -6,6 +6,8 @@ var express = require('express'),
   passport = require('passport'),
   mongoose = require('mongoose'),
   app = express();
+  Fund = require('./models/fund');
+
 
 mongoose.set('debug', true);
 mongoose.connect('mongodb://localhost/sashas-app');
@@ -19,6 +21,7 @@ app.use(bodyParser.json());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 
 
 
