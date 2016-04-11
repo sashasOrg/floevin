@@ -1,7 +1,8 @@
-angular.module('SashasApp').controller('mainController', function($scope, $state, mainService) {
+angular.module('SashasApp').controller('mainController', function($scope, $state, $cookies, mainService) {
   $scope.data = mainService.data;
   $scope.specificData = mainService.specificData;
   $scope.stockQuery = '';
+  $scope.mainService = {};
   // $scope.getSymbols = function() {
   //   mainService.getSymbols()
   //   console.log($scope.data)

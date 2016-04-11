@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
-var schema = mongoose.schema;
-var Fund = require('./models')
+var schema = mongoose.Schema;
+var Fund = require('./fund.js')
 
 var portfolioSchema = new schema({
-	
+
 })

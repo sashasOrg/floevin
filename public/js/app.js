@@ -1,4 +1,4 @@
-angular.module('SashasApp', ['ui.router'])
+angular.module('SashasApp', ['ui.router', 'ngCookies'])
 
 angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -15,12 +15,12 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
     .state('login', {
       url: '/login',
       templateUrl: './views/login.html',
-      controller: 'authController'
+      controller: 'loginController'
     })
     .state('register', {
       url: '/register',
       templateUrl: './views/register.html',
-      controller: 'authController'
+      controller: 'registerController'
     })
     .state('portfolio', {
       url: '/portfolio',
