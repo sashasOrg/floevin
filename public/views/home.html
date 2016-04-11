@@ -7,4 +7,9 @@
   <div ng-repeat="company in data">
     <a ng-click="getMoreInformation(company.symbol)" ui-sref="stock"><h3>{{company.symbol}}: {{company.name}}</h3></a>
   </div>
+  <!--mutual fund info-->
+    <div ng-repeat="fund in fund">
+      <h3>{{fund.name}}</h3>
+      <h3>{{fund.symbol}}</h3>
+    </div>
 </div>

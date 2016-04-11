@@ -1,3 +1,3 @@
-angular.module('SashasApp').controller('userController', function($scope, mainService) {
-  
+angular.module('SashasApp').controller('userController', function($scope, userService) {
+
 })

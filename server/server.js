@@ -53,6 +53,15 @@ app.put('/fund', function(req, res) {
     }
   });
 });
+app.delete('/fund', function(req, res){
+  Fund.findByIdAndRemove(req.query.id, function(err,response){
+    if(err){
+      return res.status(500).json(err);
+    }else{
+      return res.json(response);
+    }
+  })
+});
 
 
 app.listen(12030, function() {
