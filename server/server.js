@@ -78,6 +78,16 @@ app.put('/fund', function(req, res) {
     }
   });
 });
+<<<<<<< HEAD
+app.delete('/fund', function(req, res){
+  Fund.findByIdAndRemove(req.query.id, function(err,response){
+    if(err){
+      return res.status(500).json(err);
+    }else{
+      return res.json(response);
+    }
+  })
+=======
 app.post('/user/register', function(req, res) {
   User.register(new User({ username: req.body.username, password: req.body.password, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email }),
   req.body.password, function(err, account) {
@@ -140,6 +150,7 @@ app.put('/user', function(req, res) {
       return res.status(200).send(response);
     }
   });
+>>>>>>> master
 });
 
 
