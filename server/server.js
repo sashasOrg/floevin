@@ -23,6 +23,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.get('/fund', function(req, res) {
+  var query;
+  if (req.query.status) {
+    query = {status: req.query.status}
+  } else {
+    query = {};
+  }
+  Fund.find(query, function(err, response) {
+    return res.status(200).json(response);
+  });
+})
 app.post('/fund', function(req, res) {
   var fund = new Fund(req.body);
   fund.save(function(err, response) {
