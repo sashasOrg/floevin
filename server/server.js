@@ -86,7 +86,7 @@ app.delete('/fund', function(req, res){
       return res.json(response);
     }
   })
-})
+
 app.post('/user/register', function(req, res) {
   User.register(new User({ username: req.body.username, password: req.body.password, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email }),
   req.body.password, function(err, account) {
