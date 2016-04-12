@@ -41,10 +41,10 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
     .state('admin', {
       url: '/admin',
       templateUrl: '/views/admin.html',
-      controller: userController,
+      controller: 'formController',
       access: {restricted: false}
     })
-  
+
 
     $urlRouterProvider.otherwise('/')
 })
