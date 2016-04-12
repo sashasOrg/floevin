@@ -1,11 +1,8 @@
 angular.module('SashasApp').controller('loginController', function($state, $scope, $location, $cookies, AuthService, mainService) {
-
     $scope.isLoggedIn = AuthService.isLoggedIn;
-
     $scope.login = function () {
       $scope.error = false;
       $scope.disabled = true;
-
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         .then(function (response) {
           $cookies.put('currentUser', JSON.stringify(response));
@@ -23,10 +20,8 @@ angular.module('SashasApp').controller('loginController', function($state, $scop
     };
 });
 angular.module('SashasApp').controller('logoutController', function ($scope, $location, AuthService, mainService) {
-
     $scope.userLogged = AuthService.isLoggedIn();
     $scope.$watch($scope.userLogged);
-
     $scope.logout = function () {
       AuthService.logout()
         .then(function () {
@@ -35,14 +30,11 @@ angular.module('SashasApp').controller('logoutController', function ($scope, $lo
           $location.path('login');
         });
         console.log('logout')
-
     };
-
 });
 angular.module('SashasApp').controller('registerController',
   ['$scope', '$location', 'AuthService',
   function ($scope, $location, AuthService) {
-
     $scope.register = function () {
       $scope.error = false;
       $scope.disabled = true;
@@ -59,7 +51,5 @@ angular.module('SashasApp').controller('registerController',
           $scope.disabled = false;
           $scope.registerForm = {};
         });
-
     };
-
 }]);

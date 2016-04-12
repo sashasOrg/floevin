@@ -21,9 +21,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
       $state.reload();
     })
   }
-
   //mutual fund info
-
   $scope.getFund = function(){
         mainService.getFund().then(function(response){
           $scope.fund = response.data;
@@ -31,5 +29,4 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
       })
     };
 $scope.getFund();
-
 })

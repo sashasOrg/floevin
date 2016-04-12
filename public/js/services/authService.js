@@ -1,8 +1,5 @@
 angular.module('SashasApp').factory('AuthService', function ($q, $timeout, $http, $state, $cookies) {
-
-
     this.currentUser = $cookies.get('currentUser')
-
     return ({
       isLoggedIn: isLoggedIn,
       getUserStatus: getUserStatus,
@@ -10,12 +7,9 @@ angular.module('SashasApp').factory('AuthService', function ($q, $timeout, $http
       logout: logout,
       register: register
     });
-
-
-
     function isLoggedIn() {
       if(JSON.stringify($cookies.get('currentUser')) === null) {
-        user = null;
+        user = false;
       } else {
         user = true;
       }
@@ -25,10 +19,8 @@ angular.module('SashasApp').factory('AuthService', function ($q, $timeout, $http
         return false;
       }
     }
-
     function getUserStatus() {
       $http.get('/user/status')
-      // handle success
       .success(function (data) {
         if(data.status){
           user = true;
@@ -40,7 +32,6 @@ angular.module('SashasApp').factory('AuthService', function ($q, $timeout, $http
         user = false;
       });
     }
-
     function login(username, password) {
       var deferred = $q.defer();
       $http.post('/user/login',
@@ -61,7 +52,6 @@ angular.module('SashasApp').factory('AuthService', function ($q, $timeout, $http
         });
       return deferred.promise;
     }
-
     function logout() {
       var deferred = $q.defer();
       $http.get('/user/logout')
@@ -76,7 +66,6 @@ angular.module('SashasApp').factory('AuthService', function ($q, $timeout, $http
         });
       return deferred.promise;
     }
-
     function register(username, password, firstName, lastName, email) {
       var deferred = $q.defer();
       $http.post('/user/register',
