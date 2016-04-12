@@ -3,6 +3,7 @@ var schema = mongoose.Schema;
 var Portfolio = require('./portfolio');
 
 var userSchema = new schema({
+	admin: {type: boolean, default: false},
 	firstName: {type: String, lowercase: true, required: true},
 	lastName: {type: String, lowercase: true, required: true},
 	email: {type: String, lowercase: true, required: true},

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 
-var fundShema = new schema({
+var fundSchema = new schema({
 	riskBracket: Number,
 	name: {type: String, lowercase: true},
 	symbol: {type: String, lowercase: true},
@@ -13,7 +13,8 @@ var fundShema = new schema({
 	expenseRatio: Number,
 	loadType: {type:String, enum: ['front-end', 'back-end']},
 	riskPotential: Number,
-	allocation categories: [{type: String}]
+	allocation categories: [{type: String}],
+	objective: {type:String, enum: ['']}
 })
 
 module.exports = mongoose.model('Fund', fundSchema);
