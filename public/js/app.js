@@ -44,6 +44,8 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       controller: userController,
       access: {restricted: false}
     })
+  
+
     $urlRouterProvider.otherwise('/')
 })
 
