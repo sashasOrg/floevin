@@ -3,6 +3,8 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   $scope.specificData = mainService.specificData;
   $scope.stockQuery = '';
   $scope.mainService = {};
+  
+
   // $scope.getSymbols = function() {
   //   mainService.getSymbols()
   //   console.log($scope.data)
