@@ -141,6 +141,7 @@ app.get('/user/status', function(req, res) {
   res.status(200).json({
     status: true
   });
+})
 });
 app.put('/user', function(req, res) {
   User.findByIdAndUpdate(req.query.id, req.body, function(err, response) {
@@ -150,10 +151,9 @@ app.put('/user', function(req, res) {
       return res.status(200).send(response);
     }
   });
->>>>>>> master
 });
 
 
 app.listen(12030, function() {
   console.log('Listening in on port 12030');
-})
+});

@@ -32,5 +32,7 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       templateUrl: './views/stock.html',
       controller: 'mainController'
     })
+  
+
     $urlRouterProvider.otherwise('/')
 })
