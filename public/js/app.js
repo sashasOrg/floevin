@@ -1,36 +1,31 @@
-angular.module('SashasApp', ['ui.router', 'ngCookies'])
+angular.module('SashasApp', ['ui.router'])
 
 angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
        url: '/',
        templateUrl: './views/home.html',
-       controller: 'mainController',
-       access: {restricted: false}
+       controller: 'mainController'
     })
     .state('form', {
       url: '/form',
       templateUrl: './views/form.html',
-      controller: 'formController',
-      access: {restricted: false}
+      controller: 'formController'
     })
     .state('login', {
       url: '/login',
       templateUrl: './views/login.html',
-      controller: 'loginController',
-      access: {restricted: false}
+      controller: 'authController'
     })
     .state('register', {
       url: '/register',
       templateUrl: './views/register.html',
-      controller: 'registerController',
-      access: {restricted: false}
+      controller: 'authController'
     })
     .state('portfolio', {
       url: '/portfolio',
       templateUrl: './views/portfolio.html',
-      controller: 'userController',
-      access: {restricted: false}
+      controller: 'userController'
     })
     .state('stock', {
       url: '/stock',
@@ -48,15 +43,3 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
 
     $urlRouterProvider.otherwise('/')
 })
-
-angular.module('SashasApp').run(function ($state, $rootScope, $location, AuthService) {
-  $rootScope.$on('$stateChangeStart',
-    function (event, next, current) {
-      AuthService.getUserStatus();
-      if (next.access.restricted &&
-          !AuthService.isLoggedIn()) {
-            event.preventDefault();
-            $state.go('login')
-      }
-  });
-});
