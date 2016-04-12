@@ -2,11 +2,13 @@ angular.module('SashasApp').controller('formController', function($scope, formSe
 
   //mutual fund info
 
-  $scope.anyfund = function(){
+
+$scope.fund = function(){
+      console.log('test');
     $scope.error = false;
     $scope.disabled = true;
 
-    formService.newFund($scope.newfundForm.name, $scope.newfundForm.symbol, $scope.newfundForm.price, $scope.newfundForm.assetClass, $scope.newfundForm.beta, $scope.newfundForm.expenseRatio, $scope.newfundForm.loadType, $scope.newfundForm.riskBracket, $scope.newfundForm.riskPotential)
+    formService.newFund($scope.newfundForm.name, $scope.newfundForm.symbol,  $scope.newfundForm.assetClass, $scope.newfundForm.beta, $scope.newfundForm.expenseRatio, $scope.newfundForm.loadType, $scope.newfundForm.riskBracket, $scope.newfundForm.riskPotential)
 
     .then(function () {
       $scope.disabled = false;
@@ -31,8 +33,8 @@ angular.module('SashasApp').controller('formController', function($scope, formSe
     };
     $scope.getFund();
 
-  $scope.newFund = function(newname, newsymbol, newprice, newassetClass, newbeta, newexpenseRatio, newloadType, newriskBracket, newriskPotential){
-    mainService.newFund(newname, newsymbol, newprice, newassetClass, newbeta, newexpenseRatio, newloadType, newriskBracket, newriskPotential).then(function(response){
+  $scope.newFund = function(newname, newsymbol,  newassetClass, newbeta, newexpenseRatio, newloadType, newriskBracket, newriskPotential){
+    formService.newFund(newname, newsymbol,  newassetClass, newbeta, newexpenseRatio, newloadType, newriskBracket, newriskPotential).then(function(response){
       $scope.getFund();
   });
   };
@@ -41,8 +43,8 @@ angular.module('SashasApp').controller('formController', function($scope, formSe
     $scope.showing = !$scope.showing;
   };
     $scope.showing = false;
-  })
 
+})
 
   angular.module('SashasApp').directive('hideForm', function(){
   function link ($scope, element, attributes){
