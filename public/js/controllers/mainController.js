@@ -3,7 +3,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   $scope.specificData = mainService.specificData;
   $scope.stockQuery = '';
   $scope.mainService = {};
-  
+
 
   // $scope.getSymbols = function() {
   //   mainService.getSymbols()
@@ -23,46 +23,4 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
       $state.reload();
     })
   }
-
-  //mutual fund info
-
-  $scope.getFund = function(){
-        mainService.getFund().then(function(response){
-          $scope.fund = response.data;
-          console.log($scope.fund)
-      })
-    };
-$scope.getFund();
-
-$scope.newFund = function(newname, newsymbol, newprice, newassetClass, newbeta, newexpenseRatio, newloadType, newriskBracket, newriskPotential){
-  mainService.newFund(newname, newsymbol, newprice, newassetClass, newbeta, newexpenseRatio, newloadType, newriskBracket, newriskPotential).then(function(response){
-    $scope.getFund();
-  });
-};
-
-})
-
-
-angular.module('SashasApp').directive('hideForm', function(){
-  function link ($scope, element, attributes){
-      var expression = attributes.hideForm;
-      if ( ! $scope.$eval( expression)){
-        element.hide();
-      }
-    $scope.$watch(expression, function(newValue, oldValue){
-      if (newValue === oldValue) {
-        return;
-      } if ( newValue){
-        element.stop(true, true).slideDown();
-      }else{
-        element.stop(true, true).slideUp();
-      }
-
-    });
-  };
-    return ({
-      link:link,
-      restrict: 'A'
-
-    });
 })

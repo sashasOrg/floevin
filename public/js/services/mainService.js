@@ -27,25 +27,6 @@ angular.module('SashasApp').service('mainService', function($http, $q) {
   this.getMoreInformation = function(symbol) {
     return $http.get('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20(%22' + symbol + '%22,%22' + symbol + '%22)&format=json&env=http://datatables.org/alltables.env')
   }
-/*mutual fund info*/
-  this.getFund = function(){
-    return $http.get('/fund')
-  };
-  this.newFund = function(){
-          var deferred = $q.defer();
-      $http.post('/fund', {name: name, symbol: symbol, price: price, assetClass: assetClass, beta: beta, expenseRatio: expenseRatio, loadType: loadType, riskBracket: riskBracket})
-      .success(function (data, status){
-          if(status === 200 && data.status){
-            deferred.resolve();
-          }else{
-            deferred.reject();
-          }
-        })
-        .error(function (data){
-          deferred.reject(data);
-        });
-        return deferred.promise;
-    };
 
 
 });
