@@ -3,32 +3,20 @@ angular.module('SashasApp').controller('formController', function($scope, formSe
   //mutual fund info
 
 
-$scope.fund = function(){
+$scope.anyfund = function(){
       console.log('test');
     $scope.error = false;
     $scope.disabled = true;
 
-    formService.newFund($scope.newfundForm.name, $scope.newfundForm.symbol,  $scope.newfundForm.assetClass, $scope.newfundForm.beta, $scope.newfundForm.expenseRatio, $scope.newfundForm.loadType, $scope.newfundForm.riskBracket, $scope.newfundForm.riskPotential)
+    // formService.newFund($scope.newfundForm.name, $scope.newfundForm.symbol,  $scope.newfundForm.assetClass, $scope.newfundForm.beta, $scope.newfundForm.expenseRatio, $scope.newfundForm.loadType, $scope.newfundForm.riskBracket, $scope.newfundForm.riskPotential)
 
-    .then(function () {
-      $scope.disabled = false;
-      $scope.newfundForm = {};
-    })
-
-    // handle error
-    .catch(function () {
-      $scope.error = true;
-      $scope.errorMessage = "What did you do?!?";
-      $scope.disabled = false;
-      $scope.newfundForm = {};
-    });
+    formService.newFund($scope.newfundForm)
 
   };
 
   $scope.getFund = function(){
         formService.getFund().then(function(response){
           $scope.fund = response.data;
-          console.log($scope.fund)
       })
     };
     $scope.getFund();
