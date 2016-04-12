@@ -27,5 +27,19 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       templateUrl: './views/portfolio.html',
       controller: 'userController'
     })
+    .state('stock', {
+      url: '/stock',
+      templateUrl: './views/stock.html',
+      controller: 'mainController',
+      access: {restricted: false}
+    })
+    .state('admin', {
+      url: '/admin',
+      templateUrl: '/views/admin.html',
+      controller: 'formController',
+      access: {restricted: false}
+    })
+
+
     $urlRouterProvider.otherwise('/')
 })
