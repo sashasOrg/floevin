@@ -5,13 +5,14 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var less = require('gulp-less');
 var ngAnnotate = require('gulp-ng-annotate');
-var server = require('gulp-webserver');
+var webserver = require('gulp-webserver');
 var htmlmin = require('gulp-htmlmin');
 
-var watcher = gulp.watch(['./src/js/**/*.js', './src/css/*.less', './src/views/**/*.html', './src/*.html'], ['default']); 
+var watcher = gulp.watch(['./src/js/**/*.js', './src/css/*.less', './src/views/**/*.html', './src/*.html'], ['default']);
 watcher.on('change', function( event ) {
         console.log('File ' + event.path + ' was ' + event.type + ' at ' + new Date() + ' , running tasks...');
 });
+
 
 gulp.task('compileLess', function(){
   gulp.src('src/css/*.less')
@@ -37,6 +38,14 @@ gulp.task('index', function() {
     gulp.src('./src/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./public'))
+});
+gulp.task('webserver', function() {
+  gulp.src('app')
+    .pipe(webserver({
+      livereload: true,
+      directoryListing: true,
+      open: true
+    }));
 });
 
 gulp.task('default', ['compileLess', 'concatScripts', 'html', 'index']);
