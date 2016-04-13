@@ -15,17 +15,18 @@ angular.module('SashasApp').service('formService', function($http, $q) {
     };
 
 
-this.updateFund = function(id){
+  this.updateFund = function(id){
   return $http.put('/fund' +id, update );
 };
-this.deleteFund = function(id){
-        $http({
-            method: 'DELETE',
-            url: '/fund?id=' + id
+
+  this.deleteFund = function(id){
+    $http({
+          method: 'DELETE',
+          url: '/fund?id=' + id
         }).then(function successCallback(response) {
-            return response;
-        }, function errorCallback(response) {
-            return response;
-        });
+          return response;
+        },function errorCallback(response) {
+          return response;
+      });
     };
 })

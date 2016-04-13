@@ -8,7 +8,7 @@ var fundSchema = new schema({
 	assetClass: {type: String},
 	beta: {type: String},
 	expenseRatio: {type: String},
-	loadType: {type:String, enum: ['front-end', 'back-end']},
+	load: {type:String, enum: ['front-end', 'back-end']},
 	riskBracket: Number,
 	riskPotential: Number
 })

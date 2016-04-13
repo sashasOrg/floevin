@@ -5,6 +5,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   $scope.mainService = {};
 
 
+
   // $scope.getSymbols = function() {
   //   mainService.getSymbols()
   //   console.log($scope.data)

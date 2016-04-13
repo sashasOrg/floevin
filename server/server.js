@@ -36,7 +36,7 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({secret: 'we da best! beet da r3st, so gr3te.',   resave: false,
+app.use(session({secret: 'we da best! beet da r3st, so gr3te.',  resave: false,
   saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -109,6 +109,7 @@ app.post('/user/register', function(req, res) {
     });
   });
 });
+
 
 
 

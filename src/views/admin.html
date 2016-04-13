@@ -32,12 +32,8 @@
         <button ng-click="toggle()" >Add Fund</button>
       </div>
   </form>
-  <form ng-submit="getFund()">
-    <input class="form-control" ng-model="fund" type="text"/>
-    <button class="btn btn-info">Search Funds</button>
-  </form>
-  <div ng-repeat="fund in fund">
-    <a ng-click="getMoreInformation(fund.symbol)" ><h3>{{fund.symbol}} : {{fund.name}}</h3></a>
-  </div>
+
+  <!--display and search funds-->
+
   <a class="btn btn-default" role="button" ng-submit="delete(fund._id)">Delete</a>
   </div>

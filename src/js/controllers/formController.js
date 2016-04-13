@@ -2,6 +2,8 @@ angular.module('SashasApp').controller('formController', function($scope, formSe
 
   //mutual fund info
 
+$scope.fund = data;
+
 
 $scope.anyfund = function(){
       console.log('test');
