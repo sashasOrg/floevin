@@ -36,7 +36,8 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({secret: 'we da best! beet da r3st, so gr3te.'}));
+app.use(session({secret: 'we da best! beet da r3st, so gr3te.',   resave: false,
+  saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
@@ -47,6 +48,8 @@ function isLoggedIn(req, res, next) {
     return next();
   }
 }
+
+//fund schema endpoints
 
 app.get('/fund', function(req, res) {
   var query;
@@ -88,6 +91,9 @@ app.delete('/fund', function(req, res){
     }
   })
 
+
+  // user registration
+
 app.post('/user/register', function(req, res) {
   User.register(new User({ username: req.body.username, password: req.body.password, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email }),
   req.body.password, function(err, account) {
@@ -103,6 +109,12 @@ app.post('/user/register', function(req, res) {
     });
   });
 });
+
+
+
+// login/logout section
+
+
 app.post('/user/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {
@@ -152,6 +164,18 @@ app.put('/user', function(req, res) {
     }
   });
 });
+app.get('/user', function(req, res){
+  var query;
+  if (req.query.status) {
+    query = {status: req.query.status}
+  } else {
+    query = {};
+  }
+  User.find(query, function(err, response) {
+    return res.status(200).json(response);
+  });
+  })
+
 
 
 app.listen(12030, function() {
