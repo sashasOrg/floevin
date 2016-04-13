@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
-var Portfolio = require('./portfolio');
 var bcrypt = require('bcrypt-nodejs');
 var passportLocalMongoose = require('passport-local-mongoose');
 var SALT_WORK_FACTOR = 10;
 
 var userSchema = new schema({
+	admin: {type: boolean, default: false},
 	username: { type: String, required: true, index: {  sparse: true }, unique: true },
-  password: { type: String, required: true, index: {  sparse: true }, minLength: 7 },
+  	password: { type: String, required: true, index: {  sparse: true }, minLength: 7 },
 	firstName: {type: String, lowercase: true, required: true},
 	lastName: {type: String, lowercase: true, required: true},
 	email: {type: String, lowercase: true, required: true},
@@ -23,8 +23,7 @@ var userSchema = new schema({
 		question8: {type: Number, minlength: 1, maxlength: 5},
 		question9: {type: Number, minlength: 1, maxlength: 5},
 		question10: {type: Number, minlength: 1, maxlength: 5}
-		},
-	portfolio: {type: schema.Types.ObjectId, ref: Portfolio}
+		}
 })
 
 userSchema.plugin(passportLocalMongoose);
