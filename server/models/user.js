@@ -5,7 +5,7 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var SALT_WORK_FACTOR = 10;
 
 var userSchema = new schema({
-	admin: {type: boolean, default: false},
+	admin: {type: Boolean, default: false},
 	username: { type: String, required: true, index: {  sparse: true }, unique: true },
   	password: { type: String, required: true, index: {  sparse: true }, minLength: 7 },
 	firstName: {type: String, lowercase: true, required: true},
