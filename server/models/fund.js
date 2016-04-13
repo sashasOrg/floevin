@@ -11,7 +11,6 @@ var fundSchema = new schema({
 	loadType: {type:String, enum: ['front-end', 'back-end']},
 	riskBracket: Number,
 	riskPotential: Number
-	allocation categories: [{type: String}],
 })
 
 module.exports = mongoose.model('Fund', fundSchema);
