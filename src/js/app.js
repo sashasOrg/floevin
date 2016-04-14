@@ -38,9 +38,9 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       controller: 'mainController',
       access: {restricted: false}
     })
-    .state('fund', {
-      url: '/fund',
-      templateUrl: '/views/fund.html',
+    .state('fundinfo', {
+      url: '/fundinfo',
+      templateUrl: '/views/fundinfo.html',
       controller: 'formController',
       access: {restricted: false}
     })

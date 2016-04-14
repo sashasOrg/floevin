@@ -1,20 +1,21 @@
 angular.module('SashasApp').controller('formController', function($scope, formService) {
 
   //mutual fund info
+$scope.seachFund = '';
 
-$scope.fund = data;
-
-
-$scope.anyfund = function(){
+  $scope.anyfund = function(){
       console.log('test');
     $scope.error = false;
     $scope.disabled = true;
-
-    // formService.newFund($scope.newfundForm.name, $scope.newfundForm.symbol,  $scope.newfundForm.assetClass, $scope.newfundForm.beta, $scope.newfundForm.expenseRatio, $scope.newfundForm.loadType, $scope.newfundForm.riskBracket, $scope.newfundForm.riskPotential)
-
     formService.newFund($scope.newfundForm)
 
   };
+
+  $scope.fundQuery = function(){
+    formService.fundQuery($scope.searchFund).then(function(response){
+      $scope.fund = response;
+    })
+  }
 
   $scope.getFund = function(){
         formService.getFund().then(function(response){

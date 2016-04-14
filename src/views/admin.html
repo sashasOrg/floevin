@@ -33,7 +33,9 @@
       </div>
   </form>
 
-  <!--display and search funds-->
-
   <a class="btn btn-default" role="button" ng-submit="delete(fund._id)">Delete</a>
+  </div>
+
+  <div ng-repeat="fund in fund">
+    {{fund.name}}: {{fund.riskBracket}}
   </div>

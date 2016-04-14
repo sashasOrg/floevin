@@ -62,6 +62,17 @@ app.get('/fund', function(req, res) {
     return res.status(200).json(response);
   });
 })
+
+app.get('/fund/specific', function(req, res){
+  Fund.findOne({_id: req.query.id}, function(err, response){
+    if(err){
+      return res.status(500).json(err);
+    }else{
+      return res.status(200).json(response);
+    }
+  })
+});
+
 app.post('/fund', function(req, res) {
   var fund = new Fund(req.body);
   fund.save(function(err, response) {
@@ -72,6 +83,7 @@ app.post('/fund', function(req, res) {
     }
   });
 });
+
 app.put('/fund', function(req, res) {
   Fund.findByIdAndUpdate(req.query.id, req.body, function(err, response) {
     if (err) {
