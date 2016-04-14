@@ -40,7 +40,7 @@ gulp.task('index', function() {
         .pipe(gulp.dest('./public'))
 });
 gulp.task('webserver', function() {
-  gulp.src('app')
+  gulp.src('SashasApp')
     .pipe(webserver({
       livereload: true,
       directoryListing: true,

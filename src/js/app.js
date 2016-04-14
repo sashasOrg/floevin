@@ -38,6 +38,12 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       controller: 'mainController',
       access: {restricted: false}
     })
+    .state('fundinfo', {
+      url: '/fundinfo',
+      templateUrl: '/views/fundinfo.html',
+      controller: 'formController',
+      access: {restricted: false}
+    })
     .state('admin', {
       url: '/admin',
       templateUrl: '/views/admin.html',
