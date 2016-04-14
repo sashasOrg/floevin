@@ -3,16 +3,31 @@
     <head>
       <meta charset="UTF-8"/>
 
-      <link rel="stylesheet" type="text/css" href="css/style.css"/>
+      <link rel="stylesheet" type="text/css" href="/css/style.css"/>
       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"/>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     </head>
     <body>
-      <a ui-sref="home">Home</a>
-      <a ui-sref="portfolio">Portfolio</a>
-      <a ui-sref="form">Form</a>
-      <a ui-sref="login">Login</a>
-      <a ui-sref="register">Register</a>
-      <a ui-sref="admin">Admin</a>
+      <div id="nav-container">
+          <div class="logo-container">
+              <i class="fa fa-cube" aria-hidden="true"></i>
+          </div>
+              <div class="desktop-navigation">
+                <div class="nav-items">
+                  <a ui-sref="home">Home</a></div>
+                <div class="nav-items">
+                  <a ui-sref="portfolio">Portfolio</a></div>
+                <div class="nav-items">
+                  <a ui-sref="form">Form</a></div>
+                <div class="nav-items">
+                  <a ui-sref="login">Login</a></div>
+                <div class="nav-items">
+                  <a ui-sref="register">Register</a></div>
+                <div class="nav-items">
+                  <a ui-sref="admin">Admin</a></div>
+              </div>
+      </div>
+
       <div ui-view></div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.js"></script>

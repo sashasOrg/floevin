@@ -15,16 +15,29 @@
 /**********************
          STYLES
 ***********************/
+#nav-container {
+  height: 8vh;
+  width: 100%;
+  border-bottom: 1px solid gray;
+}
+.logo-container {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+.nav-items {
+  display: inline-block;
+}
 .shape {
   display: inline-block;
   width: 200px;
   height: 200px;
-  background: #ddf;
+  background: #00a5d9;
   margin: 20px;
-  border: 20px solid #bbbbdd;
+  border: 20px solid #0083b7;
 }
 .shape:hover {
-  background: #fdd;
+  background: lightgray;
 }
 #shape1 {
   -webkit-border-radius: 9999px;

@@ -23,7 +23,7 @@ mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
 
-app.use(express.static(__dirname + '/../public'));
+app.use(express.static(__dirname + '/../src'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
@@ -101,8 +101,9 @@ app.post('/user/register', function(req, res) {
         status: 'Registration successful!'
       });
     });
-  });
+  });5
 });
+
 app.post('/user/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) {
@@ -126,12 +127,14 @@ app.post('/user/login', function(req, res, next) {
     });
   })(req, res, next);
 });
+
 app.get('/user/logout', function(req, res) {
   req.logout();
   res.status(200).json({
     status: 'Bye!'
   });
 });
+
 app.get('/user/status', function(req, res) {
   if (!req.isAuthenticated()) {
     return res.status(200).json({
@@ -143,6 +146,7 @@ app.get('/user/status', function(req, res) {
   });
 })
 });
+
 app.put('/user', function(req, res) {
   User.findByIdAndUpdate(req.query.id, req.body, function(err, response) {
     if (err) {

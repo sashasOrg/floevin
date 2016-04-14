@@ -2,9 +2,8 @@
        CONSTANTS
 ***********************/
 
-@lightRed:   #fdd;
-@lightGreen: #dfd;
-@lightBlue:  #ddf;
+@brightBlue:  #00a5d9;
+@lightGray: lightgray;
 @defaultShapesWidth:200px;
 @defaultRadius:30px;
 
@@ -12,10 +11,8 @@
    OPERATIONS & COLOR FUNCTIONS
 **********************************/
 
-@darkBlue: @lightBlue - #555;
-
-@defaultThemeColor:@lightBlue;
-//@defaultThemeColor:spin(@lightBlue, 100);
+@defaultThemeColor:@brightBlue;
+//@defaultThemeColor:spin(@brightBlue, 100);
 
 @borderSize:@defaultShapesWidth * 0.1;
 @borderColor:@defaultThemeColor - #222; 
@@ -44,6 +41,22 @@
          STYLES
 ***********************/
 
+#nav-container {
+    height: 8vh;
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
+
+.logo-container {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+
+.nav-items {
+    display: inline-block;
+}
+
 .shape{
     display:inline-block;
     width:@defaultShapesWidth;
@@ -54,7 +67,7 @@
 }
 
 .shape{
-    &:hover{ background:@lightRed   }
+    &:hover{ background:@lightGray   }
 }
 
 #shape1{ .Round }
