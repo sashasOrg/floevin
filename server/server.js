@@ -102,6 +102,7 @@ app.delete('/fund', function(req, res){
       return res.json(response);
     }
   })
+});
 
 
   // user registration
@@ -166,7 +167,6 @@ app.get('/user/status', function(req, res) {
   res.status(200).json({
     status: true
   });
-})
 });
 app.put('/user', function(req, res) {
   User.findByIdAndUpdate(req.query.id, req.body, function(err, response) {
