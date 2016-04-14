@@ -36,13 +36,10 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({secret: 'we da best! beet da r3st, so gr3te.',  resave: false,
-  saveUninitialized: false}));
-app.use(passport.initialize());
-app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -62,17 +59,6 @@ app.get('/fund', function(req, res) {
     return res.status(200).json(response);
   });
 })
-
-app.get('/fund/specific', function(req, res){
-  Fund.findOne({_id: req.query.id}, function(err, response){
-    if(err){
-      return res.status(500).json(err);
-    }else{
-      return res.status(200).json(response);
-    }
-  })
-});
-
 app.post('/fund', function(req, res) {
   var fund = new Fund(req.body);
   fund.save(function(err, response) {
@@ -83,7 +69,6 @@ app.post('/fund', function(req, res) {
     }
   });
 });
-
 app.put('/fund', function(req, res) {
   Fund.findByIdAndUpdate(req.query.id, req.body, function(err, response) {
     if (err) {
@@ -102,6 +87,7 @@ app.delete('/fund', function(req, res){
       return res.json(response);
     }
   })
+});
 
 
   // user registration
@@ -121,7 +107,6 @@ app.post('/user/register', function(req, res) {
     });
   });
 });
-
 
 
 
@@ -166,8 +151,8 @@ app.get('/user/status', function(req, res) {
   res.status(200).json({
     status: true
   });
-})
 });
+
 app.put('/user', function(req, res) {
   User.findByIdAndUpdate(req.query.id, req.body, function(err, response) {
     if (err) {
@@ -177,17 +162,7 @@ app.put('/user', function(req, res) {
     }
   });
 });
-app.get('/user', function(req, res){
-  var query;
-  if (req.query.status) {
-    query = {status: req.query.status}
-  } else {
-    query = {};
-  }
-  User.find(query, function(err, response) {
-    return res.status(200).json(response);
-  });
-  })
+
 
 
 

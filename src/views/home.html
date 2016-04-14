@@ -4,8 +4,10 @@
     <input class="form-control" ng-model="stockQuery" type="text"/>
     <button class="btn btn-info">Search Stocks</button>
   </form>
-  <div ng-repeat="company in data">
-    <a ng-click="getMoreInformation(company.symbol)" ui-sref="stock"><h3>{{company.symbol}}: {{company.name}}</h3></a>
+  <div ng-repeat="company in data" class="companies">
+    <div class="company-stock">
+      <a ng-click="getMoreInformation(company.symbol)" ui-sref="stock"><h3>{{company.symbol}}: {{company.name}}</h3></a>
+    </div>
   </div>
   <!--mutual fund info-->
 
