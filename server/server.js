@@ -187,8 +187,7 @@ app.get('/user', function(req, res){
   User.find(query, function(err, response) {
     return res.status(200).json(response);
   });
-  })
-
+});
 
 
 app.listen(12030, function() {

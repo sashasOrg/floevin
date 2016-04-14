@@ -13,7 +13,6 @@ watcher.on('change', function( event ) {
         console.log('File ' + event.path + ' was ' + event.type + ' at ' + new Date() + ' , running tasks...');
 });
 
-
 gulp.task('compileLess', function(){
   gulp.src('src/css/*.less')
  	.pipe(less())
@@ -31,7 +30,7 @@ gulp.task('concatScripts', function() {
 gulp.task('html', function() {
     gulp.src('./src/views/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(gulp.dest('./public/views'))
+        .pipe(gulp.dest('./public'))
 });
 
 gulp.task('index', function() {
@@ -39,6 +38,7 @@ gulp.task('index', function() {
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./public'))
 });
+
 gulp.task('webserver', function() {
   gulp.src('SashasApp')
     .pipe(webserver({
