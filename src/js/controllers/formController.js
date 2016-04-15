@@ -1,61 +1,106 @@
-angular.module('SashasApp').controller('formController', function($scope, formService) {
-  //mutual fund info
-$scope.seachFund = '';
+angular.module('SashasApp').controller('formController', function($scope) {
 
-  $scope.anyfund = function(){
-      console.log('test');
-    $scope.error = false;
-    $scope.disabled = true;
-    formService.newFund($scope.newfundForm)
+         $scope.age_answer = [];
+         $scope.age_answer["30"]=5;
+         $scope.age_answer["3040"]=4;
+         $scope.age_answer["4050"]=3;
+         $scope.age_answer["5065"]=2;
+         $scope.age_answer["65"]=1;
+         
+         $scope.objective_answer = [];
+         $scope.objective_answer["Spec"]=2;
+         $scope.objective_answer["Growth"]=1;
+         $scope.objective_answer["Income"]=-1;
+         $scope.objective_answer["Tax"]=-3;
+         $scope.objective_answer["Safety"]=-4;
 
-  };
+         $scope.income_answer = [];
+         $scope.income_answer["I50"]=-4;
+         $scope.income_answer["I50100"]=-3;
+         $scope.income_answer["I100250"]=-2;
+         $scope.income_answer["I250500"]=0;
+         $scope.income_answer["I500"]=1;
 
-  $scope.fundQuery = function(){
-    formService.fundQuery($scope.searchFund).then(function(response){
-      $scope.fund = response;
-    })
-  }
+        (function(angular) {
+            $scope.data = {
+             repeatSelect: null,
+             availableOptions: [
+               {id: '...', name: ''},
+               {id: 'Risk potential: 1', name: 'None'},
+               {id: 'Risk potential: 2', name: 'Limited'},
+               {id: 'Risk potential: 3', name: 'Average'},
+               {id: 'Risk potential: 4', name: 'Acceptable'},
+               {id: 'Risk potential: 5', name: 'Extensive'}
+             ],
+            };
+         })(window.angular);
 
-  $scope.getFund = function(){
-        formService.getFund().then(function(response){
-          $scope.fundinfo = response.data;
-      })
-    };
-    $scope.getFund();
+        $scope.getAge = function()
+        {  
+            var ageFill=0;
+            var theForm = document.forms["form"];
+            var ageselected = theForm.elements["ageselected"];
+            for(var i = 0; i < ageselected.length; i++)
+            {
+                if(ageselected[i].checked)
+                {
+                    ageFill = $scope.age_answer[ageselected[i].value];
+                    break;
+                }
+            }
+            return ageFill;
+        }
 
-  $scope.newFund = function(newname, newsymbol,  newassetClass, newbeta, newexpenseRatio, newloadType, newriskBracket, newriskPotential){
-    formService.newFund(newname, newsymbol,  newassetClass, newbeta, newexpenseRatio, newloadType, newriskBracket, newriskPotential).then(function(response){
-      $scope.getFund();
-  });
-  };
+        $scope.getObjective = function()
+        {  
+            var objectiveFill=0;
+            var theForm = document.forms["form"];
+            var objective = theForm.elements["objectiveselected"];
+            for(var i = 0; i < objective.length; i++)
+            {
+                if(objective[i].checked)
+                {
+                    objectiveFill = $scope.objective_answer[objective[i].value];
+                    break;
+                }
+            }
+            return objectiveFill;
+        }
 
-  $scope.toggle = function(){
-    $scope.showing = !$scope.showing;
-  };
-    $scope.showing = false;
+        $scope.getIncome = function()
+        {  
+            var incomeFill=0;
+            var theForm = document.forms["form"];
+            var income = theForm.elements["incomeselected"];
+            for(var i = 0; i < income.length; i++)
+            {
+                if(income[i].checked)
+                {
+                    incomeFill = $scope.income_answer[income[i].value];
+                    break;
+                }
+            }
+            return incomeFill;
+        }
 
+        $scope.calculateTotal = function()
+        {
+            var riskLevel = $scope.getAge() + $scope.getObjective() + $scope.getIncome();
+            if(riskLevel < 1){
+                return riskLevel = 1;
+            }
+            else if(riskLevel > 5){
+                return riskLevel = 5;
+            }
+
+            var divobj = document.getElementById('totalRisk');
+            divobj.style.display='block';
+            divobj.innerHTML = 'We recommend taking level: '+riskLevel+' risk';
+        }
+
+        $scope.hideTotal = function()
+        {
+            var divobj = document.getElementById('totalRisk');
+            divobj.style.display='none';
+        }
 })
-
-  angular.module('SashasApp').directive('hideForm', function(){
-  function link ($scope, element, attributes){
-      var expression = attributes.hideForm;
-      if ( ! $scope.$eval( expression)){
-        element.hide();
-      }
-    $scope.$watch(expression, function(newValue, oldValue){
-      if (newValue === oldValue) {
-        return;
-      } if ( newValue){
-        element.stop(true, true).slideDown();
-      }else{
-        element.stop(true, true).slideUp();
-      }
-
-    });
-  };
-    return ({
-      link:link,
-      restrict: 'A'
-
-    });
-  })
