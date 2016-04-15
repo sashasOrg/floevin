@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Merriweather);
+
 /**********************
        CONSTANTS
 ***********************/
@@ -18,8 +20,8 @@
 //@defaultThemeColor:spin(@lightBlue, 100);
 
 @borderSize:@defaultShapesWidth * 0.1;
-@borderColor:@defaultThemeColor - #222; 
-//@borderColor:darken(desaturate(@defaultThemeColor, 100%), 20%); 
+@borderColor:@defaultThemeColor - #222;
+//@borderColor:darken(desaturate(@defaultThemeColor, 100%), 20%);
 
 
 /**********************
@@ -29,7 +31,7 @@
 .RoundedShape(@radius:@defaultRadius){
     -webkit-border-radius:@radius;
        -moz-border-radius:@radius;
-            border-radius:@radius;  
+            border-radius:@radius;
 }
 
 .Round{
@@ -43,7 +45,18 @@
 /**********************
          STYLES
 ***********************/
-
+a:link {
+  color: #000;
+  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+  text-decoration: none;
+  font-family: 'Open Sans', 'Merriweather', sans-serif;
+}
+a:visited {
+  color: #000;
+  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+  text-decoration: none;
+  font-family: 'Open Sans', 'Merriweather', sans-serif;
+}
 .shape{
     display:inline-block;
     width:@defaultShapesWidth;
@@ -72,4 +85,3 @@ The main styles of the page,
 ...and any other relevant group of rules depending on your project.
 
 **************************/
-
