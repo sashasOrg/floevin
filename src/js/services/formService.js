@@ -1,4 +1,4 @@
-angular.module('SashasApp').service('formService', function($http, $q) {
+angular.module('SashasApp').service('formService', function($http, $q, $cookies) {
 
 
 
@@ -19,7 +19,6 @@ this.fundQuery = function(id){
   this.updateFund = function(id){
   return $http.put('/fund' +id, update );
 };
-
   this.deleteFund = function(id){
     $http({
           method: 'DELETE',
