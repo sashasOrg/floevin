@@ -12,7 +12,6 @@ var express = require('express'),
   localStrategy = require('passport-local').Strategy,
   app = express();
 
-
 var Fund = require('./models/fund.js');
 var User = require('./models/user.js');
 require('./config/passport.js')(passport);
@@ -104,6 +103,16 @@ app.delete('/fund', function(req, res){
   })
 });
 
+app.get('/user/portfolio', function(req, res) {
+  User.findOne({ username: req.query.username })
+  .populate('portfolio').exec(function(err, user) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(user);
+    }
+  });
+});
 
   // user registration
 
@@ -123,11 +132,7 @@ app.post('/user/register', function(req, res) {
   });
 });
 
-
-
-
 // login/logout section
-
 
 app.post('/user/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
@@ -188,7 +193,6 @@ app.get('/user', function(req, res){
     return res.status(200).json(response);
   });
 });
-
 
 app.listen(12030, function() {
   console.log('Listening in on port 12030');
