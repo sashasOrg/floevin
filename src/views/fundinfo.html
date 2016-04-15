@@ -1,9 +1,15 @@
-<div>
-  <h1>  {{fund.symbol}}: {{fund.name}}</h1>
-  <h4 ng-show="fund.beta">Beta: {{fund.beta}}</h4>
-  <h4 ng-show="fund.assetClass">Assset Class: {{fund.assetClass}}</h4>
-  <!-- <h4 ng-show="specificData.LastTradePriceOnly">Price: {{specificData.price}}</h4> -->
-  <h4 ng-show="fund.expenseRatio">Expense Ratio: {{fund.expenseRatio}}</h4>
-  <h4 ng-show="fund.load">Load Type: {{fund.load}}</h4>
+<div ng-controller="formController">
 
+  <table width="75%" ng-repeat="fund in fundinfo">
+    <tbody>
+      <tr >
+          <td align ="left" width="40%">{{fund.name}}</td>
+          <td align ="center" width="10%">{{fund.symbol}}</td>
+          <td align ="center" width="5%">{{fund.beta}}</td>
+          <td align ="center" width="30%">{{fund.assetClass}}</td>
+          <td align ="center" width="5%">{{fund.expenseRatio}}</td>
+          <td align ="center" width="10%">{{fund.load}}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

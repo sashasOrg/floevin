@@ -14,13 +14,13 @@ watcher.on('change', function( event ) {
 });
 
 gulp.task('compileLess', function(){
-  gulp.src('src/css/*.less')
+  return gulp.src('src/css/*.less')
  	.pipe(less())
     .pipe(gulp.dest('./public'));
 });
 
 gulp.task('concatScripts', function() {
-    gulp.src('./src/js/**/*.js')
+    return gulp.src('./src/js/**/*.js')
         .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(concat('all.min.js'))
@@ -28,19 +28,19 @@ gulp.task('concatScripts', function() {
 });
 
 gulp.task('html', function() {
-    gulp.src('./src/views/**/*.html')
+    return gulp.src('./src/views/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./public'))
 });
 
 gulp.task('index', function() {
-    gulp.src('./src/*.html')
+    return gulp.src('./src/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./public'))
 });
 
 gulp.task('webserver', function() {
-  gulp.src('SashasApp')
+  return gulp.src('SashasApp')
     .pipe(webserver({
       livereload: true,
       directoryListing: true,
