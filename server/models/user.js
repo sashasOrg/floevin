@@ -23,7 +23,8 @@ var userSchema = new schema({
 		question8: {type: Number, minlength: 1, maxlength: 5},
 		question9: {type: Number, minlength: 1, maxlength: 5},
 		question10: {type: Number, minlength: 1, maxlength: 5}
-		}
+	},
+	portfolio: [{type: schema.Types.ObjectId, ref: 'Fund'}]
 })
 
 userSchema.plugin(passportLocalMongoose);
