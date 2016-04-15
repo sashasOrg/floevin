@@ -1,4 +1,4 @@
-angular.module('SashasApp').controller('formController', function($scope, formService) {
+angular.module('SashasApp').controller('formController', function($scope, $cookies, formService) {
   //mutual fund info
 $scope.seachFund = '';
 $scope.orderByField = '';
