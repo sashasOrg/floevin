@@ -1,4 +1,4 @@
-angular.module('SashasApp').controller('formController', function($scope, $cookies, formService) {
+angular.module('SashasApp').controller('formController', function($scope, $cookies) {
 
          $scope.age_answer = [];
          $scope.age_answer["30"]=5;
