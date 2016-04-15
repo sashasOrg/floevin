@@ -1,6 +1,12 @@
 angular.module('SashasApp').controller('formController', function($scope, formService) {
   //mutual fund info
 $scope.seachFund = '';
+$scope.orderByField = '';
+$scope.reverseSort = false;
+
+
+
+
 
   $scope.anyfund = function(){
       console.log('test');
