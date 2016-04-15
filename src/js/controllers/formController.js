@@ -1,5 +1,4 @@
 angular.module('SashasApp').controller('formController', function($scope, formService) {
-
   //mutual fund info
 $scope.seachFund = '';
 
@@ -19,7 +18,7 @@ $scope.seachFund = '';
 
   $scope.getFund = function(){
         formService.getFund().then(function(response){
-          $scope.fund = response.data;
+          $scope.fundinfo = response.data;
       })
     };
     $scope.getFund();
