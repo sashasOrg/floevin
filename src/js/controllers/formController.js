@@ -13,7 +13,6 @@ $scope.reverseSort = false;
     $scope.error = false;
     $scope.disabled = true;
     formService.newFund($scope.newfundForm)
-
   };
 
   $scope.fundQuery = function(){
