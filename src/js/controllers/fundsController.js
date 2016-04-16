@@ -1,4 +1,4 @@
-angular.module('SashasApp').controller('fundController', function($scope, $cookies, fundService) {
+angular.module('SashasApp').controller('fundController', function($scope, $cookies, fundsService) {
 
 
 //mutual fund info
