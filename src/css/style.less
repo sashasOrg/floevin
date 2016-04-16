@@ -74,6 +74,38 @@ a:visited {
 #shape2{ .RoundedSquare }
 #shape3{ .RoundedSquare(60px) }
 
+/**********************
+        CLOCK
+***********************/
+
+#clock {
+  position: relative;
+  width: 378px;
+  height: 378px;
+  left: 50%;
+}
+#clock div {
+  position: absolute;
+}
+#clock img[src*="second"] {
+  transition: transform 600000s linear 0s;
+}
+#clock:target img[src*="second"] {
+  transform: rotate(3600000deg);
+}
+#clock img[src*="minute"] {
+  transition: transform 360000s linear 0s;
+}
+#clock:target img[src*="minute"] {
+  transform: rotate(36000deg);
+}
+#clock img[src*="hour"] {
+  transition: transform 216000s linear 0s;
+}
+#clock:target img[src*="hour"] {
+  transform: rotate(360deg);
+}
+
 /*************************
 		ORGANIZATION:
 Separate files for:
