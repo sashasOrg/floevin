@@ -1,4 +1,4 @@
-angular.module('SashasApp').controller('formController', function($scope, $cookies) {
+angular.module('SashasApp').controller('formController', function($scope, $cookies, formService ) {
 
          $scope.age_answer = [];
          $scope.age_answer["30"]=5;
@@ -6,7 +6,7 @@ angular.module('SashasApp').controller('formController', function($scope, $cooki
          $scope.age_answer["4050"]=3;
          $scope.age_answer["5065"]=2;
          $scope.age_answer["65"]=1;
-         
+
          $scope.objective_answer = [];
          $scope.objective_answer["Spec"]=2;
          $scope.objective_answer["Growth"]=1;
@@ -36,7 +36,7 @@ angular.module('SashasApp').controller('formController', function($scope, $cooki
          })(window.angular);
 
         $scope.getAge = function()
-        {  
+        {
             var ageFill=0;
             var theForm = document.forms["form"];
             var ageselected = theForm.elements["ageselected"];
@@ -52,7 +52,7 @@ angular.module('SashasApp').controller('formController', function($scope, $cooki
         }
 
         $scope.getObjective = function()
-        {  
+        {
             var objectiveFill=0;
             var theForm = document.forms["form"];
             var objective = theForm.elements["objectiveselected"];
@@ -68,7 +68,7 @@ angular.module('SashasApp').controller('formController', function($scope, $cooki
         }
 
         $scope.getIncome = function()
-        {  
+        {
             var incomeFill=0;
             var theForm = document.forms["form"];
             var income = theForm.elements["incomeselected"];
@@ -103,4 +103,5 @@ angular.module('SashasApp').controller('formController', function($scope, $cooki
             var divobj = document.getElementById('totalRisk');
             divobj.style.display='none';
         }
+
 })
