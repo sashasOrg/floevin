@@ -1,4 +1,4 @@
-angular.module('SashasApp').controller('formController', function($scope, $cookies, formService ) {
+angular.module('SashasApp').controller('questionaireController', function($scope, $cookies, questionaireService ) {
 
          $scope.age_answer = [];
          $scope.age_answer["30"]=5;
@@ -16,10 +16,17 @@ angular.module('SashasApp').controller('formController', function($scope, $cooki
 
          $scope.income_answer = [];
          $scope.income_answer["I50"]=-4;
-         $scope.income_answer["I50100"]=-3;
-         $scope.income_answer["I100250"]=-2;
-         $scope.income_answer["I250500"]=0;
-         $scope.income_answer["I500"]=1;
+         $scope.income_answer["I50100"]=2;
+         $scope.income_answer["I100250"]=0;
+         $scope.income_answer["I250500"]=3;
+         $scope.income_answer["I500"]=4;
+
+        $scope.timeFrame_answer = [];
+         $scope.timeFrame_answer["6mo1yr"]=-4;
+         $scope.timeFrame_answer["1to3yr"]=-3;
+         $scope.timeFrame_answer["3to5yr"]=3;
+         $scope.timeFrame_answer["5to7yr"]=4;
+         $scope.timeFrame_answer["7+"]=5;
 
         (function(angular) {
             $scope.data = {
@@ -82,10 +89,24 @@ angular.module('SashasApp').controller('formController', function($scope, $cooki
             }
             return incomeFill;
         }
+        $scope.getTimeFrame = function(){
+          var timeframeFill=0;
+          var theForm = document.forms["form"];
+          var timeframe= theForm.elements["timeframeselected"];
+          for(var i = 0; i < ageselected.length; i++)
+          {
+              if(timeframeselected[i].checked)
+              {
+                  timeframeFill = $scope.timeframe_answer[timeframeselected[i].value];
+                  break;
+              }
+          }
+          return timeframeFill;
+        }
 
         $scope.calculateTotal = function()
         {
-            var riskLevel = $scope.getAge() + $scope.getObjective() + $scope.getIncome();
+            var riskLevel = $scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame();
             if(riskLevel < 1){
                 return riskLevel = 1;
             }
