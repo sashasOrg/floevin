@@ -72,15 +72,15 @@ $(function(){
   <!--mutual fund info-->
     <div ng-controller="formController">
       <form ng-submit="searchFund()">
-        <input class="form-control" ng-model="searchFund" type="text"/>
+        <input class="form-control" ng-model="searchFunds" type="text"/>
         <button class="btn btn-info">Search Funds</button>
       </form>
-      <div ng-repeat="specificFund in fundinfo">
+      <div ng-repeat="fund in fundInfo | filter: {name: searchFunds}">
         <div>
-          <a ng-click="searchFund(specificFund.symbol)" ui-sref="fundinfo"><h3>{{specificFund.name}} : {{specificFund.symbol}}</h3></a>
-          <button ng-click="addToPortfolio(specificFund._id)" class="btn btn-primary">Add to Portfolio</button>
+          <a ng-click="searchFund(fund.symbol)" ui-sref="fundinfo"><h3>{{fund.name}} : {{fund.symbol}}</h3></a>
+          <button ng-click="addToPortfolio(fund._id)" class="btn btn-primary">Add to Portfolio</button>
         </div>
       </div>
-      </div>
     </div>
+  </div>
 </div>

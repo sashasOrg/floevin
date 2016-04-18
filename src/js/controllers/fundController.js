@@ -5,7 +5,9 @@ angular.module('SashasApp').controller('fundController', function($scope, $cooki
 $scope.seachFund = '';
 $scope.orderByField = '';
 $scope.reverseSort = false;
-
+if ($cookies.get('fundData') !== null) {
+  $scope.fundData = JSON.parse($cookies.get('fundData'));
+}
 
 
 $scope.changeMutualFund = function(fund) {

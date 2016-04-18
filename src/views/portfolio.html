@@ -9,7 +9,7 @@
   <h2>{{currentUserCookie.firstName}} {{currentUserCookie.lastName}}</h2>
   <h2>{{currentUserCookie.email}}</h2>
   <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
-    {{company}}
+    {{company.name}}: {{company.symbol}}
     <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
   </div>
 </div>
