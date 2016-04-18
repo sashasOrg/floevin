@@ -2,31 +2,30 @@ angular.module('SashasApp').service('formService', function($http, $q, $cookies)
 
 
 
-  this.getFund = function(){
+  this.getFund = function() {
     return $http.get('/fund')
   };
 
 
-  this.newFund = function(obj){
+  this.newFund = function(obj) {
     console.log(obj);
       $http.post('/fund', obj);
     };
 
-this.fundQuery = function(id){
-  return $http.get('/fund/specific?id=' + id)
-};
+  this.fundQuery = function(id) {
+    return $http.get('/fund/specific?id=' + id)
+  };
 
-  this.updateFund = function(id){
-  return $http.put('/fund' +id, update );
-};
+  this.updateFund = function(id, update) {
+    return $http.put('/fund?id=' + id, update);
+  };
+
   this.deleteFund = function(id){
-    $http({
-          method: 'DELETE',
-          url: '/fund?id=' + id
-        }).then(function successCallback(response) {
-          return response;
-        },function errorCallback(response) {
-          return response;
-      });
-    };
+    return $http.delete('/fund?id=' + id);
+  };
+
+  this.updateFund = function(id, updatedFund) {
+    return $http.put('/fund?id=' + id, updatedFund);
+  };
+
 })
