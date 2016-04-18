@@ -8,10 +8,10 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
        controller: 'mainController',
        access: {restricted: false}
     })
-    .state('form', {
-      url: '/form',
-      templateUrl: '/form.html',
-      controller: 'formController',
+    .state('questionaire', {
+      url: '/questionaire',
+      templateUrl: '/questionaire.html',
+      controller: 'questionaireController',
       access: {restricted: false}
     })
     .state('login', {
