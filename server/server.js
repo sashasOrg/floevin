@@ -22,7 +22,7 @@ mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
 
-app.use(express.static(__dirname + '/../src'));
+app.use(express.static(__dirname + '/../public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(logger('dev'));
