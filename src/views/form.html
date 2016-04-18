@@ -1,72 +1,44 @@
-<div>
-  <h1 class="page-header">FORM</h1>
+<div onload='hideTotal()'>
+    <div id="wrap">
+        <form action="" id="form">
+        <div>
+          <h1 class="page-header">FORM</h1>
+            <div id="totalRisk"></div>
+            <div>{{data.repeatSelect}}</div>
+            <div>
+                <label for="repeatSelect">Experience: </label>
+                <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
+                  <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                </select>
+                <br />
 
-  <form>
-    <label>Age</label><br />
-    <input type="radio" name="age" />Under 30<br />
-    <input type="radio" name="age"/>31-40<br />
-    <input type="radio" name="age"/>41-50<br />
-    <input type="radio" name="age"/>51-65<br />
-    <input type="radio" name="age"/>65 +<br />
+                <label >Age</label><br />
+                <input type="radio" name="ageselected" value="30" ng-click="calculateTotal()" />Under 30<br />
+                <input type="radio" name="ageselected" value="3040" ng-click="calculateTotal()" />30-40<br />
+                <input type="radio" name="ageselected" value="4050" ng-click="calculateTotal()" />40-50<br />
+                <input type="radio" name="ageselected" value="5065" ng-click="calculateTotal()" />50-65<br />
+                <input type="radio" name="ageselected" value="65" ng-click="calculateTotal()" />65+<br />
 
-    <label>Annual Income</label><br />
-    <input type="radio" name="income" />$0-50k<br />
-    <input type="radio" name="income"/>$50-100k<br />
-    <input type="radio" name="income"/>$100-250k<br />
-    <input type="radio" name="income"/>$250-500k<br />
-    <input type="radio" name="income"/>$500 +<br />
+                <hr>
+                <label >Investment Objectives</label><br />
+                <input type="radio" name='objectiveselected' value="Spec" ng-click="calculateTotal()" />Speculation<br />
+                <input type="radio" name='objectiveselected' value="Growth" ng-click="calculateTotal()" />Growth<br />
+                <input type="radio" name='objectiveselected' value="Income" ng-click="calculateTotal()" />Income<br />
+                <input type="radio" name='objectiveselected' value="Tax" ng-click="calculateTotal()" />Tax Advantages<br />
+                <input type="radio" name='objectiveselected' value="Safety" ng-click="calculateTotal()" />Safety of Principal<br />
 
-    <label>Est. Net Worth</label><br />
-    <input type="radio" name="net worth"/>$0-50k<br />
-    <input type="radio" name="net worth"/>$50-100k<br />
-    <input type="radio" name="net worth"/>$100-250k<br />
-    <input type="radio" name="net worth"/>$250-500k<br />
-    <input type="radio" name="net worth"/>$500 +<br />
+                <hr>
+                <label>Annual Income</label><br />
+                <input type="radio" name='incomeselected' value="I50" ng-click="calculateTotal()" />$0-50k<br />
+                <input type="radio" name='incomeselected' value="I50100" ng-click="calculateTotal()"/>$50-100k<br />
+                <input type="radio" name='incomeselected' value="I100250" ng-click="calculateTotal()"/>$100-250k<br />
+                <input type="radio" name='incomeselected' value="I250500" ng-click="calculateTotal()"/>$250-500k<br />
+                <input type="radio" name='incomeselected' value="I500" ng-click="calculateTotal()"/>$500 +<br />
 
-    <label>Liquid Net Worth</label><br />
-    <input type="radio" />$0-50k<br />
-    <input type="radio" />$50-100k<br />
-    <input type="radio" />$100-250k<br />
-    <input type="radio" />$250-500k<br />
-    <input type="radio" />$500 +<br />
+            </div>
 
-    <label>Tax Status</label><br />
-    <input type="radio" />15%<br />
-    <input type="radio" />20%<br />
-    <input type="radio" />25%<br />
-    <input type="radio" />30%<br />
-    <input type="radio" />35% +<br />
-
-
-    <label>Investment Objectives</label><br />
-    <input type="radio" />Speculation<br />
-    <input type="radio" />Growth<br />
-    <input type="radio" />Income<br />
-    <input type="radio" />Tax Advantages<br />
-    <input type="radio" />Safety of Principal<br />
-
-    <label>Risk Tolerance</label><br />
-    <input type="radio" />Aggressive<br />
-    <input type="radio" />Moderately Agit ggressive<br />
-    <input type="radio" />Balanced/Moderate<br />
-    <input type="radio" />Moderately Conservative<br />
-    <input type="radio" />Conservative<br />
-
-    <label>Investment Experience</label><br />
-    <input type="radio" />Limited<br />
-    <input type="radio" />Good<br />
-    <input type="radio" />Extensive<br />
-
-    <label>Time Horizon</label><br />
-    <input type="radio" />Short Term<br />
-    <input type="radio" />1-2 Years<br />
-    <input type="radio" />3-5 Years<br />
-    <input type="radio" />5-10 Years<br />
-    <input type="radio" />10+ Years<br />
-
-    <label></label>
-
-
-
-  </form>
+            <input type='submit' id='submit' value='Find' ng-click="toLogin()" />
+        </div>
+       </form>
+    </div>
 </div>
