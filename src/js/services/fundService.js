@@ -12,13 +12,15 @@ angular.module('SashasApp').service('fundService', function($http, $q, $cookies)
       $http.post('/fund', obj);
     };
 
-this.fundQuery = function(id){
-  return $http.get('/fund/specific?id=' + id)
-};
+  this.fundQuery = function(id){
+    return $http.get('/fund/specific?id=' + id)
+  };
 
-  this.updateFund = function(id){
-  return $http.put('/fund' +id, update );
-};  this.deleteFund = function(id){
+  this.updateFund = function(id, updatedFund) {
+    return $http.put('/fund?id=' + id, updatedFund);
+  };
+
+  this.deleteFund = function(id){
     $http({
           method: 'DELETE',
           url: '/fund?id=' + id
