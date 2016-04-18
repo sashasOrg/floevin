@@ -73,6 +73,160 @@ a:visited {
   text-decoration: none;
   font-family: 'Open Sans', 'Merriweather', sans-serif;
 }
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+#nav-container {
+    height: 8vh;
+    width: 100%;
+    border-bottom: 1.2px solid gray;
+    position: relative;
+}
+
+.logo-container {
+  display: inline-block;
+  height: 100%;
+  width: 5%;
+    color: #00a5d9;
+    font-size: 3em;
+    padding-left: 3vh;
+    padding-top: 1vh;
+}
+
+.desktop-navigation {
+  float: right;
+  height: 100%;
+  width: 92%;
+  padding-top: 2vh;
+}
+
+.nav-items {
+    display: inline-block;
+    margin: 2vh;
+    font-size: 1.2em;
+}
+
+.nav-items a:link {
+  color: gray;
+}
+
+.nav-items a:hover {
+  color: #00a5d9;
+}
+
+.nav-items a:visited {
+  color: gray;
+}
+
+.search-box {
+  width: 30vh;
+  margin: auto;
+  margin-bottom: 3vh;
+}
+
+.page-header {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.home-container {
+  height: 80vh;
+  width: 100%;
+  background-image: url('https://images.unsplash.com/photo-1455617495052-b962cadcd5e5?crop=entropy&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1900');
+  background-size: cover;
+}
+
+.stock-info-container {
+  border: solid gray 2px;
+  width: 50%;
+  height: 55vh;
+  margin: auto;
+  overflow: scroll;
+}
+
+.stock-info {
+  width: 100%;
+  background-color: white;
+  padding-left: 2vh;
+  padding-top: .5vh;
+  padding-bottom: .5vh;
+}
+
+a, a:visited, a:active {
+  color: #444;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.button {
+  min-width: 130px;
+  padding: 4px 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 13px;
+  border: 1px solid #e0e0e0;
+  text-decoration: none;
+}
+
+.button.active {
+  background: #000;
+  color: #fff;
+}
+
+
+#vis {
+  width: 940px;
+  height: 600px;
+  clear: both;
+  margin-bottom: 10px;
+}
+
+#toolbar {
+  margin-top: 10px;
+}
+
+.year {
+  font-size: 21px;
+  fill: #aaa;
+  cursor: default;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  -moz-border-radius:5px;
+  border-radius: 5px;
+  border: 2px solid #000;
+  background: #fff;
+  opacity: .9;
+  color: black;
+  padding: 10px;
+  width: 300px;
+  font-size: 12px;
+  z-index: 10;
+}
+
+.tooltip .title {
+  font-size: 13px;
+}
+
+.tooltip .name {
+  font-weight:bold;
+}
+
+.footer {
+  text-align: center;
+}
 >>>>>>> master
 .shape{
     display:inline-block;
