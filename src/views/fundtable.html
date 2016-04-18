@@ -12,20 +12,25 @@
                   </a>
                 </th>
                 <th>
-                  <a ng-click="orderByField='expenseRatio'; reverseSort = !reverseSort">
+                  <a ng-click="orderByField='name'; reverseSort = !reverseSort">
                           Expense Ratio <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
                         </a>
                       </th>
                       <th>
-                        <a ng-click="orderByField='assetClass'; reverseSort = !reverseSort">
+                        <a ng-click="orderByField='name'; reverseSort = !reverseSort">
                                 Asset Class <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
                               </a>
                             </th>
                             <th>
-                              <a ng-click="orderByField='beta'; reverseSort = !reverseSort">
+                              <a ng-click="orderByField='name'; reverseSort = !reverseSort">
                                       Beta <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
                                     </a>
                                   </th>
+                                  <th>
+                                    <a ng-click="orderByField='name'; reverseSort = !reverseSort">
+                                            Load Type <span ng-show="orderByField == 'load'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+                                          </a>
+                                        </th>
     <tbody ng-repeat="fund in fundinfo | orderBy:orderByField:reverseSort">
       <tr >
           <td align ="left" width="40%">{{fund.name}}</td>
