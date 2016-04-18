@@ -12,9 +12,9 @@
 <div>
 <div class="demo_area">
   <div id="clock">
-    <div id="hour" style="transform: rotate(334.5deg);"><img src="/../images/hourHand.png"></div>
-    <div id="minute" style="transform: rotate(54deg);"><img src="/../images/minuteHand.png"></div>
-    <div id="second" style="transform: rotate(108deg);"><img src="/../images/secondHand.png"></div>
+    <div id="hour" style="transform: rotate(334.5deg);"><img src="./images/hourHand.png"></div>
+    <div id="minute" style="transform: rotate(54deg);"><img src="./images/minuteHand.png"></div>
+    <div id="second" style="transform: rotate(108deg);"><img src="./images/secondHand.png"></div>
   </div>
 </div>
 <script type="text/javascript">function Clock_dg(prop) {
@@ -64,7 +64,7 @@ $(function(){
         <input class="form-control" ng-model="searchFund" type="text"/>
         <button class="btn btn-info">Search Funds</button>
       </form>
-      <div ng-repeat="specificFund in fund">
+      <div ng-repeat="specificFund in fundinfo">
         <div>
           <a ng-click="searchFund(specificFund.symbol)" ui-sref="fundinfo"><h3>{{specificFund.name}} : {{specificFund.symbol}}</h3></a>
           <button ng-click="addToPortfolio(specificFund._id)" class="btn btn-primary">Add to Portfolio</button>

@@ -8,7 +8,20 @@ $scope.reverseSort = false;
 
 
 
+$scope.changeMutualFund = function(fund) {
+  $scope.changedFund = fund;
+}
 
+$scope.updateMutualFund = function(fund) {
+  fundService.updateFund(fund._id, fund).then(function(response) {
+    console.log('Success')
+    console.log(response);
+    $scope.changedFund = {};
+  }).catch(function(response) {
+    console.log('Error')
+    $scope.changedFund = {};
+  })
+}
 
 $scope.anyfund = function(){
     console.log('test');
