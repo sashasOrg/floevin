@@ -30,7 +30,7 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       url: '/portfolio',
       templateUrl: '/portfolio.html',
       controller: 'userController',
-      access: {restricted: false}
+      access: {restricted: true}
     })
     .state('stock', {
       url: '/stock',

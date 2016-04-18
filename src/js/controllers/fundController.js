@@ -1,4 +1,4 @@
-angular.module('SashasApp').controller('fundController', function($scope, $cookies, fundService) {
+angular.module('SashasApp').controller('fundController', function($scope, $cookies, $state, fundService, mainService) {
 
 
 //mutual fund info
@@ -55,7 +55,41 @@ $scope.toggle = function(){
 };
   $scope.showing = false;
 
-})
+  $scope.addToPortfolio = function(id) {
+    var user = JSON.parse($cookies.get('currentUser'));
+    console.log(user.portfolio)
+    for (var i = 0; i < user.portfolio.length; i++) {
+      if (id === JSON.parse($cookies.get('currentUser')).portfolio[i]) {
+        console.log('Already exists in portfolio');
+        return false;
+      }
+    }
+    user.portfolio.push(id)
+    $cookies.remove('currentUser');
+    $cookies.put('currentUser', JSON.stringify(user));
+    mainService.updateUser(user)
+    mainService.getUserPortfolio(user.username).then(function(response) {
+      $cookies.remove('currentUserPortfolio');
+      $cookies.put('currentUserPortfolio', JSON.stringify(response.data))
+    })
+    $state.reload();
+    user = null;
+  }
+  $scope.checkPortfolio = function(id) {
+    mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(response) {
+      $cookies.remove('currentUserPortfolio');
+      $cookies.put('currentUserPortfolio', JSON.stringify(response.data));
+    })
+    for (var i = 0; i < JSON.parse($cookies.get('currentUserPortfolio')).portfolio.length; i++) {
+      if (id === JSON.parse($cookies.get('currentUserPortfolio')).portfolio[i]._id) {
+        return false;
+        console.log('false, it shouldnt show', id);
+      }
+    }
+    return true;
+  }
+
+});
 
 angular.module('SashasApp').directive('hideForm', function(){
 function link ($scope, element, attributes){
