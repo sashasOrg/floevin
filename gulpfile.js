@@ -14,7 +14,7 @@ watcher.on('change', function( event ) {
 });
 
 gulp.task('compileLess', function(){
-  return gulp.src('src/css/*.less')
+  return gulp.src('./src/css/*.less')
  	.pipe(less())
     .pipe(gulp.dest('./public'));
 });
