@@ -1,4 +1,9 @@
 <div class="header-container">
+
+  <div class="login-container">
+    <login></login>
+  </div>
+  
   <div class="video-container">
     <video preload="true" autoplay="autoplay" loop="loop" volume="0" poster="">
     <source src="" type="video/mp4"/>
@@ -52,11 +57,17 @@ $(function(){
 </script>
   <h1 class="page-header">HOME</h1>
   <form ng-submit="searchSymbols()">
-    <input class="form-control" ng-model="stockQuery" type="text"/>
-    <button class="btn btn-info">Search Stocks</button>
+    <div class="search-box">
+      <input class="form-control" ng-model="stockQuery" type="text"/>
+      <br>
+      <button class="btn btn-info">Search Stocks</button>
+    </div>
   </form>
-  <div ng-repeat="company in data">
+
+  <div class="stock-info-container">
+    <div class="stock-info" ng-repeat="company in data">
     <a ng-click="getMoreInformation(company.symbol)" ui-sref="stock"><h3>{{company.symbol}}: {{company.name}}</h3></a>
+    </div>
   </div>
   <!--mutual fund info-->
     <div ng-controller="formController">

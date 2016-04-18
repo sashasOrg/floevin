@@ -15,9 +15,8 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       access: {restricted: false}
     })
     .state('login', {
-      url: '/login',
-      templateUrl: '/login.html',
-      controller: 'loginController',
+      url: '/',
+      template: '<login></login>',
       access: {restricted: false}
     })
     .state('register', {
