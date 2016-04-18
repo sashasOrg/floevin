@@ -61,12 +61,12 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
     $urlRouterProvider.otherwise('/')
 })
 
-angular.module('SashasApp').run(function ($state, $rootScope, $location, AuthService) {
+angular.module('SashasApp').run(function ($state, $cookies, $rootScope, $location, AuthService) {
   $rootScope.$on('$stateChangeStart',
     function (event, next, current) {
       AuthService.getUserStatus();
       if (next.access.restricted &&
-          !AuthService.isLoggedIn()) {
+          $cookies.get('currentUser') === null) {
             event.preventDefault();
             $state.go('login')
       }
