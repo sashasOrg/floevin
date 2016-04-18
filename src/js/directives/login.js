@@ -3,7 +3,7 @@ angular.module('SashasApp')
 
 	return {
 		restrict: 'E',
-		templateUrl: '../views/login.html',
+		templateUrl: 'login.html',
 		controller: 'loginController'
 	}
 
