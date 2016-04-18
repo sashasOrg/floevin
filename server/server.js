@@ -12,7 +12,6 @@ var express = require('express'),
   localStrategy = require('passport-local').Strategy,
   app = express();
 
-
 var Fund = require('./models/fund.js');
 var User = require('./models/user.js');
 require('./config/passport.js')(passport);
@@ -36,7 +35,8 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({secret: 'we da best! beet da r3st, so gr3te.'}));
+app.use(session({secret: 'we da best! beet da r3st, so gr3te.',  resave: false,
+  saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
@@ -47,6 +47,8 @@ function isLoggedIn(req, res, next) {
     return next();
   }
 }
+
+//fund schema endpoints
 
 app.get('/fund', function(req, res) {
   var query;
@@ -59,6 +61,17 @@ app.get('/fund', function(req, res) {
     return res.status(200).json(response);
   });
 })
+
+app.get('/fund/specific', function(req, res){
+  Fund.findOne({_id: req.query.id}, function(err, response){
+    if(err){
+      return res.status(500).json(err);
+    }else{
+      return res.status(200).json(response);
+    }
+  })
+});
+
 app.post('/fund', function(req, res) {
   var fund = new Fund(req.body);
   fund.save(function(err, response) {
@@ -69,6 +82,7 @@ app.post('/fund', function(req, res) {
     }
   });
 });
+
 app.put('/fund', function(req, res) {
   Fund.findByIdAndUpdate(req.query.id, req.body, function(err, response) {
     if (err) {
@@ -87,6 +101,20 @@ app.delete('/fund', function(req, res){
       return res.json(response);
     }
   })
+});
+
+app.get('/user/portfolio', function(req, res) {
+  User.findOne({ username: req.query.username })
+  .populate('portfolio').exec(function(err, user) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(user);
+    }
+  });
+});
+
+  // user registration
 
 app.post('/user/register', function(req, res) {
   User.register(new User({ username: req.body.username, password: req.body.password, firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email }),
@@ -103,6 +131,10 @@ app.post('/user/register', function(req, res) {
     });
   });5
 });
+
+
+// login/logout section
+
 
 app.post('/user/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
@@ -144,7 +176,6 @@ app.get('/user/status', function(req, res) {
   res.status(200).json({
     status: true
   });
-})
 });
 
 app.put('/user', function(req, res) {
@@ -156,7 +187,17 @@ app.put('/user', function(req, res) {
     }
   });
 });
-
+app.get('/user', function(req, res){
+  var query;
+  if (req.query.status) {
+    query = {status: req.query.status}
+  } else {
+    query = {};
+  }
+  User.find(query, function(err, response) {
+    return res.status(200).json(response);
+  });
+});
 
 app.listen(12030, function() {
   console.log('Listening in on port 12030');

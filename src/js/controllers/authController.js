@@ -8,11 +8,17 @@ angular.module('SashasApp').controller('loginController', function($state, $scop
 
       AuthService.login($scope.loginForm.username, $scope.loginForm.password)
         .then(function (response) {
-          $cookies.put('currentUser', JSON.stringify(response));
           $scope.disabled = false;
           $scope.loginForm = {};
           AuthService.isLoggedIn();
-          $state.go('portfolio')
+          $cookies.remove('currentUser');
+          $cookies.put('currentUser', JSON.stringify(response));
+          mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(responseTwo) {
+            console.log('response two', responseTwo)
+            $cookies.remove('currentUserPortfolio');
+            $cookies.put('currentUserPortfolio', JSON.stringify(responseTwo.data));
+            $state.go('portfolio')
+          });
         })
         .catch(function () {
           $scope.error = true;
@@ -22,7 +28,7 @@ angular.module('SashasApp').controller('loginController', function($state, $scop
         });
     };
 });
-angular.module('SashasApp').controller('logoutController', function ($scope, $location, AuthService, mainService) {
+angular.module('SashasApp').controller('logoutController', function ($scope, $location, $cookies, AuthService, mainService) {
 
     $scope.userLogged = AuthService.isLoggedIn();
     $scope.$watch($scope.userLogged);
@@ -30,8 +36,8 @@ angular.module('SashasApp').controller('logoutController', function ($scope, $lo
     $scope.logout = function () {
       AuthService.logout()
         .then(function () {
-          mainService.currentUser = {};
-          mainService.userPageUser = {};
+          $cookies.remove('currentUser');
+          $cookies.remove('currentUserPortfolio');
           $location.path('login');
         });
         console.log('logout')
@@ -46,7 +52,6 @@ angular.module('SashasApp').controller('registerController',
     $scope.register = function () {
       $scope.error = false;
       $scope.disabled = true;
-      console.log($scope.registerForm)
       AuthService.register($scope.registerForm.username, $scope.registerForm.password, $scope.registerForm.firstName, $scope.registerForm.lastName, $scope.registerForm.email)
         .then(function () {
           $location.path('login')

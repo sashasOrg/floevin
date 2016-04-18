@@ -4,10 +4,14 @@
       <meta charset="UTF-8"/>
 
       <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+
+      <title>Recommendations</title>
+      <link rel="stylesheet" type="text/css" href="style.css"/>
       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css"/>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     </head>
     <body>
+
       <div id="nav-container">
           <div class="logo-container">
               <i class="fa fa-cube" aria-hidden="true"></i>
@@ -28,19 +32,22 @@
               </div>
       </div>
 
+      <a ui-sref="home">Home</a>
+      <a ui-sref="portfolio">Portfolio</a>
+      <a ui-sref="questionaire">Questionaire</a>
+      <a ui-sref="fundtable">Fund Information</a>
+      <a ui-sref="login">Login</a>
+      <a ui-sref="register">Register</a>
+      <a ui-sref="admin">Admin</a>
+
       <div ui-view></div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-cookies.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
-    <script src="./js/app.js"></script>
-    <script src="./js/controllers/mainController.js"></script>
-    <script src="./js/controllers/authController.js"></script>
-    <script src="./js/controllers/formController.js"></script>
-    <script src="./js/controllers/userController.js"></script>
-    <script src="./js/services/mainService.js"></script>
-    <script src="./js/services/authService.js"></script>
-    <script src="./js/services/formService.js"></script>
-    <script src="./js/services/userService.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.js"></script>
+    <script src="./all.min.js"></script>
+
+
   </html>

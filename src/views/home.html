@@ -1,4 +1,55 @@
-<div class="home-container">
+<div class="header-container">
+  <div class="video-container">
+    <video preload="true" autoplay="autoplay" loop="loop" volume="0" poster="">
+    <source src="" type="video/mp4"/>
+    <source src="" type="video/webm"/>
+    <source src="" type="video/ogg"/>
+
+    </video>
+
+
+
+<div>
+<div class="demo_area">
+  <div id="clock">
+    <div id="hour" style="transform: rotate(334.5deg);"><img src="./images/hourHand.png"></div>
+    <div id="minute" style="transform: rotate(54deg);"><img src="./images/minuteHand.png"></div>
+    <div id="second" style="transform: rotate(108deg);"><img src="./images/secondHand.png"></div>
+  </div>
+</div>
+<script type="text/javascript">function Clock_dg(prop) {
+    var angle = 360/60,
+        date = new Date();
+        var h = date.getHours();
+        if(h > 12) {
+            h = h - 12;
+        }
+
+        hour = h;
+        minute = date.getMinutes(),
+        second = date.getSeconds(),
+        hourAngle = (360/12) * hour + (360/(12*60)) * minute;
+
+        $('#minute')[0].style[prop] = 'rotate('+angle * minute+'deg)';
+        $('#second')[0].style[prop] = 'rotate('+angle * second+'deg)';
+        $('#hour')[0].style[prop] = 'rotate('+hourAngle+'deg)';
+}
+$(function(){
+    var props = 'asdfghjkl WebkitTransform MozTransform OTransform msTransform'.split(' '),
+        prop,
+        el = document.createElement('div');
+
+    for(var i = 0, l = props.length; i < l; i++) {
+        if(typeof el.style[props[i]] !== "undefined") {
+            prop = props[i];
+            break;
+        }
+    }
+    setInterval(function(){
+        Clock_dg(prop)
+    },100);
+});
+</script>
   <h1 class="page-header">HOME</h1>
   <form ng-submit="searchSymbols()">
     <div class="search-box">
@@ -14,8 +65,18 @@
     </div>
   </div>
   <!--mutual fund info-->
-    <div ng-repeat="fund in fund">
-      <!-- <h3>{{fund.name}}</h3> -->
-      <h3>{{fund.symbol}}</h3>
+    <div ng-controller="formController">
+      <form ng-submit="searchFund()">
+        <input class="form-control" ng-model="searchFund" type="text"/>
+        <button class="btn btn-info">Search Funds</button>
+      </form>
+      <div ng-repeat="specificFund in fundinfo">
+        <div>
+          <a ng-click="searchFund(specificFund.symbol)" ui-sref="fundinfo"><h3>{{specificFund.name}} : {{specificFund.symbol}}</h3></a>
+          <button ng-click="addToPortfolio(specificFund._id)" class="btn btn-primary">Add to Portfolio</button>
+          <button ng-click="removeFromPortfolio(specificFund._id)" class="btn btn-danger">Remove from Portfolio</button>
+        </div>
+      </div>
+      </div>
     </div>
 </div>

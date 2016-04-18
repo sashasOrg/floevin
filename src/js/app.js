@@ -4,44 +4,56 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
   $stateProvider
     .state('home', {
        url: '/',
-       templateUrl: './views/home.html',
+       templateUrl: '/home.html',
        controller: 'mainController',
        access: {restricted: false}
     })
-    .state('form', {
-      url: '/form',
-      templateUrl: './views/form.html',
-      controller: 'formController',
+    .state('questionaire', {
+      url: '/questionaire',
+      templateUrl: '/questionaire.html',
+      controller: 'questionaireController',
       access: {restricted: false}
     })
     .state('login', {
       url: '/login',
-      templateUrl: './views/login.html',
+      templateUrl: '/login.html',
       controller: 'loginController',
       access: {restricted: false}
     })
     .state('register', {
       url: '/register',
-      templateUrl: './views/register.html',
+      templateUrl: '/register.html',
       controller: 'registerController',
       access: {restricted: false}
     })
     .state('portfolio', {
       url: '/portfolio',
-      templateUrl: './views/portfolio.html',
+      templateUrl: '/portfolio.html',
       controller: 'userController',
       access: {restricted: false}
     })
     .state('stock', {
       url: '/stock',
-      templateUrl: './views/stock.html',
+      templateUrl: '/stock.html',
       controller: 'mainController',
+      access: {restricted: false}
+    })
+    .state('fundtable',{
+      url: '/fundtable',
+      templateUrl: '/fundtable.html',
+      controller: 'fundController',
+      access: {restricted: false}
+    })
+    .state('fundinfo', {
+      url: '/fundinfo',
+      templateUrl: '/fundinfo.html',
+      controller: 'fundController',
       access: {restricted: false}
     })
     .state('admin', {
       url: '/admin',
-      templateUrl: '/views/admin.html',
-      controller: 'formController',
+      templateUrl: '/admin.html',
+      controller: 'fundController',
       access: {restricted: false}
     })
 

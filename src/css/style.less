@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Merriweather);
+
 /**********************
        CONSTANTS
 ***********************/
@@ -15,8 +17,8 @@
 //@defaultThemeColor:spin(@brightBlue, 100);
 
 @borderSize:@defaultShapesWidth * 0.1;
-@borderColor:@defaultThemeColor - #222; 
-//@borderColor:darken(desaturate(@defaultThemeColor, 100%), 20%); 
+@borderColor:@defaultThemeColor - #222;
+//@borderColor:darken(desaturate(@defaultThemeColor, 100%), 20%);
 
 
 /**********************
@@ -26,7 +28,7 @@
 .RoundedShape(@radius:@defaultRadius){
     -webkit-border-radius:@radius;
        -moz-border-radius:@radius;
-            border-radius:@radius;  
+            border-radius:@radius;
 }
 
 .Round{
@@ -40,6 +42,7 @@
 /**********************
          STYLES
 ***********************/
+<<<<<<< HEAD
 
 #nav-container {
     height: 8vh;
@@ -57,6 +60,20 @@
     display: inline-block;
 }
 
+=======
+a:link {
+  color: #000;
+  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+  text-decoration: none;
+  font-family: 'Open Sans', 'Merriweather', sans-serif;
+}
+a:visited {
+  color: #000;
+  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+  text-decoration: none;
+  font-family: 'Open Sans', 'Merriweather', sans-serif;
+}
+>>>>>>> master
 .shape{
     display:inline-block;
     width:@defaultShapesWidth;
@@ -74,6 +91,38 @@
 #shape2{ .RoundedSquare }
 #shape3{ .RoundedSquare(60px) }
 
+/**********************
+        CLOCK
+***********************/
+
+#clock {
+  position: relative;
+  width: 378px;
+  height: 378px;
+  left: 50%;
+}
+#clock div {
+  position: absolute;
+}
+#clock img[src*="second"] {
+  transition: transform 600000s linear 0s;
+}
+#clock:target img[src*="second"] {
+  transform: rotate(3600000deg);
+}
+#clock img[src*="minute"] {
+  transition: transform 360000s linear 0s;
+}
+#clock:target img[src*="minute"] {
+  transform: rotate(36000deg);
+}
+#clock img[src*="hour"] {
+  transition: transform 216000s linear 0s;
+}
+#clock:target img[src*="hour"] {
+  transform: rotate(360deg);
+}
+
 /*************************
 		ORGANIZATION:
 Separate files for:
@@ -85,4 +134,3 @@ The main styles of the page,
 ...and any other relevant group of rules depending on your project.
 
 **************************/
-
