@@ -24,7 +24,15 @@ var userSchema = new schema({
 		question9: {type: Number, minlength: 1, maxlength: 5},
 		question10: {type: Number, minlength: 1, maxlength: 5}
 	},
-	portfolio: [{type: schema.Types.ObjectId, ref: 'Fund'}]
+	portfolio: [{type: schema.Types.ObjectId, ref: 'Fund'}],
+	bestMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],
+	bestMatchRatios: [{compatibilityRatio: Number}],
+	goodMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],
+	goodMatchRatios: [{compatibilityRatio: Number}],
+	okayMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],
+	okayMatchRatios: [{compatibilityRatio: Number}],
+	badMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],
+	badMatchRatios: [{compatibilityRatio: Number}]
 })
 
 userSchema.plugin(passportLocalMongoose);

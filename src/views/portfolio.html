@@ -3,6 +3,7 @@
 
   <br />
   <a ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button  class="btn btn-info" ng-show="userLogged">Log out</button></a>
+  <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
 </div>
 <div>
   <h1>{{currentUserCookie.username}}</h1>
@@ -11,6 +12,46 @@
   <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
     {{company.name}}: {{company.symbol}}
     <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+  </div>
+  <div>
+    <h1>Best Matches</h1>
+    <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
+      {{company.name}}: {{company.symbol}}
+      <br />
+      {{company.assetClass}}
+      {{company.beta}}
+      {{company.expenseRatio}}
+    </div>
+  </div>
+  <div>
+    <h1>Good Matches</h1>
+    <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
+      {{company.name}}: {{company.symbol}}
+      <br />
+      {{company.assetClass}}
+      {{company.beta}}
+      {{company.expenseRatio}}
+    </div>
+  </div>
+  <div>
+    <h1>Okay Matches</h1>
+    <div ng-repeat="company in currentUserOkayMatchesCookie.okayMatches">
+      {{company.name}}: {{company.symbol}}
+      <br />
+      {{company.assetClass}}
+      {{company.beta}}
+      {{company.expenseRatio}}
+    </div>
+  </div>
+  <div>
+    <h1>Bad Matches</h1>
+    <div ng-repeat="company in currentUserBadMatchesCookie.badMatches">
+      {{company.name}}: {{company.symbol}}
+      <br />
+      {{company.assetClass}}
+      {{company.beta}}
+      {{company.expenseRatio}}
+    </div>
   </div>
 </div>
 
