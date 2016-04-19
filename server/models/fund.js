@@ -11,7 +11,8 @@ var fundSchema = new schema({
 	expenseRatio: {type: String},
 	morningstar: {type:Number},
 	riskBracket: Number,
-	riskPotential: Number
+	riskPotential: Number,
+	riskCompatibility: Number
 })
 
 

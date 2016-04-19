@@ -3,7 +3,7 @@
   <div class="login-container">
     <login></login>
   </div>
-  
+
   <div class="video-container">
     <video preload="true" autoplay="autoplay" loop="loop" volume="0" poster="">
     <source src="" type="video/mp4"/>
@@ -15,46 +15,13 @@
 
 
 <div>
-<div class="demo_area">
+<!-- <div ng-controller="formController" class="demo_area">
   <div id="clock">
     <div id="hour" style="transform: rotate(334.5deg);"><img src="./images/hourHand.png"></div>
     <div id="minute" style="transform: rotate(54deg);"><img src="./images/minuteHand.png"></div>
     <div id="second" style="transform: rotate(108deg);"><img src="./images/secondHand.png"></div>
   </div>
-</div>
-<script type="text/javascript">function Clock_dg(prop) {
-    var angle = 360/60,
-        date = new Date();
-        var h = date.getHours();
-        if(h > 12) {
-            h = h - 12;
-        }
-
-        hour = h;
-        minute = date.getMinutes(),
-        second = date.getSeconds(),
-        hourAngle = (360/12) * hour + (360/(12*60)) * minute;
-
-        $('#minute')[0].style[prop] = 'rotate('+angle * minute+'deg)';
-        $('#second')[0].style[prop] = 'rotate('+angle * second+'deg)';
-        $('#hour')[0].style[prop] = 'rotate('+hourAngle+'deg)';
-}
-$(function(){
-    var props = 'asdfghjkl WebkitTransform MozTransform OTransform msTransform'.split(' '),
-        prop,
-        el = document.createElement('div');
-
-    for(var i = 0, l = props.length; i < l; i++) {
-        if(typeof el.style[props[i]] !== "undefined") {
-            prop = props[i];
-            break;
-        }
-    }
-    setInterval(function(){
-        Clock_dg(prop)
-    },100);
-});
-</script>
+</div> -->
   <h1 class="page-header">HOME</h1>
   <form ng-submit="searchSymbols()">
     <div class="search-box">
@@ -70,7 +37,7 @@ $(function(){
     </div>
   </div>
   <!--mutual fund info-->
-    <div ng-controller="formController">
+    <div ng-controller="fundController">
       <form ng-submit="searchFund()">
         <input class="form-control" ng-model="searchFunds" type="text"/>
         <button class="btn btn-info">Search Funds</button>

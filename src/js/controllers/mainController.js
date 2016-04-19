@@ -10,6 +10,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   //   console.log($scope.data)
   // }
   // $scope.getSymbols();
+  
   $scope.searchFund = function(symbol) {
     fundService.searchFund(symbol).then(function(response) {
       console.log(response);

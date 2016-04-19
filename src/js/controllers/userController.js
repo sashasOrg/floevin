@@ -1,8 +1,80 @@
-angular.module('SashasApp').controller('userController', function($scope, $state, $cookies, mainService) {
+angular.module('SashasApp').controller('userController', function($scope, $state, $cookies, mainService, fundService) {
   $scope.currentUserCookie = JSON.parse($cookies.get('currentUser'));
   $scope.$watch($scope.currentUserCookie);
   $scope.currentUserPortfolioCookie = JSON.parse($cookies.get('currentUserPortfolio'))
   $scope.$watch($scope.currentUserPortfolioCookie);
+  $scope.getCompatibleFunds = function() {
+    var user = JSON.parse($cookies.get('currentUser'));
+    fundService.getFund().then(function(response) {
+      for (var i = 0; i < response.data.length; i++) {
+        console.log(response.data[i].riskCompatibility / user.suitabilityScore)
+        if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.1 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .90) {
+          if (!user.bestMatches.includes(response.data[i]._id)) {
+            user.bestMatches.push(response.data[i]._id);
+            user.bestMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+            console.log('best match', user);
+            mainService.updateUser(user);
+            $cookies.remove('currentUser');
+            $cookies.put('currentUser', JSON.stringify(user));
+          }
+        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .90 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .70) {
+          if (!user.goodMatches.includes(response.data[i]._id)) {
+            user.goodMatches.push(response.data[i]._id);
+            user.goodMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+            console.log('good match', user);
+            mainService.updateUser(user);
+            $cookies.remove('currentUser');
+            $cookies.put('currentUser', JSON.stringify(user));
+          }
+        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.3 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.1) {
+          if (!user.goodMatches.includes(response.data[i]._id)) {
+            user.goodMatches.push(response.data[i]._id);
+            user.goodMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+            console.log('good match', user);
+            mainService.updateUser(user);
+            $cookies.remove('currentUser');
+            $cookies.put('currentUser', JSON.stringify(user));
+          }
+        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.5 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.3) {
+          if (!user.goodMatches.includes(response.data[i]._id)) {
+            user.okayMatches.push(response.data[i]._id);
+            user.okayMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+            console.log('okay match', user);
+            mainService.updateUser(user);
+            $cookies.remove('currentUser');
+            $cookies.put('currentUser', JSON.stringify(user));
+          }
+        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .70 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .50) {
+          if (!user.okayMatches.includes(response.data[i]._id)) {
+            user.okayMatches.push(response.data[i]._id);
+            user.okayMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+            console.log('okay match', user);
+            mainService.updateUser(user);
+            $cookies.remove('currentUser');
+            $cookies.put('currentUser', JSON.stringify(user));
+          }
+        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .50 && (response.data[i].riskCompatibility / user.suitabilityScore) >= 0) {
+          if (!user.badMatches.includes(response.data[i]._id)) {
+            user.badMatches.push(response.data[i]._id);
+            user.badMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+            console.log('bad match', user);
+            mainService.updateUser(user);
+            $cookies.remove('currentUser');
+            $cookies.put('currentUser', JSON.stringify(user));
+          }
+        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 2 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.5) {
+          if (!user.badMatches.includes(response.data[i]._id)) {
+            user.badMatches.push(response.data[i]._id);
+            user.badMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+            console.log('bad match', user);
+            mainService.updateUser(user);
+            $cookies.remove('currentUser');
+            $cookies.put('currentUser', JSON.stringify(user));
+          }
+        }
+      };
+    });
+  };
   $scope.checkPortfolio = function(id) {
     for (var i = 0; i < JSON.parse($cookies.get('currentUserPortfolio')).portfolio.length; i++) {
       if (id === JSON.parse($cookies.get('currentUserPortfolio')).portfolio[i]._id) {
