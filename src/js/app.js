@@ -1,4 +1,4 @@
-angular.module('SashasApp', ['ui.router', 'ngCookies'])
+angular.module('SashasApp', ['ui.router', 'ngCookies', 'ui.bootstrap'])
 
 angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
