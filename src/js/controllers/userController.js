@@ -83,6 +83,23 @@ angular.module('SashasApp').controller('userController', function($scope, $state
           }
         }
       };
+      mainService.getBadMatches(JSON.parse($cookies.get('currentUser')).username).then(function(responseThree) {
+        $cookies.remove('currentUserBadMatches');
+        $cookies.put('currentUserBadMatches', JSON.stringify(responseThree.data))
+        mainService.getOkayMatches(JSON.parse($cookies.get('currentUser')).username).then(function(responseFour) {
+          $cookies.remove('currentUserOkayMatches');
+          $cookies.put('currentUserOkayMatches', JSON.stringify(responseFour.data))
+          mainService.getGoodMatches(JSON.parse($cookies.get('currentUser')).username).then(function(responseFive) {
+            $cookies.remove('currentUserGoodMatches');
+            $cookies.put('currentUserGoodMatches', JSON.stringify(responseFive.data))
+            mainService.getBestMatches(JSON.parse($cookies.get('currentUser')).username).then(function(responseSix) {
+              $cookies.remove('currentUserBestMatches');
+              $cookies.put('currentUserBestMatches', JSON.stringify(responseSix.data))
+              $state.reload();
+            });
+          });
+        });
+      })
     });
   };
   $scope.checkPortfolio = function(id) {
