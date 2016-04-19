@@ -1,31 +1,4 @@
-<style>
-    /* This only works with JavaScript, 
-       if it's not present, don't show loader */
-    .no-js #loader { display: none;  }
-    .js #loader { display: block; position: absolute; left: 100px; top: 0; }
-</style>
-
-<script>
-
-  <img src="download.png" id="loader">
-  
-  <img src="//farm6.static.flickr.com/5299/5400751421_55d49b2786_o.jpg">
-    
- $(window).load(function() {
-                $.ajax({
-                    url: 'trap.php',
-                        type: 'get',
-                        success: function(visited){
-                            if (visited==0){//when not yet visited
-                                    $('#loader').css("display","block");
-                                }else{
-                                    $('#loader').css("display","none");                                 
-                                }
-                            }
-                   });
-           });
- </script> 
-
+<section>
 <div class="form-module">
 <div>
   <h1 ng-click="checkUserCookie()" class="page-header">PORTFOLIO</h1>
@@ -35,9 +8,13 @@
   <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
 </div>
 <div>
-  <h1>{{currentUserCookie.username}}</h1>
-  <h2>{{currentUserCookie.firstName}} {{currentUserCookie.lastName}}</h2>
-  <h2>{{currentUserCookie.email}}</h2>
+  <div class="user-info">
+    <h2> Recommendations for </h2>
+    <h2>{{currentUserCookie.username}}</h2>
+    <!-- <h2>{{currentUserCookie.firstName}} {{currentUserCookie.lastName}}</h2> -->
+  <!--   <h2>{{currentUserCookie.email}}</h2> -->
+  </div>
+
   <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
     {{company.name}}: {{company.symbol}}
     <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
@@ -99,6 +76,7 @@
   </div>
 
 </div>
+</section>
 
   <!-- <script src="lib/d3.js"></script>
   <script src="src/tooltip.js"></script>
