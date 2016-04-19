@@ -103,9 +103,55 @@ app.delete('/fund', function(req, res){
   })
 });
 
+// Population API calls
+
 app.get('/user/portfolio', function(req, res) {
   User.findOne({ username: req.query.username })
   .populate('portfolio').exec(function(err, user) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(user);
+    }
+  });
+});
+
+app.get('/user/badmatches', function(req, res) {
+  User.findOne({ username: req.query.username })
+  .populate('badMatches').exec(function(err, user) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(user);
+    }
+  });
+});
+
+app.get('/user/okaymatches', function(req, res) {
+  User.findOne({ username: req.query.username })
+  .populate('okayMatches').exec(function(err, user) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(user);
+    }
+  });
+});
+
+app.get('/user/goodmatches', function(req, res) {
+  User.findOne({ username: req.query.username })
+  .populate('goodMatches').exec(function(err, user) {
+    if (err) {
+      res.status(500).json(err);
+    } else {
+      res.status(200).json(user);
+    }
+  });
+});
+
+app.get('/user/bestmatches', function(req, res) {
+  User.findOne({ username: req.query.username })
+  .populate('bestMatches').exec(function(err, user) {
     if (err) {
       res.status(500).json(err);
     } else {

@@ -3,6 +3,16 @@ angular.module('SashasApp').controller('userController', function($scope, $state
   $scope.$watch($scope.currentUserCookie);
   $scope.currentUserPortfolioCookie = JSON.parse($cookies.get('currentUserPortfolio'))
   $scope.$watch($scope.currentUserPortfolioCookie);
+  $scope.currentUserBadMatchesCookie = JSON.parse($cookies.get('currentUserBadMatches'))
+  $scope.$watch($scope.currentUserBadMatchesCookie);
+  $scope.currentUserOkayMatchesCookie = JSON.parse($cookies.get('currentUserOkayMatches'))
+  $scope.$watch($scope.currentUserOkayMatchesCookie);
+  $scope.currentUserGoodMatchesCookie = JSON.parse($cookies.get('currentUserGoodMatches'))
+  $scope.$watch($scope.currentUserGoodMatchesCookie);
+  $scope.currentUserBestMatchesCookie = JSON.parse($cookies.get('currentUserBestMatches'))
+  $scope.$watch($scope.currentUserBestMatchesCookie);
+
+
   $scope.getCompatibleFunds = function() {
     var user = JSON.parse($cookies.get('currentUser'));
     fundService.getFund().then(function(response) {
