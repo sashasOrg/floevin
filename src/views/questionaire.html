@@ -2,7 +2,7 @@
   <div class="form-module">
   <div onload="hideTotal()">
     <div id="wrap">
-        <form action="" id="form">
+        <form action="" id="form" ng-submit="calculateTotal()">
         <div>
           <h1 class="page-header">Suitability Form</h1>
             <div id="totalRisk"></div>
@@ -15,37 +15,37 @@
                   <br />
 
                   <label >Age</label><br />
-                  <input type="radio" name="ageselected" value="30" ng-click="calculateTotal()" />Under 30<br />
-                  <input type="radio" name="ageselected" value="3040" ng-click="calculateTotal()" />30-40<br />
-                  <input type="radio" name="ageselected" value="4050" ng-click="calculateTotal()" />40-50<br />
-                  <input type="radio" name="ageselected" value="5065" ng-click="calculateTotal()" />50-65<br />
-                  <input type="radio" name="ageselected" value="65" ng-click="calculateTotal()" />65+<br />
+                  <input type="radio" name="ageselected" value="30"  />Under 30<br />
+                  <input type="radio" name="ageselected" value="3040"  />30-40<br />
+                  <input type="radio" name="ageselected" value="4050"  />40-50<br />
+                  <input type="radio" name="ageselected" value="5065"  />50-65<br />
+                  <input type="radio" name="ageselected" value="65"  />65+<br />
 
                   <hr>
                   <label >Investment Objectives</label><br />
-                  <input type="radio" name="objectiveselected" value="Spec" ng-click="calculateTotal()" />Speculation<br />
-                  <input type="radio" name="objectiveselected" value="Growth" ng-click="calculateTotal()" />Growth<br />
-                  <input type="radio" name="objectiveselected" value="Income" ng-click="calculateTotal()" />Income<br />
-                  <input type="radio" name="objectiveselected" value="Tax" ng-click="calculateTotal()" />Tax Advantages<br />
-                  <input type="radio" name="objectiveselected" value="Safety" ng-click="calculateTotal()" />Safety of Principal<br />
+                  <input type="radio" name="objectiveselected" value="Spec"  />Speculation<br />
+                  <input type="radio" name="objectiveselected" value="Growth"  />Growth<br />
+                  <input type="radio" name="objectiveselected" value="Income"  />Income<br />
+                  <input type="radio" name="objectiveselected" value="Tax"  />Tax Advantages<br />
+                  <input type="radio" name="objectiveselected" value="Safety"  />Safety of Principal<br />
 
                   <hr>
                   <label>Annual Income</label><br />
-                  <input type="radio" name="incomeselected" value="I50" ng-click="calculateTotal()" />$0-50k<br />
-                  <input type="radio" name="incomeselected" value="I50100" ng-click="calculateTotal()"/>$50-100k<br />
-                  <input type="radio" name="incomeselected" value="I100250" ng-click="calculateTotal()"/>$100-250k<br />
-                  <input type="radio" name="incomeselected" value="I250500" ng-click="calculateTotal()"/>$250-500k<br />
-                  <input type="radio" name="incomeselected" value="I500" ng-click="calculateTotal()"/>$500 +<br />
+                  <input type="radio" name="incomeselected" value="I50"  />$0-50k<br />
+                  <input type="radio" name="incomeselected" value="I50100" />$50-100k<br />
+                  <input type="radio" name="incomeselected" value="I100250" />$100-250k<br />
+                  <input type="radio" name="incomeselected" value="I250500" />$250-500k<br />
+                  <input type="radio" name="incomeselected" value="I500" />$500 +<br />
 
                   <hr />
                   <label>Time Frame</label><br />
-                  <input type="radio" name="timeframeselected" value="6mo1yr" ng-click="calculateTotal()" />6 mo to 1 year<br />
-                  <input type="radio" name="timeframeselected" value="1to3yr" ng-click="calculateTotal()"/>1 to 3 years<br />
-                  <input type="radio" name="timeframeselected" value="3to5yr" ng-click="calculateTotal()"/>3 to 5 years<br />
-                  <input type="radio" name="timeframeselected" value="5to7yr" ng-click="calculateTotal()"/>5 to 7 years<br />
-                  <input type="radio" name="timeframeselected" value="7+" ng-click="calculateTotal()"/>7 +<br />
+                  <input type="radio" name="timeframeselected" value="6mo1yr"  />6 mo to 1 year<br />
+                  <input type="radio" name="timeframeselected" value="1to3yr" />1 to 3 years<br />
+                  <input type="radio" name="timeframeselected" value="3to5yr" />3 to 5 years<br />
+                  <input type="radio" name="timeframeselected" value="5to7yr" />5 to 7 years<br />
+                  <input type="radio" name="timeframeselected" value="7+" />7 +<br />
                 </div>
-              <input type="submit" id="submit" value="Find" ng-click="toLogin()" />
+              <button type="submit" id="submit" class="btn btn-success" value="Find">Submit</button>
           </div>
        </form>
     </div>

@@ -5,18 +5,18 @@
     <div class="login-container">
       <login></login>
     </div>
-  
+
   <div class="video-container">
     <video preload="true" autoplay="autoplay" loop="loop" volume="0" poster="">
     <source src="" type="video/mp4"/>
     <source src="" type="video/webm"/>
     <source src="" type="video/ogg"/>
-
     </video>
   </div>
 
 <div>
 <div class="demo-area">
+<div ng-controller="formController" class="demo_area">
   <div id="clock">
     <div id="hour" style="transform: rotate(334.5deg);"><img src="./images/hourHand.png"></div>
     <div id="minute" style="transform: rotate(54deg);"><img src="./images/minuteHand.png"></div>
@@ -63,6 +63,8 @@ $(function(){
 
 <section>
   <div class="page-module">
+</div>
+  <h1 class="page-header">HOME</h1>
   <form ng-submit="searchSymbols()">
     <div class="search-box">
       <input class="form-control" ng-model="stockQuery" type="text"/>
@@ -77,7 +79,7 @@ $(function(){
     </div>
   </div>
   <!--mutual fund info-->
-    <div ng-controller="formController">
+    <div ng-controller="fundController">
       <form ng-submit="searchFund()">
       <div class="search-box">
         <input class="form-control" ng-model="searchFunds" type="text"/>

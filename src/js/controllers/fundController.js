@@ -10,6 +10,22 @@ if ($cookies.get('fundData') !== null) {
 }
 
 
+$scope.createRiskCompatability = function() {
+  fundService.getFund().then(function(response) {
+    $scope.fundStuff = response.data;
+    console.log(response.data)
+    for (var i = 0; i < $scope.fundStuff.length; i++) {
+      $scope.fundStuff[i].riskCompatibility = $scope.fundStuff[i].riskPotential * 2 + $scope.fundStuff[i].riskBracket * 2;
+      $scope.fundStuff[i].riskCompatibility = $scope.fundStuff[i].riskCompatibility * 5;
+      console.log($scope.fundStuff[i]);
+      fundService.updateFund($scope.fundStuff[i]._id, $scope.fundStuff[i]).then(function(response) {
+        console.log("I did it yay")
+      })
+    }
+  });
+  console.log($scope.fundStuff)
+}
+
 $scope.changeMutualFund = function(fund) {
   $scope.changedFund = fund;
 }
