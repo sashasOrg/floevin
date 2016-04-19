@@ -1,17 +1,15 @@
-<div>
+<div class="form-module"> 
   <div>
-    <h1 class="page-header">Admin</h1>
-    <form  class="form" ng-submit="anyfund()">
-      <div hide-form="showing" class="form-group">
+    <div>
+      <h1 class="page-header">Admin</h1>
+      <form  class="form" ng-submit="anyfund()">
+        <div hide-form="showing" class="form-group">
         <label hide-form="showing">Name</label>
         <input hide-form="showing" type="text" class="form-control" name="name" ng-model="newfundForm.name" required>
         <label hide-form="showing">Symbol</label>
         <input hide-form="showing" type="text" class="form-control" name="symbol" ng-model="newfundForm.symbol" required>
-
         <!-- <label hide-form="showing">Price</label>
-
         <input hide-form="showing" type="text" class="form-control" name="price" ng-model="newfundForm.price" required> -->
-
         <label hide-form="showing">Asset Class</label>
         <input hide-form="showing" type="text" class="form-control" name="assetClass" ng-model="newfundForm.assetClass" required>
         <label hide-form="showing">Beta</label>
@@ -31,20 +29,19 @@
     </form>
     <a class="btn btn-default" role="button" ng-submit="delete(fund._id)">Delete</a>
     </div>
-  </div>
+
   <br />
   <br />
-  <div>
     <div>
+      <div>
       <input class="form-control" ng-model="fundinfoFilter" placeholder="Filter by Name"/>
-      <div ng-repeat="specificFund in fundinfo | filter: {name: fundinfoFilter}">
+        <div ng-repeat="specificFund in fundinfo | filter: {name: fundinfoFilter}">
         <a ng-click="changeMutualFund(specificFund)">{{specificFund.name}}: {{specificFund.riskBracket}}</a>
+        </div>
       </div>
-    </div>
-    <br />
-    <br />
-    <div>
-     <form class="form-control" ng-submit="updateMutualFund(changedFund)">
+      
+      <div>
+        <form class="form-control" ng-submit="updateMutualFund(changedFund)">
         <input title="ID" class="form-control" ng-model="changedFund._id" placeholder="ID" ng-disabled="true"/>
         <input title="Name" class="form-control" ng-model="changedFund.name" placeholder="Name"/>
         <input title="Symbol" class="form-control" ng-model="changedFund.symbol" placeholder="Symbol"/>
@@ -56,6 +53,9 @@
         <input title="Risk Bracket" class="form-control" ng-model="changedFund.riskBracket" placeholder="Risk Bracket"/>
         <input title="Risk Potential" class="form-control" ng-model="changedFund.riskPotential" placeholder="Risk Potential"/>
         <button class="btn btn-success" type="submit">Update Fund</button>
-      </form>
+        </form>
+      </div>
+    </div>
   </div>
+
 </div>
