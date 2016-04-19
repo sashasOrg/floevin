@@ -1,17 +1,30 @@
-<div class="ajaxContentHolder">
+<style>
+    /* This only works with JavaScript, 
+       if it's not present, don't show loader */
+    .no-js #loader { display: none;  }
+    .js #loader { display: block; position: absolute; left: 100px; top: 0; }
+</style>
+
 <script>
-var spinner = new Spinner({
-  lines: 12, // The number of lines to draw
-  length: 7, // The length of each line
-  width: 5, // The line thickness
-  radius: 10, // The radius of the inner circle
-  color: '#000', // #rbg or #rrggbb
-  speed: 1, // Rounds per second
-  trail: 100, // Afterglow percentage
-  shadow: true // Whether to render a shadow
-}).spin(document.getElementById("ajaxContentHolder"));
-</script>
-</div>
+
+  <img src="download.png" id="loader">
+  
+  <img src="//farm6.static.flickr.com/5299/5400751421_55d49b2786_o.jpg">
+    
+ $(window).load(function() {
+                $.ajax({
+                    url: 'trap.php',
+                        type: 'get',
+                        success: function(visited){
+                            if (visited==0){//when not yet visited
+                                    $('#loader').css("display","block");
+                                }else{
+                                    $('#loader').css("display","none");                                 
+                                }
+                            }
+                   });
+           });
+ </script> 
 
 <div class="form-module">
 <div>
