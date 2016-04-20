@@ -2,24 +2,32 @@
 <div class="form-module">
 <div>
   <h1 ng-click="checkUserCookie()" class="page-header">PORTFOLIO</h1>
+  <div class="user-info">
+    <p>{{currentUserCookie.firstName}} {{currentUserCookie.lastName}}</p>
+  </div>
 
   <br />
   <a ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button  class="btn btn-info" ng-show="userLogged">Log out</button></a>
   <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
 </div>
 <div>
-  <div class="user-info">
-    <h2> Recommendations for </h2>
-    <h2>{{currentUserCookie.username}}</h2>
-    <!-- <h2>{{currentUserCookie.firstName}} {{currentUserCookie.lastName}}</h2> -->
-  <!--   <h2>{{currentUserCookie.email}}</h2> -->
-  </div>
+
+ <div class="fund-bubble-container">
+    <h1> Funds Sized by Suitability </h1>
+    <div id="toolbar">
+      <a href="#" id="all" class="button active">All Funds</a>
+      <a href="#" id="year" class="button">Funds By Risk</a>
+    </div>
+  <div id="vis"></div>
+</div>
 
   <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
     {{company.name}}: {{company.symbol}}
     <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
   </div>
-  <div>
+
+<div class="matches-container"
+  <div class="matches">
     <h1>Best Matches</h1>
     <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
       {{company.name}}: {{company.symbol}}
@@ -29,7 +37,7 @@
       {{company.expenseRatio}}
     </div>
   </div>
-  <div>
+  <div class="matches">
     <h1>Good Matches</h1>
     <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
       {{company.name}}: {{company.symbol}}
@@ -39,7 +47,7 @@
       {{company.expenseRatio}}
     </div>
   </div>
-  <div>
+  <div class="matches">
     <h1>Okay Matches</h1>
     <div ng-repeat="company in currentUserOkayMatchesCookie.okayMatches">
       {{company.name}}: {{company.symbol}}
@@ -49,7 +57,7 @@
       {{company.expenseRatio}}
     </div>
   </div>
-  <div>
+  <div class="matches">
     <h1>Bad Matches</h1>
     <div ng-repeat="company in currentUserBadMatchesCookie.badMatches">
       {{company.name}}: {{company.symbol}}
@@ -61,13 +69,6 @@
   </div>
 </div>
 
- <div class="container">
-    <h1>Gates Foundation Educational Spending</h1>
-    <div id="toolbar">
-      <a href="#" id="all" class="button active">All Grants</a>
-      <a href="#" id="year" class="button">Grants By Year</a>
-    </div>
-    <div id="vis"></div>
 
     <div class="footer">
       <p>A demonstration of animated bubble charts in JavaScript and D3.js</p>
@@ -75,7 +76,6 @@
     </div>
   </div>
 
-</div>
 </section>
 
   <!-- <script src="lib/d3.js"></script>

@@ -5,7 +5,7 @@
 ***********************/
 
 @brightBlue:  #00a5d9;
-@lightGray: lightgray;
+@backGray: #f0f0f0;
 @defaultShapesWidth:200px;
 @defaultRadius:30px;
 
@@ -197,7 +197,7 @@ a, a:visited, a:active {
 }
 
 section {
-  background: #f0f0f0; 
+  background: @backGray; 
 }
 
 .page-module {
@@ -229,7 +229,16 @@ section {
 .user-info {
   position: absolute;
   top: 5vh;
-  right: 10vh;
+  right: 5vh;
+  font-size: 2em;
+  height: 3em;
+  width: 25%;
+  padding: 1em;
+  border: solid gray 2px;
+}
+
+user-info p {
+   color: @brightBlue;
 }
 
 .fund-list {
@@ -238,6 +247,11 @@ section {
   overflow: auto;
   margin-top: 10vh;
   padding-left: 5%;
+}
+
+.fund-bubble-container {
+  position: relative;
+  left: 5vh;
 }
 
 #vis {
