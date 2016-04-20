@@ -1,61 +1,74 @@
 <div>
-  <h1 ng-click="checkUserCookie()" class="page-header">PORTFOLIO</h1>
+  <div>
+    <h1 ng-click="checkUserCookie()" class="page-header">PORTFOLIO</h1>
 
-  <br />
-  <a ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button  class="btn btn-info" ng-show="userLogged">Log out</button></a>
-  <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
-</div>
-<div>
-  <h1>{{currentUserCookie.username}}</h1>
-  <h2>{{currentUserCookie.firstName}} {{currentUserCookie.lastName}}</h2>
-  <h2>{{currentUserCookie.email}}</h2>
-  <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
-    {{company.name}}: {{company.symbol}}
-    <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+    <br />
+    <a ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button  class="btn btn-info" ng-show="userLogged">Log out</button></a>
+    <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
   </div>
   <div>
-    <h1>Best Matches</h1>
-    <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
-      {{company.name}}: {{company.symbol}}
-      <br />
-      {{company.assetClass}}
-      {{company.beta}}
-      {{company.expenseRatio}}
-    </div>
-  </div>
-  <div>
-    <h1>Good Matches</h1>
-    <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
-      {{company.name}}: {{company.symbol}}
-      <br />
-      {{company.assetClass}}
-      {{company.beta}}
-      {{company.expenseRatio}}
-    </div>
-  </div>
-  <div>
-    <h1>Okay Matches</h1>
-    <div ng-repeat="company in currentUserOkayMatchesCookie.okayMatches">
-      {{company.name}}: {{company.symbol}}
-      <br />
-      {{company.assetClass}}
-      {{company.beta}}
-      {{company.expenseRatio}}
-    </div>
-  </div>
-  <div>
-    <h1>Bad Matches</h1>
-    <div ng-repeat="company in currentUserBadMatchesCookie.badMatches">
-      {{company.name}}: {{company.symbol}}
-      <br />
-      {{company.assetClass}}
-      {{company.beta}}
-      {{company.expenseRatio}}
-    </div>
-  </div>
-</div>
+    <h1>{{currentUserCookie.username}}</h1>
+    <h2>{{currentUserCookie.firstName}} {{currentUserCookie.lastName}}</h2>
+    <h2>{{currentUserCookie.email}}</h2>
 
- <div class="container">
+    <div>
+      <h1>Best Matches</h1>
+      <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
+        {{company.name}}: {{company.symbol}}
+        <br />
+        {{company.assetClass}}
+        {{company.beta}}
+        {{company.expenseRatio}}
+        <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id)" class="btn btn-primary">Add to Portfolio</button>
+        <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+      </div>
+    </div>
+    <div>
+      <h1>Good Matches</h1>
+      <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
+        {{company.name}}: {{company.symbol}}
+        <br />
+        {{company.assetClass}}
+        {{company.beta}}
+        {{company.expenseRatio}}
+        <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id)" class="btn btn-primary">Add to Portfolio</button>
+        <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+      </div>
+    </div>
+    <div>
+      <h1>Okay Matches</h1>
+      <div ng-repeat="company in currentUserOkayMatchesCookie.okayMatches">
+        {{company.name}}: {{company.symbol}}
+        <br />
+        {{company.assetClass}}
+        {{company.beta}}
+        {{company.expenseRatio}}
+        <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id)" class="btn btn-primary">Add to Portfolio</button>
+        <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+      </div>
+    </div>
+    <div>
+      <h1>Bad Matches</h1>
+      <div ng-repeat="company in currentUserBadMatchesCookie.badMatches">
+        {{company.name}}: {{company.symbol}}
+        <br />
+        {{company.assetClass}}
+        {{company.beta}}
+        {{company.expenseRatio}}
+        <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id)" class="btn btn-primary">Add to Portfolio</button>
+        <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1>My Mutual Funds</h1>
+    <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
+      {{company.name}}: {{company.symbol}}
+      <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+    </div>
+  </div>
+
+  <div class="container">
     <h1>Gates Foundation Educational Spending</h1>
     <div id="toolbar">
       <a href="#" id="all" class="button active">All Grants</a>
@@ -68,6 +81,7 @@
       <p><a href="http://vallandingham.me/bubble_charts_in_js.html">Blog Post</a> | <a href="https://github.com/vlandham/bubble_chart">Code</a></p>
     </div>
   </div>
+</div>
 
   <!-- <script src="lib/d3.js"></script>
   <script src="src/tooltip.js"></script>

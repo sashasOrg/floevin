@@ -26,7 +26,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   }
   $scope.getFunds();
 
-  
+
   $scope.getMoreInformation = function(symbol) {
     mainService.getMoreInformation(symbol).then(function(response) {
       mainService.specificData = response.data.query.results.quote;
@@ -86,8 +86,6 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
           $cookies.remove('currentUserPortfolio');
           $cookies.put('currentUserPortfolio', JSON.stringify(response.data));
         })
-      } else {
-          console.log('Wasnt Found');
       }
     }
   };
