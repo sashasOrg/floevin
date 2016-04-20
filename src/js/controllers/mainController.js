@@ -88,4 +88,10 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
       }
     }
   };
+  $scope.getChartInfo = function() {
+    mainService.getChartInfo('AAPL').then(function(response) {
+      console.log(response);
+    })
+  }
+  $scope.getChartInfo();
 });

@@ -11,12 +11,14 @@ if ($cookies.get('fundData') !== null) {
 
 
 $scope.createRiskCompatability = function() {
+  console.log('yes')
   fundService.getFund().then(function(response) {
     $scope.fundStuff = response.data;
     for (var i = 0; i < $scope.fundStuff.length; i++) {
       $scope.fundStuff[i].riskCompatibility = $scope.fundStuff[i].riskPotential * 2 + $scope.fundStuff[i].riskBracket * 2;
       $scope.fundStuff[i].riskCompatibility = $scope.fundStuff[i].riskCompatibility * 5;
-      fundService.updateFund($scope.fundStuff[i]._id, $scope.fundStuff[i]).then(function(response) {
+      fundService.updateFund($scope.fundStuff[i]._id, $scope.fundStuff[i]).then(function(response2) {
+        console.log(response2);
       })
     }
   });

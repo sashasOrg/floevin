@@ -24,7 +24,7 @@ angular.module('SashasApp').service('fundService', function($http, $q, $cookies)
   };
 
   this.deleteFund = function(id){
-    $http({
+    return $http({
           method: 'DELETE',
           url: '/fund?id=' + id
         }).then(function successCallback(response) {
