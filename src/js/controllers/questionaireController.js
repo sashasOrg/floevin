@@ -104,8 +104,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
           return timeframeFill;
         }
 
-        $scope.calculateTotal = function()
-        {
+        $scope.calculateTotal = function() {
           $scope.disabled = true;
             var riskLevel = ((($scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame()) / 4) * 10) * $scope.data.repeatSelect;
             var user = JSON.parse($cookies.get('currentUser'));
@@ -126,3 +125,4 @@ angular.module('SashasApp').controller('questionaireController', function($scope
               $scope.disabled = false;
             })
         }
+    })

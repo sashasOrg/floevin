@@ -22,9 +22,7 @@ angular.module('SashasApp').service('mainService', function($http, $q, $cookies)
   //     })
   //   }
   // }
-  this.searchSymbols = function(query) {
-    return $http.jsonp('http://d.yimg.com/aq/autoc?query=' + query + '&region=US&lang=en-US&format=json&view=detail&callback=JSON_CALLBACK')
-  }
+  
   this.getMoreInformation = function(symbol) {
     return $http.get('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20(%22' + symbol + '%22,%22' + symbol + '%22)&format=json&env=http://datatables.org/alltables.env')
   }
