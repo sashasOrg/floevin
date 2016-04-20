@@ -45,7 +45,7 @@ angular.module('SashasApp').service('mainService', function($http, $q, $cookies)
     return $http.get('user/bestmatches?username=' + username);
   }
   this.getChartInfo = function(symbol) {
-    return $http.get('http://query.yahooapis.com/v1/public/yql?q=select * from   yahoo.finance.historicaldatawheresymbol="' + symbol + '"andstartDate="2012-09-11"andendDate="2014-02-11"&format=json &diagnostics=true &env=store://datatables.org/alltableswithkeys&callback=')
+    return $http.jsonp('http://query.yahooapis.com/v1/public/yql?q= select * from   yahoo.finance.historicaldata          where  symbol    = "' + symbol + '"          and    startDate = "2012-09-11"          and    endDate   = "2014-02-11" &format=json &diagnostics=true &env=store://datatables.org/alltableswithkeys &callback=JSON_CALLBACK')
   }
 
 
