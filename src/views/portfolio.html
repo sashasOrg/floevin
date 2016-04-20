@@ -17,7 +17,7 @@
       <div class="port-div">
         <h1>Best Matches</h1>
         <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
-          {{company.name}}: {{company.symbol}}
+          <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo">{{company.name}}: {{company.symbol}}</a>
           <br />
           {{company.assetClass}}
           {{company.beta}}
@@ -30,7 +30,7 @@
       <div class="port-div">
         <h1>Good Matches</h1>
         <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
-          {{company.name}}: {{company.symbol}}
+          <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo">{{company.name}}: {{company.symbol}}</a>
           <br />
           {{company.assetClass}}
           {{company.beta}}
@@ -43,7 +43,7 @@
       <div class="port-div">
         <h1>Okay Matches</h1>
         <div ng-repeat="company in currentUserOkayMatchesCookie.okayMatches">
-          {{company.name}}: {{company.symbol}}
+          <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo">{{company.name}}: {{company.symbol}}</a>
           <br />
           {{company.assetClass}}
           {{company.beta}}
@@ -56,7 +56,7 @@
       <div class="port-div">
         <h1>Bad Matches</h1>
         <div ng-repeat="company in currentUserBadMatchesCookie.badMatches">
-          {{company.name}}: {{company.symbol}}
+          <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo">{{company.name}}: {{company.symbol}}</a>
           <br />
           {{company.assetClass}}
           {{company.beta}}
@@ -72,7 +72,7 @@
     <div class="my-mutual">
       <h1>My Mutual Funds</h1>
       <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
-        <h4>{{company.name}}: {{company.symbol}}</h4>
+        <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo"><h4>{{company.name}}: {{company.symbol}}</h4></a>
         <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         <br />
       </div>
