@@ -82,7 +82,9 @@ html {
 	padding-bottom: .5vh;
 }
 
+.login-container {
 
+}
 
 
 
@@ -120,6 +122,31 @@ a, a:visited, a:active {
 
 #toolbar {
   margin-top: 10px;
+}
+
+.my-mutual-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.my-mutual {
+  width: 50%;
+  height: 60vh;
+  min-height: 350px;
+  border: solid black 3px;
+  border-radius: 20px;
+  padding: 10px;
+}
+.port-divs {
+  display: flex;
+  justify-content: space-around;
+}
+.port-div {
+  width: 24%;
+  height: 55vh;
+  min-height: 350px;
+  border: solid black 3px;
+  border-radius: 20px;
 }
 
 .year {
