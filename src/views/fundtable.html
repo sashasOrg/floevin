@@ -3,40 +3,40 @@
   <table width="75%" class="table table-bordered">
     <th>
       <a ng-click="orderByField='name'; reverseSort = !reverseSort">
-              Fund Name <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-            </a>
-          </th>
-          <th>
-            <a ng-click="orderByField='symbol'; reverseSort = !reverseSort">
-                    Fund Symbol <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-                  </a>
-                </th>
-                <th>
-                  <a ng-click="orderByField='name'; reverseSort = !reverseSort">
-                          Expense Ratio <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-                        </a>
-                      </th>
-                      <th>
-                        <a ng-click="orderByField='name'; reverseSort = !reverseSort">
-                                Asset Class <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-                              </a>
-                            </th>
-                            <th>
-                              <a ng-click="orderByField='name'; reverseSort = !reverseSort">
-                                      Beta <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-                                    </a>
-                                  </th>
-                                  <th>
-                                    <a ng-click="orderByField='name'; reverseSort = !reverseSort">
-                                            Load Type <span ng-show="orderByField == 'load'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
-                                          </a>
-                                        </th>
+        Fund Name <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='symbol'; reverseSort = !reverseSort">
+        Fund Symbol <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='name'; reverseSort = !reverseSort">
+        Expense Ratio <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='name'; reverseSort = !reverseSort">
+        Asset Class <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='name'; reverseSort = !reverseSort">
+        Beta <span ng-show="orderByField == 'name'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='name'; reverseSort = !reverseSort">
+        Load Type <span ng-show="orderByField == 'load'"><span ng-show="!reverseSort">^</span><span ng-show="reverseSort">v</span></span>
+      </a>
+    </th>
     <tbody ng-repeat="fund in fundinfo | orderBy:orderByField:reverseSort">
       <tr >
           <td align ="left" width="25%">{{fund.name}}</td>
-          <td align ="center" width="5%">{{fund.symbol}}</td>
-          <td align ="center" width="5%">{{fund.expenseRatio}}</td>
-          <td align ="center" width="30%">{{fund.assetClass}}</td>
+          <td align ="center" width="10%">{{fund.symbol}}</td>
+          <td align ="center" width="10%">{{fund.expenseRatio}}</td>
+          <td align ="center" width="20%">{{fund.assetClass}}</td>
           <td align ="center" width="5%">{{fund.beta}}</td>
           <td align ="center" width="10%">{{fund.load}}</td>
           <td align = "center" width="10"><button ng-disabled="checkPortfolio(fund._id)" ng-click="addToPortfolio(fund._id)" class="btn btn-primary">Add to Portfolio</button></td>
