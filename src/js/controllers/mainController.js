@@ -13,7 +13,6 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
 
   $scope.searchFund = function(symbol) {
     fundService.searchFund(symbol).then(function(response) {
-      console.log(response);
       $cookies.put('fundData', JSON.stringify(response.data.list.resources[0].resource.fields));
       $state.reload();
     })
