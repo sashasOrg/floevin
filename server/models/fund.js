@@ -10,8 +10,8 @@ var fundSchema = new schema({
 	beta: {type: String},
 	expenseRatio: {type: String},
 	morningstar: {type:Number},
-	riskBracket: Number,
-	riskPotential: Number,
+	riskBracket: {type: Number, max: 5, min: 1},
+	riskPotential: {type: Number, max: 5, min: 1},
 	riskCompatibility: Number
 })
 
