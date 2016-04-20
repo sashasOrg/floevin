@@ -8,13 +8,13 @@ var ngAnnotate = require('gulp-ng-annotate');
 var webserver = require('gulp-webserver');
 var htmlmin = require('gulp-htmlmin');
 
-var watcher = gulp.watch(['./src/js/**/*.js', './src/css/*.less', './src/images/**/*.png', './src/views/**/*.html', './src/*.html'], ['default']);
+var watcher = gulp.watch(['./src/js/**/*.js', './src/css/**/*.less', './src/images/**/*.jpg', './src/images/**/*.jpeg', './src/views/**/*.html', './src/*.html'], ['default']);
 watcher.on('change', function( event ) {
         console.log('File ' + event.path + ' was ' + event.type + ' at ' + new Date() + ' , running tasks...');
 });
 
 gulp.task('compileLess', function(){
-  return gulp.src('./src/css/*.less')
+  return gulp.src('./src/css/**/*.less')
  	.pipe(less())
     .pipe(gulp.dest('./public'));
 });
@@ -28,7 +28,7 @@ gulp.task('concatScripts', function() {
 });
 
 gulp.task('images', function() {
-  return gulp.src('./src/images/**/*.png')
+  return gulp.src(['./src/images/**/*.jpg', './src/images/**/*.jpeg'])
       .pipe(gulp.dest('./public/images'));
 });
 
