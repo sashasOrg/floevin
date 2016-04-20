@@ -153,6 +153,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(response) {
         $cookies.remove('currentUserPortfolio');
         $cookies.put('currentUserPortfolio', JSON.stringify(response.data));
+        $state.reload();
       })
     }
     mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(response) {
@@ -203,5 +204,13 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       }
     }
     return false;
+  }
+  $scope.getMoreInformation = function(symbol) {
+    mainService.getMoreInformation(symbol).then(function(response) {
+      console.log(response);
+      $cookies.remove('fundData')
+      $cookies.put('fundData', JSON.stringify(response.data.query.results.quote))
+      $state.reload();
+    })
   }
 })
