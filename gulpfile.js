@@ -8,7 +8,7 @@ var ngAnnotate = require('gulp-ng-annotate');
 var webserver = require('gulp-webserver');
 var htmlmin = require('gulp-htmlmin');
 
-var watcher = gulp.watch(['./src/js/**/*.js', './src/css/**/*.less', './src/images/**/*.jpg', './src/images/**/*.jpeg', './src/views/**/*.html', './src/*.html'], ['default']);
+var watcher = gulp.watch(['./src/js/**/*.js', './src/css/**/*.less', './src/images/**/*.jpg', './src/images/**/*.jpeg', './src/views/**/*.html', './src/js/**/*.html','./src/*.html'], ['default']);
 watcher.on('change', function( event ) {
         console.log('File ' + event.path + ' was ' + event.type + ' at ' + new Date() + ' , running tasks...');
 });
@@ -33,7 +33,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('html', function() {
-    return gulp.src('./src/views/**/*.html')
+    return gulp.src(['./src/views/**/*.html', './src/js/**/*.html'])
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./public'))
 });
