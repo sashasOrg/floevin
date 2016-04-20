@@ -72,7 +72,7 @@
     <div class="my-mutual">
       <h1>My Mutual Funds</h1>
       <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
-        <h4>{{company.name}}: {{company.symbol}}</h4>
+        <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo"><h4>{{company.name}}: {{company.symbol}}</h4></a>
         <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         <br />
       </div>
