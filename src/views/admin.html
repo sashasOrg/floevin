@@ -27,11 +27,9 @@
         <button ng-click="toggle()" >Add Fund</button>
       </div>
     </form>
-    <a class="btn btn-default" role="button" ng-submit="delete(fund._id)">Delete</a>
-    </div>
+
   <div>
-  <br />
-  <br />
+
     <div>
       <input class="form-control" ng-model="fundinfoFilter" placeholder="Filter by Name"/>
       <div ng-repeat="specificFund in fundinfo | filter: {name: fundinfoFilter}">
