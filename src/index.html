@@ -20,7 +20,9 @@
                 <div class="nav-items">
                   <a ui-sref="portfolio">Portfolio</a></div>
                 <div class="nav-items">
-                  <a ui-sref="questionaire">Form</a></div>
+                  <a ui-sref="questionaire">Questionaire</a></div>
+                <div class="nav-items">
+                  <a ui-sref="fundtable">Fund Information</a></div>
                 <div class="nav-items">
                   <a ui-sref="login">Login</a></div>
                 <div class="nav-items">
@@ -30,11 +32,26 @@
                 <div class="nav-items">
                   <a ui-sref="admin">Admin</a></div>
               </div>
+
+<!--         <div ng-controller="fundController">
+        <div class="search-box">
+        <form ng-submit="searchFund()">
+          <input class="form-control" ng-model="searchFunds" type="text"/>
+          <button class="btn btn-info">Search Funds</button>
+        </form>
       </div>
-
-
+        <div ng-repeat="fund in fundInfo | filter: {name: searchFunds}">
+          <div>
+            <a ng-click="searchFund(fund.symbol)" ui-sref="fundinfo"><h3>{{fund.name}} : {{fund.symbol}}</h3></a>
+            <button ng-disabled="checkPortfolio(fund._id)" ng-click="addToPortfolio(fund._id)" class="btn btn-primary">Add to Portfolio</button>
+            <button ng-disabled="!checkPortfolio(fund._id)" ng-click="removeFromPortfolio(fund._id)" class="btn btn-danger">Remove from Portfolio</button>
+          </div>
+        </div>
+      </div> -->
+        </div>
 
       <div ui-view></div>
+      
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>

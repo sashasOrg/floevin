@@ -24,6 +24,8 @@ $scope.createRiskCompatability = function() {
   });
 }
 
+$scope.createRiskCompatability();
+
 $scope.changeMutualFund = function(fund) {
   $scope.changedFund = fund;
 }
