@@ -1,4 +1,4 @@
-angular.module('SashasApp').controller('questionaireController', function($scope, $cookies, $state, questionaireService, mainService) {
+angular.module('SashasApp').controller('questionaireController', function($scope, $cookies, $state, $window, $localStorage, questionaireService, mainService) {
 
          $scope.age_answer = [];
          $scope.age_answer["30"]=10;
@@ -107,7 +107,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
         $scope.calculateTotal = function() {
           $scope.disabled = true;
             var riskLevel = ((($scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame()) / 4) * 10) * $scope.data.repeatSelect;
-            var user = JSON.parse($cookies.get('currentUser'));
+            var user = $localStorage.currentUser;
             user.suitabilityScore = riskLevel;
             user.badMatches = [];
             user.badMatchRatios = [];
@@ -117,12 +117,10 @@ angular.module('SashasApp').controller('questionaireController', function($scope
             user.goodMatchRatios = [];
             user.bestMatches = [];
             user.bestMatchRatios = [];
-            $cookies.remove('currentUser');
-            $cookies.put('currentUser', JSON.stringify(user));
+            $localStorage.currentUser = user;
             mainService.updateUser(user).then(function(response) {
-              console.log("I did yay")
-              $state.go('portfolio');
               $scope.disabled = false;
+              $window.location.href = '/portfolio';
             })
         }
     })
