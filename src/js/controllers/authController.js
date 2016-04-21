@@ -1,4 +1,4 @@
-angular.module('SashasApp').controller('loginController', function($state, $scope, $location, $cookies, AuthService, mainService) {
+angular.module('SashasApp').controller('loginController', function($state, $scope, $location, $localStorage, $cookies, AuthService, mainService) {
 
     $scope.isLoggedIn = AuthService.isLoggedIn;
 
@@ -10,28 +10,22 @@ angular.module('SashasApp').controller('loginController', function($state, $scop
           $scope.disabled = false;
           $scope.loginForm = {};
           AuthService.isLoggedIn();
-          $cookies.remove('currentUser');
-          $cookies.put('currentUser', JSON.stringify(response));
-          mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(responseTwo) {
-            $cookies.remove('currentUserPortfolio');
-            $cookies.put('currentUserPortfolio', JSON.stringify(responseTwo.data));
-            mainService.getBadMatches(JSON.parse($cookies.get('currentUser')).username).then(function(responseThree) {
-              $cookies.remove('currentUserBadMatches');
-              $cookies.put('currentUserBadMatches', JSON.stringify(responseThree.data))
-              mainService.getOkayMatches(JSON.parse($cookies.get('currentUser')).username).then(function(responseFour) {
-                $cookies.remove('currentUserOkayMatches');
-                $cookies.put('currentUserOkayMatches', JSON.stringify(responseFour.data))
-                mainService.getGoodMatches(JSON.parse($cookies.get('currentUser')).username).then(function(responseFive) {
-                  $cookies.remove('currentUserGoodMatches');
-                  $cookies.put('currentUserGoodMatches', JSON.stringify(responseFive.data))
-                  mainService.getBestMatches(JSON.parse($cookies.get('currentUser')).username).then(function(responseSix) {
-                    $cookies.remove('currentUserBestMatches');
-                    $cookies.put('currentUserBestMatches', JSON.stringify(responseSix.data))
+          $localStorage.currentUser = response;
+          mainService.getUserPortfolio($localStorage.currentUser.username).then(function(responseTwo) {
+            $localStorage.currentUserPortfolio = responseTwo.data
+            mainService.getBadMatches($localStorage.currentUser.username).then(function(responseThree) {
+              $localStorage.currentUserBadMatches = responseThree.data
+              mainService.getOkayMatches($localStorage.currentUser.username).then(function(responseFour) {
+                $localStorage.currentUserOkayMatches = responseFour.data
+                mainService.getGoodMatches($localStorage.currentUser.username).then(function(responseFive) {
+                  $localStorage.currentUserGoodMatches = responseFive.data
+                  mainService.getBestMatches($localStorage.currentUser.username).then(function(responseSix) {
+                    $localStorage.currentUserBestMatches = responseSix.data
                     $state.go('portfolio');
                   });
                 });
               });
-            });      
+            });
           });
         })
         .catch(function () {
@@ -50,8 +44,7 @@ angular.module('SashasApp').controller('logoutController', function ($scope, $lo
     $scope.logout = function () {
       AuthService.logout()
         .then(function () {
-          $cookies.remove('currentUser');
-          $cookies.remove('currentUserPortfolio');
+          $localStorage = {};
           $location.path('login');
         });
         console.log('logout')

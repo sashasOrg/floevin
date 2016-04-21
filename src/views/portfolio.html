@@ -22,10 +22,6 @@
   <div id="vis"></div>
 </div>
 
-  <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
-    {{company.name}}: {{company.symbol}}
-    <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
-  </div>
 
     <br />
     <a ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button  class="btn btn-info" ng-show="userLogged">Log out</button></a>
