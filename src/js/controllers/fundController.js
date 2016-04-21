@@ -1,12 +1,12 @@
-angular.module('SashasApp').controller('fundController', function($scope, $cookies, $state, fundService, mainService) {
+angular.module('SashasApp').controller('fundController', function($scope, $cookies, $state, $localStorage, fundService, mainService) {
 
 
 //mutual fund info
 $scope.seachFund = '';
 $scope.orderByField = '';
 $scope.reverseSort = false;
-if ($cookies.get('fundData') !== null) {
-  $scope.fundData = JSON.parse($cookies.get('fundData'));
+if ($localStorage.hasOwnProperty('fundData')) {
+  $scope.fundData = $localStorage.fundData
 }
 
 
@@ -73,42 +73,28 @@ $scope.toggle = function(){
   $scope.showing = false;
 
   $scope.addToPortfolio = function(id) {
-    var user = JSON.parse($cookies.get('currentUser'));
-    console.log(user.portfolio)
+    var user = $localStorage.currentUser
     for (var i = 0; i < user.portfolio.length; i++) {
-      if (id === JSON.parse($cookies.get('currentUser')).portfolio[i]) {
+      if (id === $localStorage.currentUser.portfolio[i]) {
         return false;
       }
     }
     user.portfolio.push(id)
-    $cookies.remove('currentUser');
-    $cookies.put('currentUser', JSON.stringify(user));
+    $localStorage.currentUser = user;
+    $scope.currentUserCookie = $localStorage.currentUser;
     mainService.updateUser(user)
     mainService.getUserPortfolio(user.username).then(function(response) {
-      $cookies.remove('currentUserPortfolio');
-      $cookies.put('currentUserPortfolio', JSON.stringify(response.data))
+      $localStorage.currentUserPortfolio = response.data;
+      $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+      $state.reload();
     })
-    user = null;
-  }
-  $scope.checkPortfolio = function(id) {
-    mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(response) {
-      $cookies.remove('currentUserPortfolio');
-      $cookies.put('currentUserPortfolio', JSON.stringify(response.data));
-    })
-    for (var i = 0; i < JSON.parse($cookies.get('currentUserPortfolio')).portfolio.length; i++) {
-      if (id === JSON.parse($cookies.get('currentUserPortfolio')).portfolio[i]._id) {
-        return false;
-        console.log('false, it shouldnt show', id);
-      }
-    }
-    return true;
-  }
+  };
+
 
   $scope.checkPortfolio = function(id) {
-    var user = JSON.parse($cookies.get('currentUser'));
+    var user = $localStorage.currentUser;
     for (var i = 0; i < user.portfolio.length; i++) {
-      if (id === JSON.parse($cookies.get('currentUser')).portfolio[i]) {
-        console.log('Already exists in portfolio');
+      if (id === $localStorage.currentUser.portfolio[i]) {
         return true;
       }
     }
@@ -116,34 +102,32 @@ $scope.toggle = function(){
   }
 
   $scope.removeFromPortfolio = function(id) {
-    if (JSON.parse($cookies.get('currentUser')).portfolio.length === 1) {
-      var user2 = JSON.parse($cookies.get('currentUser'));
+    if ($localStorage.currentUser.portfolio.length === 1) {
+      var user2 = $localStorage.currentUser;
       user2.portfolio = [];
-      $cookies.remove('currentUser');
-      $cookies.put('currentUser', JSON.stringify(user2));
+      $localStorage.currentUser = user2;
       mainService.updateUser(user2)
-      mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(response) {
-        $cookies.remove('currentUserPortfolio');
-        $cookies.put('currentUserPortfolio', JSON.stringify(response.data));
+      mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+        $localStorage.currentUserPortfolio = response.data;
+        $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+        $state.reload();
       })
     }
-    mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(response) {
-      $cookies.remove('currentUserPortfolio');
-      $cookies.put('currentUserPortfolio', JSON.stringify(response.data));
+    mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+      $localStorage.currentUserPortfolio = response.data;
+      $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
     })
-    for (var i = 0; i < JSON.parse($cookies.get('currentUser')).portfolio.length; i++) {
-      if (id === JSON.parse($cookies.get('currentUser')).portfolio[i]) {
-        var user = JSON.parse($cookies.get('currentUser'));
+    for (var i = 0; i < $localStorage.currentUser.portfolio.length; i++) {
+      if (id === $localStorage.currentUser.portfolio[i]) {
+        var user = $localStorage.currentUser;
         user.portfolio.splice(i, 1);
-        $cookies.remove('currentUser');
-        $cookies.put('currentUser', JSON.stringify(user));
+        $localStorage.currentUser = user;
         mainService.updateUser(user)
-        mainService.getUserPortfolio(JSON.parse($cookies.get('currentUser')).username).then(function(response) {
-          $cookies.remove('currentUserPortfolio');
-          $cookies.put('currentUserPortfolio', JSON.stringify(response.data));
+        mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+          $localStorage.currentUserPortfolio = response.data;
+          $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio
+          $state.reload();
         })
-      } else {
-          console.log('Wasnt Found');
       }
     }
   };
