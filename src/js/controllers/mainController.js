@@ -33,5 +33,31 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
     })
   }
 
+  // $scope.getChartInfo = function() {
+  //   mainService.chartData = {};
+  //   mainService.getChartInfo('AAPL').then(function(response) {
+  //     console.log(response);
+  //     for (var i = 0; i < response.data.query.results.quote.length; i++) {
+  //       var dateArray =
+  //       console.log(response.data.query.results.quote[i].Date.split('-'));
+  //     }
+  //   })
+  // }
+  // $scope.getChartInfo();
+/**********************
+image slideshow
+**********************/
+
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+},  6000);
+
 
 });
