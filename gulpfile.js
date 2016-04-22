@@ -7,6 +7,7 @@ var less = require('gulp-less');
 var ngAnnotate = require('gulp-ng-annotate');
 var webserver = require('gulp-webserver');
 var htmlmin = require('gulp-htmlmin');
+var jsonmin = require('gulp-jsonmin');
 
 var watcher = gulp.watch(['./src/js/**/*.js', './src/css/**/*.less', './src/images/**/*.jpg', './src/images/**/*.jpeg', './src/views/**/*.html', './src/js/directives/*.html','./src/*.html'], ['default']);
 watcher.on('change', function( event ) {

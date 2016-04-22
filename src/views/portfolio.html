@@ -185,10 +185,8 @@ function bubbleChart() {
         id: d.id,
         radius: radiusScale(+d.total_amount),
         value: d.total_amount,
-        name: d.grant_title,
-        org: d.organization,
+        name: d.fund,
         group: d.group,
-        year: d.start_year,
         x: Math.random() * 900,
         y: Math.random() * 800
       };

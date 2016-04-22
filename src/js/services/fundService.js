@@ -6,9 +6,9 @@ angular.module('SashasApp').service('fundService', function($http, $q, $cookies)
     return $http.get('/fund')
   };
 
-  this.searchFund = function(symbol) {
-    return $http.jsonp('http://finance.yahoo.com/webservice/v1/symbols/' + symbol + '/quote?format=json&view=detail&callback=JSON_CALLBACK')
-  }
+  // this.searchFund = function(symbol) {
+  //   return $http.jsonp('http://finance.yahoo.com/webservice/v1/symbols/' + symbol + '/quote?format=json&view=detail&callback=JSON_CALLBACK')
+  // }
 
   this.newFund = function(obj){
     console.log(obj);
