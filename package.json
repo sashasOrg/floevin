@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-chart.js": "^0.10.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
+    "chart.js": "^2.0.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.1",
     "cors": "^2.7.1",

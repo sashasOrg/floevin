@@ -5,20 +5,30 @@ angular.module('SashasApp').controller('fundController', function($scope, $cooki
 $scope.seachFund = '';
 $scope.orderByField = '';
 $scope.reverseSort = false;
-if ($localStorage.hasOwnProperty('fundData')) {
-  $scope.fundData = $localStorage.fundData
-}
+$scope.fundData = $localStorage.fundData
+
+$scope.chartData = $localStorage.chartData;
+
+
+$scope.data = $localStorage.data;
+$scope.$watch($scope.data);
+$scope.labels = $localStorage.labels;
+$scope.$watch($scope.labels);
+$scope.series = ['High', 'Low', 'Open'];
+$scope.onClick = function (points, evt) {
+    console.log(points, evt);
+};
+
+
 
 
 $scope.createRiskCompatability = function() {
-  console.log('yes')
   fundService.getFund().then(function(response) {
     $scope.fundStuff = response.data;
     for (var i = 0; i < $scope.fundStuff.length; i++) {
       $scope.fundStuff[i].riskCompatibility = $scope.fundStuff[i].riskPotential * 2 + $scope.fundStuff[i].riskBracket * 2;
       $scope.fundStuff[i].riskCompatibility = $scope.fundStuff[i].riskCompatibility * 5;
       fundService.updateFund($scope.fundStuff[i]._id, $scope.fundStuff[i]).then(function(response2) {
-        console.log(response2);
       })
     }
   });
@@ -32,16 +42,14 @@ $scope.changeMutualFund = function(fund) {
 
 $scope.updateMutualFund = function(fund) {
   fundService.updateFund(fund._id, fund).then(function(response) {
-    console.log(response);
     $scope.changedFund = {};
   }).catch(function(response) {
-    console.log('Error')
     $scope.changedFund = {};
   })
 }
 
 $scope.anyfund = function(){
-    console.log('test');
+
   $scope.error = false;
   $scope.disabled = true;
   fundService.newFund($scope.newfundForm)
@@ -86,7 +94,6 @@ $scope.toggle = function(){
     mainService.getUserPortfolio(user.username).then(function(response) {
       $localStorage.currentUserPortfolio = response.data;
       $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-      $state.reload();
     })
   };
 
@@ -110,7 +117,6 @@ $scope.toggle = function(){
       mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
         $localStorage.currentUserPortfolio = response.data;
         $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-        $state.reload();
       })
     }
     mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
@@ -126,7 +132,6 @@ $scope.toggle = function(){
         mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
           $localStorage.currentUserPortfolio = response.data;
           $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio
-          $state.reload();
         })
       }
     }
