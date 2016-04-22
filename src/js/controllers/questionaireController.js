@@ -120,7 +120,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
             $localStorage.currentUser = user;
             mainService.updateUser(user).then(function(response) {
               $scope.disabled = false;
-              $window.location.href = '/portfolio';
+              $state.go('portfolio');
             })
         }
     })

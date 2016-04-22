@@ -1,11 +1,12 @@
 <div>
-  <h1>{{fundData.Name}}: {{fundData.Symbol}}</h1>
-  <h3>Currency: {{fundData.Currency}}</h3>
-  <h3>Price: {{fundData.LastTradePriceOnly}}</h3>
-  <h3>Days High: {{fundData.DaysHigh}}</h3>
-  <h3>Days Low: {{fundData.DaysLow}}</h3>
-  <h3>Years High: {{fundData.YearHigh}}</h3>
-  <h3>Years Low: {{fundData.YearLow}}</h3>
-  <h3>Two Hundred Day Average: {{fundData.TwoHundreddayMovingAverage}}</h3>
-  <h3>Year Range: {{fundData.YearRange}}</h3>
+  <h1>{{fundData.name}}: {{fundData.symbol}}</h1>
+  <h3>Type: {{fundData.type}}
+  <h3>Price: {{fundData.price}}</h3>
+  <h3>Days High: {{fundData.day_high}}</h3>
+  <h3>Days Low: {{fundData.day_low}}</h3>
+  <h3>Years High: {{fundData.year_high}}</h3>
+  <h3>Years Low: {{fundData.year_low}}</h3>
+</div>
+<div>
+  <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-click="onClick" height="100px"></canvas>
 </div>
