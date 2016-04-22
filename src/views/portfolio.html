@@ -200,21 +200,6 @@ function bubbleChart() {
     return myNodes;
   }
 
-  this.getVideos = function() {
-    return $http.get('api/videos')
-    .then(function(response) {
-      return response.data;
-    })
-  }
-
-  d3.json('/fund', function(err, response) {
-    if (err) {
-      return res.status(500).send(err);
-    } else {
-      res.send(response)
-    }
-  })
-
   /*
    * Main entry point to the bubble chart. This function is returned
    * by the parent closure. It prepares the rawData for visualization
