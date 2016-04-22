@@ -120,13 +120,6 @@ function bubbleChart() {
     2010: { x: 2 * width / 3, y: height / 2 }
   };
 
-  // X locations of the year titles.
-  var yearsTitleX = {
-    2008: 160,
-    2009: width / 2,
-    2010: width - 160
-  };
-
   // Used when setting up force and
   // moving around nodes
   var damper = 0.102;
@@ -337,52 +330,11 @@ function bubbleChart() {
   }
 
   /*
-   * Helper function for "split by year mode".
-   * Returns a function that takes the data for a
-   * single node and adjusts the position values
-   * of that node to move it the year center for that
-   * node.
-   *
-   * Positioning is adjusted by the force layout's
-   * alpha parameter which gets smaller and smaller as
-   * the force layout runs. This makes the impact of
-   * this moving get reduced as each node gets closer to
-   * its destination, and so allows other forces like the
-   * node's charge force to also impact final location.
-   */
-  function moveToYears(alpha) {
-    return function (d) {
-      var target = yearCenters[d.year];
-      d.x = d.x + (target.x - d.x) * damper * alpha * 1.1;
-      d.y = d.y + (target.y - d.y) * damper * alpha * 1.1;
-    };
-  }
-
-  /*
    * Hides Year title displays.
    */
   function hideYears() {
     svg.selectAll('.year').remove();
   }
-
-  /*
-   * Shows Year title displays.
-   */
-  function showYears() {
-    // Another way to do this would be to create
-    // the year texts once and then just hide them.
-    var yearsData = d3.keys(yearsTitleX);
-    var years = svg.selectAll('.year')
-      .data(yearsData);
-
-    years.enter().append('text')
-      .attr('class', 'year')
-      .attr('x', function (d) { return yearsTitleX[d]; })
-      .attr('y', 40)
-      .attr('text-anchor', 'middle')
-      .text(function (d) { return d; });
-  }
-
 
   /*
    * Function called on mouseover to display the
@@ -474,7 +426,8 @@ function addCommas(nStr) {
 d3.json('fund.json', display);
 
 // setup the buttons.
-setupButtons();/*
+setupButtons();
+/*
  * Creates tooltip with provided id that
  * floats on top of visualization.
  * Most styling is expected to come from CSS
