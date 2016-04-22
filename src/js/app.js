@@ -1,4 +1,4 @@
-angular.module('SashasApp', ['ui.router', 'ngCookies', 'ui.bootstrap', 'ngStorage'])
+angular.module('SashasApp', ['ui.router', 'ngCookies', 'ui.bootstrap', 'ngStorage', 'chart.js'])
 
 angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -53,19 +53,19 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       url: '/admin',
       templateUrl: '/admin.html',
       controller: 'fundController',
-      access: {restricted: false}
+      access: {restricted: true}
     })
 
 
     $urlRouterProvider.otherwise('/')
 })
 
-angular.module('SashasApp').run(function ($state, $cookies, $rootScope, $location, AuthService) {
+angular.module('SashasApp').run(function ($state, $cookies, $rootScope, $location, $localStorage, AuthService) {
   $rootScope.$on('$stateChangeStart',
     function (event, next, current) {
       AuthService.getUserStatus();
       if (next.access.restricted &&
-          $cookies.get('currentUser') === null) {
+          !$localStorage.currentUser) {
             event.preventDefault();
             $state.go('login')
       }

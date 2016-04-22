@@ -5,20 +5,77 @@ angular.module('SashasApp').controller('fundController', function($scope, $cooki
 $scope.seachFund = '';
 $scope.orderByField = '';
 $scope.reverseSort = false;
-if ($localStorage.hasOwnProperty('fundData')) {
-  $scope.fundData = $localStorage.fundData
+$scope.fundData = $localStorage.fundData
+
+$scope.chartData = $localStorage.chartData;
+
+
+$scope.data = $localStorage.data;
+$scope.$watch($scope.data);
+$scope.labels = $localStorage.labels;
+$scope.$watch($scope.labels);
+$scope.series = ['High', 'Low', 'Open'];
+$scope.onClick = function (points, evt) {
+    console.log(points, evt);
+};
+
+$scope.getChartInfo = function(symbol) {
+  $scope.disabled = true;
+  mainService.chartData = {};
+  mainService.chartData.data = [];
+  mainService.getChartInfo(symbol.toUpperCase()).then(function(response) {
+    for (var i = 0; i < response.data.query.results.quote.length; i++) {
+      var dateArray = response.data.query.results.quote[i].Date.split('-')
+      var dataObject = {}
+      dataObject.Open = response.data.query.results.quote[i].Open;
+      dataObject.Low = response.data.query.results.quote[i].Low;
+      dataObject.High = response.data.query.results.quote[i].High;
+      dataObject.Close = response.data.query.results.quote[i].Close;
+      dataObject.Volume = response.data.query.results.quote[i].Volume;
+      dataObject.Date = response.data.query.results.quote[i].Date
+      dataObject._date_Date = dataObject.Date;
+      mainService.chartData.data.push(dataObject);
+    }
+    $localStorage.chartData = mainService.chartData;
+    $scope.chartData = $localStorage.chartData;
+    mainService.getMoreInformation(symbol).then(function(response) {
+      mainService.specificData = response.data.query.results.quote;
+      $localStorage.fundData = mainService.specificData;
+        $scope.data = [];
+        $scope.data[0] = [];
+        $scope.data[1] = [];
+        $scope.data[2] = [];
+        $scope.labels = [];
+        var neededData = $scope.chartData.data.reverse();
+        for (var i = 0; i < $scope.chartData.data.length; i++) {
+          $scope.labels.push(neededData[i].Date);
+          $scope.data[0].push(neededData[i].High)
+          $scope.data[1].push(neededData[i].Low)
+          $scope.data[2].push(neededData[i].Open)
+        }
+        $localStorage.data = $scope.data;
+        $localStorage.labels = $scope.labels;
+        neededData = null;
+        fundService.searchFund(symbol).then(function(response) {
+          $localStorage.fundData = response.data.list.resources[0].resource.fields;
+          console.log($localStorage.fundData)
+          console.log(response)
+          $scope.disabled = false;
+          $state.go('fundinfo')
+      })
+    })
+  })
 }
 
 
+
 $scope.createRiskCompatability = function() {
-  console.log('yes')
   fundService.getFund().then(function(response) {
     $scope.fundStuff = response.data;
     for (var i = 0; i < $scope.fundStuff.length; i++) {
       $scope.fundStuff[i].riskCompatibility = $scope.fundStuff[i].riskPotential * 2 + $scope.fundStuff[i].riskBracket * 2;
       $scope.fundStuff[i].riskCompatibility = $scope.fundStuff[i].riskCompatibility * 5;
       fundService.updateFund($scope.fundStuff[i]._id, $scope.fundStuff[i]).then(function(response2) {
-        console.log(response2);
       })
     }
   });
@@ -32,16 +89,14 @@ $scope.changeMutualFund = function(fund) {
 
 $scope.updateMutualFund = function(fund) {
   fundService.updateFund(fund._id, fund).then(function(response) {
-    console.log(response);
     $scope.changedFund = {};
   }).catch(function(response) {
-    console.log('Error')
     $scope.changedFund = {};
   })
 }
 
 $scope.anyfund = function(){
-    console.log('test');
+
   $scope.error = false;
   $scope.disabled = true;
   fundService.newFund($scope.newfundForm)
@@ -86,7 +141,6 @@ $scope.toggle = function(){
     mainService.getUserPortfolio(user.username).then(function(response) {
       $localStorage.currentUserPortfolio = response.data;
       $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-      $state.reload();
     })
   };
 
@@ -110,7 +164,6 @@ $scope.toggle = function(){
       mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
         $localStorage.currentUserPortfolio = response.data;
         $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-        $state.reload();
       })
     }
     mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
@@ -126,7 +179,6 @@ $scope.toggle = function(){
         mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
           $localStorage.currentUserPortfolio = response.data;
           $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio
-          $state.reload();
         })
       }
     }

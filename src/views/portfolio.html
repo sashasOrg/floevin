@@ -1,5 +1,5 @@
 <section>
-<div class="form-module">
+<div ng-disabled="disabled" class="form-module">
 <div>
 
   <h1 ng-click="checkUserCookie()" class="page-header">PORTFOLIO</h1>
@@ -21,17 +21,13 @@
     </div>
     <div class="container"><div id="vis"></div></div>
 </div>
-    <br />
-    <a ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button  class="btn btn-info" ng-show="userLogged">Log out</button></a>
-    <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
-  </div>
-  <div>
+
 
     <div class="port-divs">
       <div class="port-div">
         <h1>Best Matches</h1>
         <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
-          <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo">{{company.name}}: {{company.symbol}}</a>
+          <a ng-click="getChartInfo(company.symbol)">{{company.name}}: {{company.symbol}}</a>
           <br />
           {{company.assetClass}}
           {{company.beta}}
@@ -44,7 +40,7 @@
       <div class="port-div">
         <h1>Good Matches</h1>
         <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
-          <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo">{{company.name}}: {{company.symbol}}</a>
+          <a ng-click="getChartInfo(company.symbol)">{{company.name}}: {{company.symbol}}</a>
           <br />
           {{company.assetClass}}
           {{company.beta}}
@@ -57,7 +53,7 @@
       <div class="port-div">
         <h1>Okay Matches</h1>
         <div ng-repeat="company in currentUserOkayMatchesCookie.okayMatches">
-          <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo">{{company.name}}: {{company.symbol}}</a>
+          <a ng-click="getChartInfo(company.symbol)">{{company.name}}: {{company.symbol}}</a>
           <br />
           {{company.assetClass}}
           {{company.beta}}
@@ -70,7 +66,7 @@
       <div class="port-div">
         <h1>Bad Matches</h1>
         <div ng-repeat="company in currentUserBadMatchesCookie.badMatches">
-          <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo">{{company.name}}: {{company.symbol}}</a>
+          <a ng-click="getChartInfo(company.symbol)">{{company.name}}: {{company.symbol}}</a>
           <br />
           {{company.assetClass}}
           {{company.beta}}
@@ -86,7 +82,7 @@
     <div class="my-mutual">
       <h1>My Mutual Funds</h1>
       <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
-        <a ng-click="getMoreInformation(company.symbol)" ui-sref="fundinfo"><h4>{{company.name}}: {{company.symbol}}</h4></a>
+        <a ng-click="getChartInfo(company.symbol)"><h4>{{company.name}}: {{company.symbol}}</h4></a>
         <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         <br />
       </div>
@@ -336,7 +332,7 @@ function bubbleChart() {
                   addCommas(d.value) +
                   '</span>';
 
-        
+
     tooltip.showTooltip(content, d3.event);
   }
 

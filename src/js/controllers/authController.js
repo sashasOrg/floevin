@@ -36,7 +36,7 @@ angular.module('SashasApp').controller('loginController', function($state, $scop
         });
     };
 });
-angular.module('SashasApp').controller('logoutController', function ($scope, $location, $cookies, AuthService, mainService) {
+angular.module('SashasApp').controller('logoutController', function ($scope, $location, $cookies, $localStorage, AuthService, mainService) {
 
     $scope.userLogged = AuthService.isLoggedIn();
     $scope.$watch($scope.userLogged);
@@ -44,7 +44,7 @@ angular.module('SashasApp').controller('logoutController', function ($scope, $lo
     $scope.logout = function () {
       AuthService.logout()
         .then(function () {
-          $localStorage = {};
+          $localStorage.$reset();
           $location.path('login');
         });
         console.log('logout')
