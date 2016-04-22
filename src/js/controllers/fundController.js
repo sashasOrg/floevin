@@ -19,6 +19,53 @@ $scope.onClick = function (points, evt) {
     console.log(points, evt);
 };
 
+$scope.getChartInfo = function(symbol) {
+  $scope.disabled = true;
+  mainService.chartData = {};
+  mainService.chartData.data = [];
+  mainService.getChartInfo(symbol.toUpperCase()).then(function(response) {
+    for (var i = 0; i < response.data.query.results.quote.length; i++) {
+      var dateArray = response.data.query.results.quote[i].Date.split('-')
+      var dataObject = {}
+      dataObject.Open = response.data.query.results.quote[i].Open;
+      dataObject.Low = response.data.query.results.quote[i].Low;
+      dataObject.High = response.data.query.results.quote[i].High;
+      dataObject.Close = response.data.query.results.quote[i].Close;
+      dataObject.Volume = response.data.query.results.quote[i].Volume;
+      dataObject.Date = response.data.query.results.quote[i].Date
+      dataObject._date_Date = dataObject.Date;
+      mainService.chartData.data.push(dataObject);
+    }
+    $localStorage.chartData = mainService.chartData;
+    $scope.chartData = $localStorage.chartData;
+    mainService.getMoreInformation(symbol).then(function(response) {
+      mainService.specificData = response.data.query.results.quote;
+      $localStorage.fundData = mainService.specificData;
+        $scope.data = [];
+        $scope.data[0] = [];
+        $scope.data[1] = [];
+        $scope.data[2] = [];
+        $scope.labels = [];
+        var neededData = $scope.chartData.data.reverse();
+        for (var i = 0; i < $scope.chartData.data.length; i++) {
+          $scope.labels.push(neededData[i].Date);
+          $scope.data[0].push(neededData[i].High)
+          $scope.data[1].push(neededData[i].Low)
+          $scope.data[2].push(neededData[i].Open)
+        }
+        $localStorage.data = $scope.data;
+        $localStorage.labels = $scope.labels;
+        neededData = null;
+        fundService.searchFund(symbol).then(function(response) {
+          $localStorage.fundData = response.data.list.resources[0].resource.fields;
+          console.log($localStorage.fundData)
+          console.log(response)
+          $scope.disabled = false;
+          $state.go('fundinfo')
+      })
+    })
+  })
+}
 
 
 

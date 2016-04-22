@@ -33,7 +33,7 @@
     </th>
     <tbody ng-repeat="fund in fundinfo | orderBy:orderByField:reverseSort">
       <tr >
-          <td align ="left" width="25%">{{fund.name}}</td>
+          <td align ="left" width="25%"><a ng-click="getChartInfo(fund.symbol)">{{fund.name}}</a></td>
           <td align ="center" width="10%">{{fund.symbol}}</td>
           <td align ="center" width="10%">{{fund.expenseRatio}}</td>
           <td align ="center" width="20%">{{fund.assetClass}}</td>
