@@ -1,32 +1,45 @@
-<section>
+
+
+<section class="admin-page" ng-controller="mainController">
+  <div id="slideshow" >
+     <div>
+       <img src="./images/0.jpg" width="100%" >
+     </div>
+     <div>
+      <img src="./images/1.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/2.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/3.jpeg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/4.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/5.jpeg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/6.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/7.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/8.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/9.jpg" width="100%" >
+    </div>
+  </div>
   <div class="form-module">
-<div>
-  <div>
+    <div>
+    <div>
     <h1 class="page-header">Admin</h1>
-    <button class="btn btn-primary" ng-click="createRiskCompatability()">Update Fund Risk Compatability</button>
-    <form  class="form" ng-submit="anyfund()">
-      <div hide-form="showing" class="form-group">
-        <label hide-form="showing">Name</label>
-        <input hide-form="showing" type="text" class="form-control" name="name" ng-model="newfundForm.name" required>
-        <label hide-form="showing">Symbol</label>
-        <input hide-form="showing" type="text" class="form-control" name="symbol" ng-model="newfundForm.symbol" required>
-        <label hide-form="showing">Asset Class</label>
-        <input hide-form="showing" type="text" class="form-control" name="assetClass" ng-model="newfundForm.assetClass" required>
-        <label hide-form="showing">Beta</label>
-        <input hide-form="showing" type="text" class="form-control" name="beta" ng-model="newfundForm.beta" required>
-        <label hide-form="showing">Expense Ratio</label>
-        <input hide-form="showing" type="text" class="form-control" name="expenseRatio" ng-model="newfundForm.expenseRatio" required>
-        <label hide-form="showing">Load Type</label>
-        <input hide-form="showing" type="text" class="form-control" name="load" ng-model="newfundForm.load" required>
-        <label hide-form="showing">Risk Bracket</label>
-        <input hide-form="showing" type="text" class="form-control" name="riskBracket" ng-model="newfundForm.riskBracket" required>
-        <label hide-form="showing">Risk Potential</label>
-        <input hide-form="showing" type="text" class="form-control" name="riskPotential" ng-model="newfundForm.riskPotential" required>
-      </div>
-      <div>
-        <button ng-click="toggle()" >Add Fund</button>
-      </div>
-    </form>
+  </div>
+    <button class="btn btn-primary" ng-click="createRiskCompatability()">Update Fund Risk</button>
+
 
   <div>
 
@@ -39,7 +52,7 @@
     <br />
     <br />
     <div>
-     <form class="form-control" ng-submit="updateMutualFund(changedFund)">
+     <form class="form" ng-submit="updateMutualFund(changedFund)">
         <input title="ID" class="form-control" ng-model="changedFund._id" placeholder="ID" ng-disabled="true"/>
         <input title="Name" class="form-control" ng-model="changedFund.name" placeholder="Name"/>
         <input title="Symbol" class="form-control" ng-model="changedFund.symbol" placeholder="Symbol"/>
@@ -51,7 +64,29 @@
         <input title="Risk Bracket" class="form-control" ng-model="changedFund.riskBracket" placeholder="Risk Bracket"/>
         <input title="Risk Potential" class="form-control" ng-model="changedFund.riskPotential" placeholder="Risk Potential"/>
         <button class="btn btn-success" type="submit">Update Fund</button>
+        <div>
+          <br />
+          <br />
+        </div>
+
+        <form  class="form" ng-submit="anyfund()">
+          <div class="form-group">
+            <input  type="text" class="form-control" name="name" ng-model="newfundForm.name" placeholder="Name" required>
+            <input  type="text" class="form-control" name="symbol" ng-model="newfundForm.symbol" placeholder="Symbol" required>
+            <input  type="text" class="form-control" name="assetClass"  ng-model="newfundForm.assetClass" placeholder="Asset Class" required>
+            <input type="text" class="form-control" name="beta" ng-model="newfundForm.beta" placeholder="Beta" required>
+            <input  type="text" class="form-control" name="expenseRatio" ng-model="newfundForm.expenseRatio" placeholder="Expense Ratio" required>
+            <input  type="text" class="form-control" name="morningstar" ng-model="newfundForm.load" placeholder="Morningstar" required>
+            <input  type="text" class="form-control" name="riskBracket" ng-model="newfundForm.riskBracket" placeholder="Risk Bracket" required>
+            <input  type="text" class="form-control" name="riskPotential" ng-model="newfundForm.riskPotential" placeholder="Risk Potential" required>
+          </div>
+          <div>
+            <button class="btn btn-success" ng-click="toggle()" >Add Fund</button>
+          </div>
+        </form>
       </form>
     </div>
   </div>
 </div>
+</div>
+</section>
