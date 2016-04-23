@@ -28,6 +28,28 @@ angular.module('SashasApp').controller('questionaireController', function($scope
          $scope.timeFrame_answer["5to7yr"]=8;
          $scope.timeFrame_answer["7+"]=10;
 
+         $scope.liquidity_answer = [];
+         $scope.liquidity_answer["Low"]=2;
+         $scope.liquidity_answer["Medium-Low"]=4;
+         $scope.liquidity_answer["Medium"]=6;
+         $scope.liquidity_answer["Medium-High"]=8;
+         $scope.liquidity_answer["High"]=10;
+
+         $scope.experience_answer = [];
+         $scope.experience_answer["Low-Experience"]=2;
+         $scope.experience_answer["Medium-Low-Experience"]=4;
+         $scope.experience_answer["Medium-Experience"]=6;
+         $scope.experience_answer["Medium-High-Experience"]=8;
+         $scope.experience_answer["High-Experience"]=10;
+
+         $scope.stockexperience_answer = [];
+         $scope.stockexperience_answer["Low-Experience-Stock"]=2;
+         $scope.stockexperience_answer["Medium-Low-Experience-Stock"]=4;
+         $scope.stockexperience_answer["Medium-Experience-Stock"]=6;
+         $scope.stockexperience_answer["Medium-High-Experience-Stock"]=8;
+         $scope.stockexperience_answer["High-Experience-Stock"]=10;
+
+
         (function(angular) {
             $scope.data = {
              repeatSelect: null,
@@ -36,7 +58,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
                {id: .80, name: 'Limited'},
                {id: .85, name: 'Some'},
                {id: .90, name: 'Good'},
-               {id: .95, name: 'Experienced'},
+               {id: .95, name: 'Ed'},
                {id: 1, name: 'Professional'}
              ],
             };
@@ -103,10 +125,53 @@ angular.module('SashasApp').controller('questionaireController', function($scope
           }
           return timeframeFill;
         }
+        $scope.getLiquidity = function() {
+          var liquidityFill = 0;
+          var theForm = document.forms["form"];
+          var liquidity = theForm.elements["liquidityselected"];
+          for(var i = 0; i < liquidity.length; i++)
+          {
+              if(liquidity[i].checked)
+              {
+                  liquidityFill = $scope.liquidity_answer[liquidity[i].value];
+                  break;
+              }
+          }
+          return liquidityFill;
+        }
+        $scope.getExperience = function() {
+          var experienceFill = 0;
+          var theForm = document.forms["form"];
+          var experience = theForm.elements["experienceselected"];
+          for(var i = 0; i < experience.length; i++)
+          {
+              if(experience[i].checked)
+              {
+                  experienceFill = $scope.experience_answer[experience[i].value];
+                  break;
+              }
+          }
+          return experienceFill;
+        }
+        $scope.getStockExperience = function() {
+          var experienceFill = 0;
+          var theForm = document.forms["form"];
+          var experience = theForm.elements["stockexperienceselected"];
+          for(var i = 0; i < experience.length; i++)
+          {
+              if(experience[i].checked)
+              {
+                  experienceFill = $scope.experience_answer[experience[i].value];
+                  break;
+              }
+          }
+          return experienceFill;
+        }
+
 
         $scope.calculateTotal = function() {
           $scope.disabled = true;
-            var riskLevel = ((($scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame()) / 4) * 10) * $scope.data.repeatSelect;
+            var riskLevel = ((($scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame() + $scope.getLiquidity() + $scope.getExperience() + getStockExperience()) / 7) * 10) * $scope.data.repeatSelect;
             var user = $localStorage.currentUser;
             user.suitabilityScore = riskLevel;
             user.badMatches = [];
