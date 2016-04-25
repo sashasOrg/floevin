@@ -11,7 +11,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   // }
   // $scope.getSymbols();
 
-  
+
 
   $scope.searchFund = function(symbol) {
     fundService.searchFund(symbol).then(function(response) {
@@ -34,7 +34,33 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
       $state.reload();
     })
   }
+  $scope.getBarInfo = function() {
+    $localStorage.goodBarData = {};
+    $localStorage.goodBarData.data = [];
+    $localStorage.goodBarData.labels = [];
+    $localStorage.goodBarData.series = ["Price"];
+    $localStorage.bestBarData = {};
+    $localStorage.bestBarData.data = [];
+    $localStorage.bestBarData.labels = [];
+    $localStorage.bestBarData.series = ["Price"];
+    console.log('running')
+    for (var i = 0; i < $localStorage.currentUser.bestMatches.length; i++) {
+      mainService.getMoreInformation($localStorage.currentUserBestMatches.bestMatches[i].symbol.toUpperCase()).then(function(response) {
+        $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
+        $localStorage.goodBarData.labels.push(response.data.query.results.quote.Symbol)
+      })
+    }
+    for (var i = 0; i < $localStorage.currentUser.goodMatches.length; i++) {
+      mainService.getMoreInformation($localStorage.currentUserGoodMatches.goodMatches[i].symbol.toUpperCase()).then(function(response) {
+        $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
+        $localStorage.goodBarData.labels.push(response.data.query.results.quote.Symbol);
+      })
+    }
+  }
 
+  if ($localStorage.currentUser) {
+     $scope.getBarInfo();
+   }
   // $scope.getChartInfo = function() {
   //   mainService.chartData = {};
   //   mainService.getChartInfo('AAPL').then(function(response) {
