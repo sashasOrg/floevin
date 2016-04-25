@@ -1,4 +1,27 @@
 <section>
+  <div id="slideshow" ng-controller="mainController" >
+     <div>
+       <img src="./images/0.jpg" width="100%" >
+     </div>
+    <div>
+      <img src="./images/3.jpeg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/4.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/5.jpeg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/6.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/8.jpg" width="100%" >
+    </div>
+    <div>
+      <img src="./images/9.jpg" width="100%" >
+    </div>
+  </div>
 <div ng-disabled="disabled" class="form-module">
 
 
@@ -10,6 +33,7 @@
   </div>
 
   <br />
+
   <div>
     <a ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button  class="btn btn-info" ng-show="userLogged">Log out</button></a>
     <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
@@ -17,9 +41,14 @@
 
    <div class="fund-bubble-container">
     <h1> Funds Sized by Suitability </h1>
+  </div>
+
+
+ <div class="fund-bubble-container">
+    <h1> Funds </h1>
     <div id="toolbar">
-      <a href="#" id="all" class="button active">All Funds</a>
-      <a href="#" id="year" class="button">Funds By Risk</a>
+      <a href="#" id="all"></a>
+      <a href="#" id="year"></a>
     </div>
     <div class="container"><div id="vis"></div></div>
   </div>
@@ -120,7 +149,7 @@ function bubbleChart() {
   // Nice looking colors - no reason to buck the trend
   var fillColor = d3.scale.ordinal()
     .domain(['1', '2', '3', '4', '5'])
-    .range(['green', 'blue', 'yellow', '#F09D0C', 'red']);
+    .range(['green', 'blue', 'yellow', 'purple', 'red']);
 
   // Sizes bubbles based on their area instead of raw radius
   var radiusScale = d3.scale.pow()
@@ -213,7 +242,7 @@ function bubbleChart() {
     // Fancy transition to make bubbles appear, ending with the
     // correct radius
     bubbles.transition()
-      .duration(2000)
+      .duration(3000)
       .attr('r', function (d) { return d.radius; });
 
     // Set initial layout to single group.

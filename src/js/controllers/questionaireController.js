@@ -49,6 +49,13 @@ angular.module('SashasApp').controller('questionaireController', function($scope
          $scope.stockexperience_answer["Medium-High-Experience-Stock"]=8;
          $scope.stockexperience_answer["High-Experience-Stock"]=10;
 
+         $scope.bondexperience_answer = [];
+         $scope.bondexperience_answer["Low-Experience-bond"]=2;
+         $scope.bondexperience_answer["Medium-Low-Experience-bond"]=4;
+         $scope.bondexperience_answer["Medium-Experience-Stock"]=6;
+         $scope.bondexperience_answer["Medium-High-Experience-bond"]=8;
+         $scope.bondexperience_answer["High-Experience-bond"]=10;
+
 
         (function(angular) {
             $scope.data = {
@@ -167,11 +174,25 @@ angular.module('SashasApp').controller('questionaireController', function($scope
           }
           return experienceFill;
         }
+        $scope.getBondExperience = function() {
+          var experienceFill = 0;
+          var theForm = document.forms["form"];
+          var experience = theForm.elements["bondexperienceselected"];
+          for(var i = 0; i < experience.length; i++)
+          {
+              if(experience[i].checked)
+              {
+                  experienceFill = $scope.experience_answer[experience[i].value];
+                  break;
+              }
+          }
+          return experienceFill;
+        }
 
 
         $scope.calculateTotal = function() {
           $scope.disabled = true;
-            var riskLevel = ((($scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame() + $scope.getLiquidity() + $scope.getExperience() + getStockExperience()) / 7) * 10) * $scope.data.repeatSelect;
+            var riskLevel = ((($scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame() + $scope.getLiquidity() + $scope.getExperience() + getStockExperience() + getBondExperience()) / 8) * 10) * $scope.data.repeatSelect;
             var user = $localStorage.currentUser;
             user.suitabilityScore = riskLevel;
             user.badMatches = [];
