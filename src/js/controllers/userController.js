@@ -13,6 +13,35 @@ angular.module('SashasApp').controller('userController', function($scope, $state
   $scope.$watch($scope.currentUserBestMatchesCookie);
   $scope.chartData = $localStorage.chartData;
   $scope.disabled = undefined;
+  $scope.labels = $localStorage.goodBarData.labels
+  $scope.series = $localStorage.goodBarData.series
+  $scope.data = [$localStorage.goodBarData.data]
+
+  $scope.getBarInfo = function() {
+    $localStorage.goodBarData = {};
+    $localStorage.goodBarData.data = [];
+    $localStorage.goodBarData.labels = [];
+    $localStorage.goodBarData.series = ["Price"];
+    $localStorage.bestBarData = {};
+    $localStorage.bestBarData.data = [];
+    $localStorage.bestBarData.labels = [];
+    $localStorage.bestBarData.series = ["Price"];
+    console.log('running')
+    for (var i = 0; i < $localStorage.currentUser.bestMatches.length; i++) {
+      mainService.getMoreInformation($localStorage.currentUserBestMatches.bestMatches[i].symbol.toUpperCase()).then(function(response) {
+        $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
+        $localStorage.goodBarData.labels.push(response.data.query.results.quote.Symbol)
+      })
+    }
+    for (var i = 0; i < $localStorage.currentUser.goodMatches.length; i++) {
+      mainService.getMoreInformation($localStorage.currentUserGoodMatches.goodMatches[i].symbol.toUpperCase()).then(function(response) {
+        $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
+        $localStorage.goodBarData.labels.push(response.data.query.results.quote.Symbol);
+      })
+    }
+  }
+  $scope.getBarInfo();
+
 
 
 
@@ -40,25 +69,23 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       mainService.getMoreInformation(symbol).then(function(response) {
         mainService.specificData = response.data.query.results.quote;
         $localStorage.fundData = mainService.specificData;
-          $scope.data = [];
-          $scope.data[0] = [];
-          $scope.data[1] = [];
-          $scope.data[2] = [];
-          $scope.labels = [];
+          $scope.lineData = [];
+          $scope.lineData[0] = [];
+          $scope.lineData[1] = [];
+          $scope.lineData[2] = [];
+          $scope.lineLabels = [];
           var neededData = $scope.chartData.data.reverse();
           for (var i = 0; i < $scope.chartData.data.length; i++) {
-            $scope.labels.push(neededData[i].Date);
-            $scope.data[0].push(neededData[i].High)
-            $scope.data[1].push(neededData[i].Low)
-            $scope.data[2].push(neededData[i].Open)
+            $scope.lineLabels.push(neededData[i].Date);
+            $scope.lineData[0].push(neededData[i].High)
+            $scope.lineData[1].push(neededData[i].Low)
+            $scope.lineData[2].push(neededData[i].Open)
           }
-          $localStorage.data = $scope.data;
-          $localStorage.labels = $scope.labels;
+          $localStorage.data = $scope.lineData;
+          $localStorage.labels = $scope.lineLabels;
           neededData = null;
           fundService.searchFund(symbol).then(function(response) {
             $localStorage.fundData = response.data.list.resources[0].resource.fields;
-            console.log($localStorage.fundData)
-            console.log(response)
             $scope.disabled = false;
             $state.go('fundinfo')
         })
@@ -73,14 +100,20 @@ angular.module('SashasApp').controller('userController', function($scope, $state
 
   $scope.getCompatibleFunds = function() {
     var user = $localStorage.currentUser;
+    user.okayMatches = [];
+    user.bestMatches = [];
+    user.goodMatches = [];
+    user.badMatches = [];
+    user.okayMatchRatios = [];
+    user.bestMatchRatios = [];
+    user.goodMatchRatios = [];
+    user.badMatchRatios = [];
     fundService.getFund().then(function(response) {
       for (var i = 0; i < response.data.length; i++) {
-        console.log(response.data[i].riskCompatibility / user.suitabilityScore)
         if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.1 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .90) {
           if (!user.bestMatches.includes(response.data[i]._id)) {
             user.bestMatches.push(response.data[i]._id);
             user.bestMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            console.log('best match', user);
             mainService.updateUser(user);
             $localStorage.currentUser = user;
           }
@@ -88,7 +121,6 @@ angular.module('SashasApp').controller('userController', function($scope, $state
           if (!user.goodMatches.includes(response.data[i]._id)) {
             user.goodMatches.push(response.data[i]._id);
             user.goodMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            console.log('good match', user);
             mainService.updateUser(user);
             $localStorage.currentUser = user;
           }
@@ -96,7 +128,6 @@ angular.module('SashasApp').controller('userController', function($scope, $state
           if (!user.goodMatches.includes(response.data[i]._id)) {
             user.goodMatches.push(response.data[i]._id);
             user.goodMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            console.log('good match', user);
             mainService.updateUser(user);
             $localStorage.currentUser = user;
           }
@@ -104,7 +135,6 @@ angular.module('SashasApp').controller('userController', function($scope, $state
           if (!user.goodMatches.includes(response.data[i]._id)) {
             user.okayMatches.push(response.data[i]._id);
             user.okayMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            console.log('okay match', user);
             mainService.updateUser(user);
             $localStorage.currentUser = user;
           }
@@ -112,7 +142,6 @@ angular.module('SashasApp').controller('userController', function($scope, $state
           if (!user.okayMatches.includes(response.data[i]._id)) {
             user.okayMatches.push(response.data[i]._id);
             user.okayMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            console.log('okay match', user);
             mainService.updateUser(user);
             $localStorage.currentUser = user;
           }
@@ -120,7 +149,6 @@ angular.module('SashasApp').controller('userController', function($scope, $state
           if (!user.badMatches.includes(response.data[i]._id)) {
             user.badMatches.push(response.data[i]._id);
             user.badMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            console.log('bad match', user);
             mainService.updateUser(user);
             $localStorage.currentUser = user;
           }
@@ -128,7 +156,6 @@ angular.module('SashasApp').controller('userController', function($scope, $state
           if (!user.badMatches.includes(response.data[i]._id)) {
             user.badMatches.push(response.data[i]._id);
             user.badMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            console.log('bad match', user);
             mainService.updateUser(user);
             $localStorage.currentUser = user;
           }

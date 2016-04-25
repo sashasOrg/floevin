@@ -11,6 +11,8 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   // }
   // $scope.getSymbols();
 
+  
+
   $scope.searchFund = function(symbol) {
     fundService.searchFund(symbol).then(function(response) {
       $localStorage.fundData = response.data.list.resources[0].resource.fields;

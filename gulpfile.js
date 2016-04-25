@@ -16,7 +16,7 @@ watcher.on('change', function( event ) {
 gulp.task('compileLess', function(){
   return gulp.src('./src/css/**/*.less')
  	.pipe(less())
-    .pipe(gulp.dest('./public'));
+  .pipe(gulp.dest('./public'));
 });
 
 gulp.task('concatScripts', function() {
