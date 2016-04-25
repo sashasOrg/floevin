@@ -21,7 +21,7 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
     })
     .state('register', {
       url: '/register',
-      templateUrl: '/register.html',
+      templateUrl: '<register></register>',
       controller: 'registerController',
       access: {restricted: false}
     })
@@ -30,12 +30,6 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       templateUrl: '/portfolio.html',
       controller: 'userController',
       access: {restricted: true}
-    })
-    .state('stock', {
-      url: '/stock',
-      templateUrl: '/stock.html',
-      controller: 'mainController',
-      access: {restricted: false}
     })
     .state('fundtable',{
       url: '/fundtable',

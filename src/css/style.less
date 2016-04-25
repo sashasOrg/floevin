@@ -93,53 +93,77 @@ html {
 }
 
 .home-container {
-  height: 80vh;
+  height: 80px;
   width: 100%;
   position: relative;
+  margin-bottom: 50px;
 }
 
 .home-words {
   position: absolute;
   top: 20vh;
-  left 20vh;
+  left: 20vh;
   color: white;
+  text-shadow: 2px 2px 0px #000000;
 }
 
 .cover-image-container {
   height: 75vh;
   width: 100%;
 }
+.login-section{
+  border-radius: 10px;
+  height: 950px;
+  width: 350px;
+  background: rgb(255, 255, 255); /* The Fallback */
+  background: rgba(255, 255, 255, 0.3);
+
+}
 
 .login-module{
-  position: relative;
-  top: 8vh;
-  height:800px;
-  width: 70%;
-  background: #efefef;
-  padding-top: 5vh;
-  padding-left: 10vh;
-  padding-right: 10vh;
-  box-shadow: 0px 4px 10px gray, -10px 4px 10px gray, 10px 8px 10px gray;
-  margin: auto;
-}
-
-.login-container {
-  height: 50vh;
-  width: 380px;
-  background-color: #00a5d9;
-  border: solid gray 2px;
+  border-radius: 10px;
+  display:inline-block;
   position:relative;
-  left: 15%;
-  right: 68.5%;
-  top: 10vh;
-  opacity: .8;
-}
-
-login {
-  height: 100%;
-  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  height:300px;
+  width: 350px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: auto;
 }
+.login-module-two{
+  border-radius: 10px;
+  display:inline-block;
+  position:relative;
+  background: rgba(255, 255, 255, 0.3);
+  height:650px;
+  width: 350px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: auto;
+}
+
+
+//
+// .login-container {
+//   height: 50px;
+//   width: 250px;
+//   background: rgb(255, 255, 255); /* The Fallback */
+//    background: rgba(255, 255, 255, 0.3);
+//   border: solid gray 2px;
+//   position:relative;
+//   left: 15%;
+//   right: 68.5%;
+//   top: 10px;
+// }
+//
+// login {
+//   height: 100%;
+//   width: 100%;
+//   margin: auto;
+// }
 /*************
 
 image slideshow on home page
@@ -147,6 +171,7 @@ image slideshow on home page
 **************/
 
 #slideshow {
+  z-index: -1;
     margin:50px  auto;
     position: relative;
     width: 100%;
@@ -154,26 +179,27 @@ image slideshow on home page
 }
 
 #slideshow > div {
+
     position: absolute;
     top: -50px;
     left: 10px;
     right: 10px;
     bottom: 10px;
 }
+//
+// .register-here {
+//   display: inline-block;
+//   margin-top: 20px;
+// }
+// .page-header {
+//   width: 28px;
+// }
 
-.register-here {
-  display: inline-block;
-  margin-top: 20px;
-}
-.page-header {
-  width: 28vh;
-}
-
-.form {
-  height: 50vh;
-  width: 100%;
-  margin-bottom: auto;
-}
+// .form {
+//   height: 50vh;
+//   width: 30%;
+//   margin-bottom: auto;
+// }
 
 .search-box {
   width: 30vh;
@@ -181,18 +207,18 @@ image slideshow on home page
   margin-bottom: 3vh;
 }
 
-.page-header {
-  text-align: left;
-  padding: 0;
-  margin: 0;
-}
-
-.demo-area {
-  width: 40vh;
-  position: absolute;
-  top: 20vh;
-  right: 45vh;
-}
+// .page-header {
+//   text-align: left;
+//   padding: 0;
+//   margin: 0;
+// }
+//
+// .demo-area {
+//   width: 40vh;
+//   position: absolute;
+//   top: 20vh;
+//   right: 45vh;
+// }
 
 a, a:visited, a:active {
   color: #444;
@@ -391,11 +417,12 @@ Admin page
 *********************/
 
 
-
+//
 // .form-group {
 //   height: auto;
 //   width: 75%;
 //   position: relative;
+//   text-align: left;
 // }
 .form-control{
   height:auto;
