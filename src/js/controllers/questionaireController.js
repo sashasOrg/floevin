@@ -52,7 +52,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
          $scope.bondexperience_answer = [];
          $scope.bondexperience_answer["Low-Experience-bond"]=2;
          $scope.bondexperience_answer["Medium-Low-Experience-bond"]=4;
-         $scope.bondexperience_answer["Medium-Experience-Stock"]=6;
+         $scope.bondexperience_answer["Medium-Experience-bond"]=6;
          $scope.bondexperience_answer["Medium-High-Experience-bond"]=8;
          $scope.bondexperience_answer["High-Experience-bond"]=10;
 
@@ -65,7 +65,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
                {id: .80, name: 'Limited'},
                {id: .85, name: 'Some'},
                {id: .90, name: 'Good'},
-               {id: .95, name: 'Ed'},
+               {id: .95, name: 'Expert'},
                {id: 1, name: 'Professional'}
              ],
             };
