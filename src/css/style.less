@@ -49,20 +49,20 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
-
+//
 #nav-container {
-    height: 70px;
+    height: 65px;
     width: 100%;
     border-bottom: 1.2px solid gray;
     position: relative;
+    margin-right: 15px;
 }
 
 .logo-container {
-  display: inline-block;
-  height: 100%;
-  width: 5%;
+    display: inline-block;
+    float: left;
     color: #00a5d9;
-    font-size: 3em;
+    font-size: 2em;
     padding-left: 3vh;
     padding-top: 1vh;
 }
@@ -70,105 +70,78 @@ html {
 .desktop-navigation {
   float: right;
   height: 100%;
-  width: 92%;
   padding-top: 2vh;
+  color: #00a5d9;
+
 }
 
 .nav-items {
     display: inline-block;
-    margin: 2vh;
+    color: #00a5d9;
+    margin: 5px;
     font-size: 1.2em;
 }
 
-.nav-items a:link {
-  color: gray;
-}
 
-.nav-items a:hover {
-  color: #00a5d9;
-}
 
-.nav-items a:visited {
-  color: gray;
-}
-
-.home-container {
-  height: 80px;
-  width: 100%;
-  position: relative;
-  margin-bottom: 50px;
-}
-
-.home-words {
-  position: absolute;
-  top: 20vh;
-  left: 20vh;
-  color: white;
-  text-shadow: 2px 2px 0px #000000;
-}
-
-.cover-image-container {
-  height: 75vh;
-  width: 100%;
-}
+//
+// // .home-container {
+// //   height: 80px;
+// //   width: 100%;
+// //   position: relative;
+// //   margin-bottom: 50px;
+// // }
+// //
+// // .home-words {
+// //   position: absolute;
+// //   top: 20vh;
+// //   left: 20vh;
+// //   color: white;
+// //   text-shadow: 2px 2px 0px #000000;
+// // }
+//
+// // .cover-image-container {
+// //   height: 75vh;
+// //   width: 100%;
+// //  }
 .login-section{
   border-radius: 10px;
-  height: 950px;
-  width: 350px;
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 10px;
+  height: 650px;
+  width: 50%;
+  margin-left: 25%;
   background: rgb(255, 255, 255); /* The Fallback */
-  background: rgba(255, 255, 255, 0.3);
-
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .login-module{
-  border-radius: 10px;
-  display:inline-block;
-  position:relative;
-  background: rgba(255, 255, 255, 0.3);
-  height:300px;
-  width: 350px;
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: auto;
-}
-.login-module-two{
-  border-radius: 10px;
-  display:inline-block;
-  position:relative;
-  background: rgba(255, 255, 255, 0.3);
+  display:inline-flex;
+  background: rgba(255, 255, 255, 0.0);
+  align-items: center;
+
+  text-align: center;
   height:650px;
-  width: 350px;
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin: auto;
+  width: 50%;
+  margin: 0 auto;
+}
+ .login-module-two{
+display:inline-flex;
+align-items: center;
+text-align: center;
+
+background: rgba(255, 255, 255, 0.0);
+height:650px;
+width: 50%;
+margin: 0 auto;
 }
 
-
+// /*************
 //
-// .login-container {
-//   height: 50px;
-//   width: 250px;
-//   background: rgb(255, 255, 255); /* The Fallback */
-//    background: rgba(255, 255, 255, 0.3);
-//   border: solid gray 2px;
-//   position:relative;
-//   left: 15%;
-//   right: 68.5%;
-//   top: 10px;
-// }
+// image slideshow on home page
 //
-// login {
-//   height: 100%;
-//   width: 100%;
-//   margin: auto;
-// }
-/*************
-
-image slideshow on home page
-
-**************/
+// **************/
 
 #slideshow {
   z-index: -1;
@@ -181,67 +154,15 @@ image slideshow on home page
 #slideshow > div {
 
     position: absolute;
+    width: 100%;
     top: -50px;
     left: 10px;
     right: 10px;
     bottom: 10px;
 }
-//
-// .register-here {
-//   display: inline-block;
-//   margin-top: 20px;
-// }
-// .page-header {
-//   width: 28px;
-// }
 
-// .form {
-//   height: 50vh;
-//   width: 30%;
-//   margin-bottom: auto;
-// }
 
-.search-box {
-  width: 30vh;
-  margin: auto;
-  margin-bottom: 3vh;
-}
 
-// .page-header {
-//   text-align: left;
-//   padding: 0;
-//   margin: 0;
-// }
-//
-// .demo-area {
-//   width: 40vh;
-//   position: absolute;
-//   top: 20vh;
-//   right: 45vh;
-// }
-
-a, a:visited, a:active {
-  color: #444;
-}
-
-.button {
-  min-width: 130px;
-  padding: 4px 5px;
-  cursor: pointer;
-  text-align: center;
-  font-size: 13px;
-  border: 1px solid #e0e0e0;
-  text-decoration: none;
-}
-
-.button.active {
-  background: #000;
-  color: #fff;
-}
-
-section {
-  background: @backGray;
-}
 
 .page-module {
   position: relative;
@@ -256,229 +177,273 @@ section {
 }
 
 .form-module {
+  border-radius: 10px;
   position: relative;
   top: 8vh;
-  height:2500px;
-  width: 70%;
+  height:850px;;
+  width: 65%;
   background: #efefef;
   padding-top: 5vh;
   padding-left: 10vh;
   padding-right: 10vh;
   box-shadow: 0px 4px 10px gray, -10px 4px 10px gray, 10px 8px 10px gray;
+  background: rgba(255, 255, 255, 0.7);
+
   margin: auto;
 }
+/******************
+Questionaire page
 
-// .filler-foto {
-//   height: 500px;
-//   width: 80%;
-//   background-image: url('/images/globe.jpg');
-//   margin: auto;
-// }
-
-.user-info {
-  position: absolute;
-  top: 5vh;
-  right: 5vh;
-  font-size: 2em;
-  height: 3em;
-  width: 25%;
-  padding: 1em;
-  border: solid gray 2px;
-}
-
-user-info p {
-   color: @brightBlue;
-}
-
-.container {
-  position: relative;
-}
-
-.existing-user {
-  position: relative;
-  right: 49%;
-  top: 65vh;
-}
-
-.fund-list {
-  height: 100vh;
+******************/
+.wrap {
   width: 100%;
-  overflow: auto;
-  margin-top: 10vh;
-  padding-left: 5%;
-}
+  height: 700px;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: "Oswald";
+  justify-content:flex-start;
 
-.fund-bubble-container {
-  position: relative;
-  left: 5vh;
-}
 
-#vis {
-  width: 940px;
-  height: 600px;
-  clear: both;
-  margin-bottom: 10px;
 }
+.q-column-a {
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 50px;
 
-#toolbar {
-  margin-top: 10px;
 }
+.q-column-b{
+padding-left: 75px;
+display: inline-flex;
+align-items: flex-start;
+flex-direction: column;
 
-.year {
-  font-size: 21px;
-  fill: #aaa;
-  cursor: default;
+
 }
+.q-column-c{
+padding-left: 75px;
+display: inline-flex;
+align-items: flex-start;
+flex-direction: column;
 
-.tooltip {
-  position: absolute;
-  top: 100px;
-  left: 100px;
-  -moz-border-radius:5px;
-  border-radius: 5px;
-  border: 2px solid #000;
-  background: #fff;
-  opacity: .9;
-  color: black;
-  padding: 10px;
-  width: 300px;
-  font-size: 12px;
-  z-index: 10;
 }
-
-.tooltip .title {
-  font-size: 13px;
-}
-
-.tooltip .name {
-  font-weight:bold;
-}
-
-.footer {
+.q-submit{
   text-align: center;
 }
 
-a:link {
-  color: #000;
-  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
-  text-decoration: none;
-  font-family: 'Open Sans', 'Merriweather', sans-serif;
-}
-a:visited {
-  color: #000;
-  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
-  text-decoration: none;
-  font-family: 'Open Sans', 'Merriweather', sans-serif;
-}
 
-.shape{
-    display:inline-block;
-    width:@defaultShapesWidth;
-    height:200px;
-    background:@defaultThemeColor;
-    margin:20px;
-    border:@borderSize solid @borderColor;
-}
-
-#shape1{ .Round }
-#shape2{ .RoundedSquare }
-#shape3{ .RoundedSquare(60px) }
-
-.my-mutual-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-.my-mutual {
-  width: 50%;
-  height: 60vh;
-  min-height: 350px;
-  border: solid black 3px;
-  border-radius: 20px;
-  padding: 10px;
-  overflow-y: auto;
-  text-align: center;
-}
-.port-divs {
-  display: flex;
-  justify-content: space-around;
-}
-.port-div {
-  width: 75%;
-  height: 65vh;
-  min-height: 350px;
-  border: solid black 3px;
-  border-radius: 20px;
-  overflow-y: auto;
-  text-align: center;
-}
-/*********************
-Admin page
-*********************/
-
-
+// // .filler-foto {
+// //   height: 500px;
+// //   width: 80%;
+// //   background-image: url('/images/globe.jpg');
+// //   margin: auto;
+// // }
 //
-// .form-group {
-//   height: auto;
+// .user-info {
+//   position: absolute;
+//   top: 5vh;
+//   right: 5vh;
+//   font-size: 2em;
+//   height: 3em;
+//   width: 25%;
+//   padding: 1em;
+//   border: solid gray 2px;
+// }
+//
+// user-info p {
+//    color: @brightBlue;
+// }
+//
+// .container {
+//   position: relative;
+// }
+//
+// .existing-user {
+//   position: relative;
+//   right: 49%;
+//   top: 65vh;
+// }
+//
+// .fund-list {
+//   height: 100vh;
+//   width: 100%;
+//   overflow: auto;
+//   margin-top: 10vh;
+//   padding-left: 5%;
+// }
+//
+// .fund-bubble-container {
+//   position: relative;
+//   left: 5vh;
+// }
+//
+// #vis {
+//   width: 940px;
+//   height: 600px;
+//   clear: both;
+//   margin-bottom: 10px;
+// }
+//
+// #toolbar {
+//   margin-top: 10px;
+// }
+//
+// .year {
+//   font-size: 21px;
+//   fill: #aaa;
+//   cursor: default;
+// }
+//
+// .tooltip {
+//   position: absolute;
+//   top: 100px;
+//   left: 100px;
+//   -moz-border-radius:5px;
+//   border-radius: 5px;
+//   border: 2px solid #000;
+//   background: #fff;
+//   opacity: .9;
+//   color: black;
+//   padding: 10px;
+//   width: 300px;
+//   font-size: 12px;
+//   z-index: 10;
+// }
+//
+// .tooltip .title {
+//   font-size: 13px;
+// }
+//
+// .tooltip .name {
+//   font-weight:bold;
+// }
+//
+// .footer {
+//   text-align: center;
+// }
+//
+// a:link {
+//   color: #000;
+//   text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+//   text-decoration: none;
+//   font-family: 'Open Sans', 'Merriweather', sans-serif;
+// }
+// a:visited {
+//   color: #000;
+//   text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+//   text-decoration: none;
+//   font-family: 'Open Sans', 'Merriweather', sans-serif;
+// }
+//
+// .shape{
+//     display:inline-block;
+//     width:@defaultShapesWidth;
+//     height:200px;
+//     background:@defaultThemeColor;
+//     margin:20px;
+//     border:@borderSize solid @borderColor;
+// }
+//
+// #shape1{ .Round }
+// #shape2{ .RoundedSquare }
+// #shape3{ .RoundedSquare(60px) }
+//
+// .my-mutual-container {
+//   margin-top: 20px;
+//   display: flex;
+//   justify-content: center;
+// }
+// .my-mutual {
+//   width: 50%;
+//   height: 60vh;
+//   min-height: 350px;
+//   border: solid black 3px;
+//   border-radius: 20px;
+//   padding: 10px;
+//   overflow-y: auto;
+//   text-align: center;
+// }
+// .port-divs {
+//   display: flex;
+//   justify-content: space-around;
+// }
+// .port-div {
 //   width: 75%;
-//   position: relative;
+//   height: 65vh;
+//   min-height: 350px;
+//   border: solid black 3px;
+//   border-radius: 20px;
+//   overflow-y: auto;
+//   text-align: center;
+// }
+// /*********************
+// Admin page
+// *********************/
+//
+//
+// //
+// // .form-group {
+// //   height: auto;
+// //   width: 75%;
+// //   position: relative;
+// //   text-align: left;
+// // }
+// .form-control{
+//   height:auto;
+//   width: 75%;
 //   text-align: left;
+//   color: black;
 // }
-.form-control{
-  height:auto;
-  width: 75%;
-  text-align: left;
-  color: black;
-}
-
-// .admin-page{
-//   background-image: url('https://images.unsplash.com/photo-1455617495052-b962cadcd5e5?crop=entropy&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1900');
-//   background-size:auto;
+//
+// // .admin-page{
+// //   background-image: url('https://images.unsplash.com/photo-1455617495052-b962cadcd5e5?crop=entropy&fit=crop&fm=jpg&h=950&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1900');
+// //   background-size:auto;
+// //   position: relative;
+// // }
+//
+//
+//
+// /**********************
+//         CLOCK
+// ***********************/
+//
+// #clock {
 //   position: relative;
+//   width: 378px;
+//   height: 378px;
+//   left: 50%;
 // }
-
-
-
-/**********************
-        CLOCK
-***********************/
-
-#clock {
-  position: relative;
-  width: 378px;
-  height: 378px;
-  left: 50%;
-}
-#clock div {
-  position: absolute;
-}
-#clock img[src*="second"] {
-  transition: transform 600000s linear 0s;
-}
-#clock:target img[src*="second"] {
-  transform: rotate(3600000deg);
-}
-#clock img[src*="minute"] {
-  transition: transform 360000s linear 0s;
-}
-#clock:target img[src*="minute"] {
-  transform: rotate(36000deg);
-}
-#clock img[src*="hour"] {
-  transition: transform 216000s linear 0s;
-}
-#clock:target img[src*="hour"] {
-  transform: rotate(360deg);
-}
-
-/*************************
-		ORGANIZATION:
-Separate files for:
-CSS Reset or normalization,
-Colors,
-Fonts and typography,
-UI Elements,
-The main styles of the page,
-...and any other relevant group of rules depending on your project.
-
-**************************/
+// #clock div {
+//   position: absolute;
+// }
+// #clock img[src*="second"] {
+//   transition: transform 600000s linear 0s;
+// }
+// #clock:target img[src*="second"] {
+//   transform: rotate(3600000deg);
+// }
+// #clock img[src*="minute"] {
+//   transition: transform 360000s linear 0s;
+// }
+// #clock:target img[src*="minute"] {
+//   transform: rotate(36000deg);
+// }
+// #clock img[src*="hour"] {
+//   transition: transform 216000s linear 0s;
+// }
+// #clock:target img[src*="hour"] {
+//   transform: rotate(360deg);
+// }
+//
+// /*************************
+// 		ORGANIZATION:
+// Separate files for:
+// CSS Reset or normalization,
+// Colors,
+// Fonts and typography,
+// UI Elements,
+// The main styles of the page,
+// ...and any other relevant group of rules depending on your project.
+//
+// **************************/

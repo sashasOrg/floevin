@@ -31,84 +31,86 @@
 
   <div class="form-module">
   <div onload="hideTotal()">
-    <div id="wrap">
+    <div class="wrap">
         <form action="" id="form" ng-submit="calculateTotal()">
-        <div>
-          <h1 class="page-header">Suitability Form</h1>
+
+          <h3 class="page-header">Suitability Form</h3>
             <div id="totalRisk"></div>
               <div>{{data.repeatSelect}}</div>
-                <div>
+                <div class="width: 20px">
                   <label for="repeatSelect">Experience: </label>
-                  <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
+                  <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect" >
                     <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
                   </select>
-                  <br />
+                </div>
+                <hr/>
+                  <div class="q-column-a">
+                  <label >Age</label>
+                  <p><input type="radio" name="ageselected" value="30"  /> 18-30</p>
+                  <p><input type="radio" name="ageselected" value="3040"  /> 30-40</p>
+                  <p><input type="radio" name="ageselected" value="4050"  /> 40-50</p>
+                  <p><input type="radio" name="ageselected" value="5065"  /> 50-65</p>
+                  <p><input type="radio" name="ageselected" value="65"  /> 65 +</p>
 
-                  <label >Age</label><br />
-                  <input type="radio" name="ageselected" value="30"  />Under 30<br />
-                  <input type="radio" name="ageselected" value="3040"  />30-40<br />
-                  <input type="radio" name="ageselected" value="4050"  />40-50<br />
-                  <input type="radio" name="ageselected" value="5065"  />50-65<br />
-                  <input type="radio" name="ageselected" value="65"  />65+<br />
+                  <label >Investment Objectives</label>
+                  <p><input type="radio" name="objectiveselected" value="Spec"  /> Speculation</p>
+                  <p><input type="radio" name="objectiveselected" value="Growth"  /> Growth</p>
+                  <p><input type="radio" name="objectiveselected" value="Income"  /> Income</p>
+                  <p><input type="radio" name="objectiveselected" value="Tax"  /> Tax Advantages</p>
+                  <p><input type="radio" name="objectiveselected" value="Safety"  /> Safety of Principal</p>
+                </div>
+                  <div class="q-column-b">
+                  <label>Annual Income</label>
+                  <p><input type="radio" name="incomeselected" value="I50"  /> $0-50k</p>
+                  <p><input type="radio" name="incomeselected" value="I50100" /> $50-100k</p>
+                  <p><input type="radio" name="incomeselected" value="I100250" /> $100-250k</p>
+                  <p><input type="radio" name="incomeselected" value="I250500" /> $250-500k</p>
+                  <p><input type="radio" name="incomeselected" value="I500" /> $500 +</p>
 
-                  <hr>
-                  <label >Investment Objectives</label><br />
-                  <input type="radio" name="objectiveselected" value="Spec"  />Speculation<br />
-                  <input type="radio" name="objectiveselected" value="Growth"  />Growth<br />
-                  <input type="radio" name="objectiveselected" value="Income"  />Income<br />
-                  <input type="radio" name="objectiveselected" value="Tax"  />Tax Advantages<br />
-                  <input type="radio" name="objectiveselected" value="Safety"  />Safety of Principal<br />
 
-                  <hr>
-                  <label>Annual Income</label><br />
-                  <input type="radio" name="incomeselected" value="I50"  />$0-50k<br />
-                  <input type="radio" name="incomeselected" value="I50100" />$50-100k<br />
-                  <input type="radio" name="incomeselected" value="I100250" />$100-250k<br />
-                  <input type="radio" name="incomeselected" value="I250500" />$250-500k<br />
-                  <input type="radio" name="incomeselected" value="I500" />$500 +<br />
+                  <label>Time Frame</label>
+                  <p><input type="radio" name="timeframeselected" value="6mo1yr"  /> 6 mo to 1 year</p>
+                  <p><input type="radio" name="timeframeselected" value="1to3yr" /> 1 to 3 years</p>
+                  <p><input type="radio" name="timeframeselected" value="3to5yr" /> 3 to 5 years</p>
+                  <p><input type="radio" name="timeframeselected" value="5to7yr" /> 5 to 7 years</p>
+                  <p><input type="radio" name="timeframeselected" value="7+" /> 7 +</p>
 
-                  <hr />
-                  <label>Time Frame</label><br />
-                  <input type="radio" name="timeframeselected" value="6mo1yr"  />6 mo to 1 year<br />
-                  <input type="radio" name="timeframeselected" value="1to3yr" />1 to 3 years<br />
-                  <input type="radio" name="timeframeselected" value="3to5yr" />3 to 5 years<br />
-                  <input type="radio" name="timeframeselected" value="5to7yr" />5 to 7 years<br />
-                  <input type="radio" name="timeframeselected" value="7+" />7 +<br />
-
-                  <hr />
-                  <label>Liquidity Needs</label><br />
-                  <input type="radio" name="liquidityselected" value="Low"  />Does Not Matter<br />
-                  <input type="radio" name="liquidityselected" value="Medium-Low" />Matters Little<br />
-                  <input type="radio" name="liquidityselected" value="Medium" />Somewhat Important<br />
-                  <input type="radio" name="liquidityselected" value="Medium-High" />Important<br />
-                  <input type="radio" name="liquidityselected" value="High" />Greatly Important<br />
-
-                  <hr />
-                  <label>Mutual Fund Investment Experience</label><br />
-                  <input type="radio" name="experienceselected" value="Low-Experience"  />0-1 Years<br />
-                  <input type="radio" name="experienceselected" value="Medium-Low-Experience" />1-3 Years<br />
-                  <input type="radio" name="experienceselected" value="Medium-Experience" />3-5 Years<br />
-                  <input type="radio" name="experienceselected" value="Medium-High-Experience" />5-7 Years<br />
-                  <input type="radio" name="experienceselected" value="High-Experience" />7+ Years<br />
-
-                  <hr />
-                  <label>Stocks Investment Experience</label><br />
-                  <input type="radio" name="stockexperienceselected" value="Low-Experience-Stock"  />0-1 Years<br />
-                  <input type="radio" name="stockexperienceselected" value="Medium-Low-Experience-Stock" />1-3 Years<br />
-                  <input type="radio" name="stockexperienceselected" value="Medium-Experience-Stock" />3-5 Years<br />
-                  <input type="radio" name="stockexperienceselected" value="Medium-High-Experience-Stock" />5-7 Years<br />
-                  <input type="radio" name="stockexperienceselected" value="High-Experience-Stock" />7+ Years<br />
-
-                  <hr />
-                  <label>Bonds Investment Experience</label><br />
-                  <input type="radio" name="bondexperienceselected" value="Low-Experience-bond"  />0-1 Years<br />
-                  <input type="radio" name="bondexperienceselected" value="Medium-Low-Experience-bond" />1-3 Years<br />
-                  <input type="radio" name="bondexperienceselected" value="Medium-Experience-bond" />3-5 Years<br />
-                  <input type="radio" name="bondexperienceselected" value="Medium-High-Experience-bond" />5-7 Years<br />
-                  <input type="radio" name="bondexperienceselected" value="High-Experience-bond" />7+ Years<br />
+                  <label>Liquidity Needs</label>
+                  <p><input type="radio" name="liquidityselected" value="Low"  /> Does Not Matter</p>
+                  <p><input type="radio" name="liquidityselected" value="Medium-Low" /> Matters Little</p>
+                  <p><input type="radio" name="liquidityselected" value="Medium" /> Somewhat Important</p>
+                  <p><input type="radio" name="liquidityselected" value="Medium-High" /> Important</p>
+                  <p><input type="radio" name="liquidityselected" value="High" /> Very Important</p>
 
                 </div>
+
+                  <div class="q-column-c">
+
+                  <label>Mutual Fund Investment Experience</label>
+                  <p><input type="radio" name="experienceselected" value="Low-Experience"  />0-1 Years</p>
+                  <p><input type="radio" name="experienceselected" value="Medium-Low-Experience" />1-3 Years</p>
+                  <p><input type="radio" name="experienceselected" value="Medium-Experience" />3-5 Years</p>
+                  <p><input type="radio" name="experienceselected" value="Medium-High-Experience" />5-7 Years</p>
+                  <p><input type="radio" name="experienceselected" value="High-Experience" />7+ Years</p>
+
+                  <label>Stocks Investment Experience</label>
+                  <p><input type="radio" name="stockexperienceselected" value="Low-Experience-Stock"  />0-1 Years</p>
+                  <p><input type="radio" name="stockexperienceselected" value="Medium-Low-Experience-Stock" />1-3 Years</p>
+                  <p><input type="radio" name="stockexperienceselected" value="Medium-Experience-Stock" />3-5 Years</p>
+                  <p><input type="radio" name="stockexperienceselected" value="Medium-High-Experience-Stock" /> 5-7 Years</p>
+                  <p><input type="radio" name="stockexperienceselected" value="High-Experience-Stock" /> 7+ Years</p>
+
+                  <label>Bonds Investment Experience</label>
+                  <p><input type="radio" name="bondexperienceselected" value="Low-Experience-bond"  />  0-1 Years</p>
+                  <p><input type="radio" name="bondexperienceselected" value="Medium-Low-Experience-bond" /> 1-3 Years</p>
+                  <p><input type="radio" name="bondexperienceselected" value="Medium-Experience-bond" /> 3-5 Years</p>
+                  <p><input type="radio" name="bondexperienceselected" value="Medium-High-Experience-bond" /> 5-7 Years</p>
+                  <p><input type="radio" name="bondexperienceselected" value="High-Experience-bond" /> 7+ Years</p>
+                  <hr />
+                </div>
+                <div class="q-submit">
               <button type="submit" id="submit" class="btn btn-success" value="Find">Submit</button>
+            </div>
           </div>
        </form>
     </div>
