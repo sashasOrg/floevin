@@ -168,7 +168,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
           {
               if(experience[i].checked)
               {
-                  experienceFill = $scope.experience_answer[experience[i].value];
+                  experienceFill = $scope.stockexperience_answer[experience[i].value];
                   break;
               }
           }
@@ -182,7 +182,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
           {
               if(experience[i].checked)
               {
-                  experienceFill = $scope.experience_answer[experience[i].value];
+                  experienceFill = $scope.bondexperience_answer[experience[i].value];
                   break;
               }
           }
@@ -192,7 +192,7 @@ angular.module('SashasApp').controller('questionaireController', function($scope
 
         $scope.calculateTotal = function() {
           $scope.disabled = true;
-            var riskLevel = ((($scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame() + $scope.getLiquidity() + $scope.getExperience() + getStockExperience() + getBondExperience()) / 8) * 10) * $scope.data.repeatSelect;
+            var riskLevel = ((($scope.getAge() + $scope.getObjective() + $scope.getIncome() + $scope.getTimeFrame() + $scope.getLiquidity() + $scope.getExperience() + $scope.getStockExperience() + $scope.getBondExperience()) / 8) * 10) * $scope.data.repeatSelect;
             var user = $localStorage.currentUser;
             user.suitabilityScore = riskLevel;
             user.badMatches = [];
