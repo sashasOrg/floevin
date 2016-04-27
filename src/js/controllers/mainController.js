@@ -5,11 +5,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
 
 
 
-  // $scope.getSymbols = function() {
-  //   mainService.getSymbols()
-  //   console.log($scope.data)
-  // }
-  // $scope.getSymbols();
+
 
 
 
@@ -43,7 +39,6 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
     $localStorage.bestBarData.data = [];
     $localStorage.bestBarData.labels = [];
     $localStorage.bestBarData.series = ["Price"];
-    console.log('running')
     for (var i = 0; i < $localStorage.currentUser.bestMatches.length; i++) {
       mainService.getMoreInformation($localStorage.currentUserBestMatches.bestMatches[i].symbol.toUpperCase()).then(function(response) {
         $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
@@ -61,17 +56,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   if ($localStorage.currentUser) {
      $scope.getBarInfo();
    }
-  // $scope.getChartInfo = function() {
-  //   mainService.chartData = {};
-  //   mainService.getChartInfo('AAPL').then(function(response) {
-  //     console.log(response);
-  //     for (var i = 0; i < response.data.query.results.quote.length; i++) {
-  //       var dateArray =
-  //       console.log(response.data.query.results.quote[i].Date.split('-'));
-  //     }
-  //   })
-  // }
-  // $scope.getChartInfo();
+
 /**********************
 image slideshow
 **********************/

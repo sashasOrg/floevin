@@ -16,7 +16,6 @@ $scope.labels = $localStorage.labels;
 $scope.$watch($scope.labels);
 $scope.series = ['High', 'Low', 'Open'];
 $scope.onClick = function (points, evt) {
-    console.log(points, evt);
 };
 
 $scope.getChartInfo = function(symbol) {
@@ -58,8 +57,7 @@ $scope.getChartInfo = function(symbol) {
         neededData = null;
         fundService.searchFund(symbol).then(function(response) {
           $localStorage.fundData = response.data.list.resources[0].resource.fields;
-          console.log($localStorage.fundData)
-          console.log(response)
+        
           $scope.disabled = false;
           $state.go('fundinfo')
       })

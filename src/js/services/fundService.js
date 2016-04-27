@@ -11,7 +11,6 @@ angular.module('SashasApp').service('fundService', function($http, $q, $cookies)
   }
 
   this.newFund = function(obj){
-    console.log(obj);
       $http.post('/fund', obj);
     };
 

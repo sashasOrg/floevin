@@ -44,34 +44,32 @@ angular.module('SashasApp').controller('userController', function($scope, $state
   }
 
   $scope.changeShareNumber = function(name, number) {
-    if (number) {
-      for (var i = 0; i < $localStorage.currentUserPortfolio.portfolioNumber.length; i++) {
-        console.log('Yes')
-        if ($localStorage.currentUserPortfolio.portfolioNumber.length === 1) {
-          var user = $localStorage.currentUserPortfolio;
-          user.portfolioNumber[0].number = number;
-          mainService.updateUser(user)
-          mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
-            $localStorage.currentUserPortfolio = response.data;
-            $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-            // $scope.calculatePortfolioPrice();
-          });
-        }
-        if (name.toUpperCase() === $localStorage.currentUserPortfolio.portfolioNumber[i].name.toUpperCase() && $localStorage.currentUserPortfolio.portfolioNumber.length > 1) {
-          console.log('found')
-          var user = $localStorage.currentUserPortfolio;
-          user.portfolioNumber[i].number = number;
-          number = '';
-          mainService.updateUser(user)
-          mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
-            $localStorage.currentUserPortfolio = response.data;
-            $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-            // $scope.calculatePortfolioPrice();
-          });
-        }
-      }
-    }
-  }
+     if (number) {
+       for (var i = 0; i < $localStorage.currentUserPortfolio.portfolioNumber.length; i++) {
+         if ($localStorage.currentUserPortfolio.portfolioNumber.length === 1) {
+           var user = $localStorage.currentUserPortfolio;
+           user.portfolioNumber[0].number = number;
+           mainService.updateUser(user)
+           mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+             $localStorage.currentUserPortfolio = response.data;
+             $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+             // $scope.calculatePortfolioPrice();
+           });
+         }
+         if (name.toUpperCase() === $localStorage.currentUserPortfolio.portfolioNumber[i].name.toUpperCase() && $localStorage.currentUserPortfolio.portfolioNumber.length > 1) {
+           var user = $localStorage.currentUserPortfolio;
+           user.portfolioNumber[i].number = number;
+           number = '';
+           mainService.updateUser(user)
+           mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+             $localStorage.currentUserPortfolio = response.data;
+             $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+             // $scope.calculatePortfolioPrice();
+           });
+         }
+       }
+     }
+   }
 
   // $scope.calculatePortfolioPrice = function() {
   //   if (!$scope.calcRunning) {

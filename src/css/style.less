@@ -51,16 +51,19 @@ html {
 }
 //
 #nav-container {
+    z-index: 1;
     height: 65px;
     width: 100%;
+    background-color: #fff;
     border-bottom: 1.2px solid gray;
-    position: relative;
+    position: fixed;
     margin-right: 15px;
 }
 
 .logo-container {
     display: inline-block;
     float: left;
+    background-color: #fff;
     color: #00a5d9;
     font-size: 2em;
     padding-left: 3vh;
@@ -69,6 +72,7 @@ html {
 
 .desktop-navigation {
   float: right;
+  background-color: #fff;
   height: 100%;
   padding-top: 2vh;
   color: #00a5d9;
@@ -77,91 +81,66 @@ html {
 
 .nav-items {
     display: inline-block;
+    background-color: #fff;
     color: #00a5d9;
     margin: 5px;
     font-size: 1.2em;
 }
 
+.homepage-pic{
+  background-image: url("./images/3.jpeg");
+  height:900px;
+
+}
+a:link {
+  color: #000;
+  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+  text-decoration: none;
+  font-family: 'Open Sans', 'Merriweather', sans-serif;
+}
+a:visited {
+  color: #000;
+  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+  text-decoration: none;
+  font-family: 'Open Sans', 'Merriweather', sans-serif;
+}
+
+/******************
+Home page
+
+******************/
 
 
-//
-// // .home-container {
-// //   height: 80px;
-// //   width: 100%;
-// //   position: relative;
-// //   margin-bottom: 50px;
-// // }
-// //
-// // .home-words {
-// //   position: absolute;
-// //   top: 20vh;
-// //   left: 20vh;
-// //   color: white;
-// //   text-shadow: 2px 2px 0px #000000;
-// // }
-//
-// // .cover-image-container {
-// //   height: 75vh;
-// //   width: 100%;
-// //  }
 .login-section{
   border-radius: 10px;
   display: inline-flex;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 10px;
   height: 650px;
   width: 50%;
-  margin-left: 25%;
+  margin-top: 200px;
+  margin-left: 10%;
   background: rgb(255, 255, 255); /* The Fallback */
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.0);
 }
 
 .login-module{
   display:inline-flex;
   background: rgba(255, 255, 255, 0.0);
-  align-items: center;
-
+  align-items: flex-start;
   text-align: center;
   height:650px;
-  width: 50%;
-  margin: 0 auto;
+  width: 40%;
 }
  .login-module-two{
 display:inline-flex;
-align-items: center;
+align-items: flex-start;
 text-align: center;
-
 background: rgba(255, 255, 255, 0.0);
 height:650px;
 width: 50%;
-margin: 0 auto;
+margin-left: 20px;
 }
-
-// /*************
-//
-// image slideshow on home page
-//
-// **************/
-
-#slideshow {
-  z-index: -1;
-    margin:50px  auto;
-    position: relative;
-    width: 100%;
-    height: auto;
-}
-
-#slideshow > div {
-
-    position: absolute;
-    width: 100%;
-    top: -50px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-}
-
-
 
 
 .page-module {
@@ -176,45 +155,53 @@ margin: 0 auto;
   margin: auto;
 }
 
+
+/******************
+Questionaire page
+
+******************/
+
+.q-pic{
+  background-image: url("./images/3.jpeg");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+.q-page-header{
+  text-align: center;
+}
 .form-module {
   border-radius: 10px;
   position: relative;
   top: 8vh;
-  height:850px;;
+  height: 850px;;
   width: 65%;
   background: #efefef;
   padding-top: 5vh;
   padding-left: 10vh;
   padding-right: 10vh;
-  box-shadow: 0px 4px 10px gray, -10px 4px 10px gray, 10px 8px 10px gray;
-  background: rgba(255, 255, 255, 0.7);
-
-  margin: auto;
-}
-/******************
-Questionaire page
-
-******************/
-.wrap {
-  width: 100%;
-  height: 700px;
+  // box-shadow: 0px 4px 10px gray, -10px 4px 10px gray, 10px 8px 10px gray;
+  background: rgba(255, 255, 255, 0.0);
+  margin-bottom: 30px;
+  margin-left:17.5%;
   display: inline-flex;
   align-items: flex-start;
   flex-direction: column;
   font-family: "Oswald";
   justify-content:flex-start;
-
-
 }
+
 .q-column-a {
   display: inline-flex;
   align-items: flex-start;
   flex-direction: column;
-  padding-left: 50px;
+  margin-left: 150px;
+
 
 }
 .q-column-b{
-padding-left: 75px;
+margin-left: 50px;
 display: inline-flex;
 align-items: flex-start;
 flex-direction: column;
@@ -222,29 +209,39 @@ flex-direction: column;
 
 }
 .q-column-c{
-padding-left: 75px;
+margin-left: 50px;
 display: inline-flex;
 align-items: flex-start;
 flex-direction: column;
 
 }
+
 .q-submit{
   text-align: center;
+  margin-bottom:50px;
 }
 
 
-a:link {
-  color: #000;
-  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
-  text-decoration: none;
-  font-family: 'Open Sans', 'Merriweather', sans-serif;
+
+/*************************
+Portfolio Page
+
+*************************/
+
+.port-pic{
+  background-image: url("./images/3.jpeg");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
 }
-a:visited {
-  color: #000;
-  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
-  text-decoration: none;
-  font-family: 'Open Sans', 'Merriweather', sans-serif;
+
+.fund-bubble-container{
+  margin-top:65px;
 }
+
+
+
 
 .shape{
     display:inline-block;
@@ -275,13 +272,13 @@ a:visited {
   text-align: center;
 }
 .my-mutual-recommendations {
-  width: 100%;
-  height: 80vh;
-  min-height: 350px;
+  width: 90%;
+  height: 350px;
   border: solid black 3px;
   border-radius: 20px;
   padding: 10px;
   overflow-y: auto;
+  margin: 0 auto;
   text-align: center;
 }
 .port-divs {
@@ -303,14 +300,41 @@ a:visited {
   justify-content: space-around;
 }
 .portfolio-container-recommendations {
-  width: 100%;
+  width: 90%;
   height: 75vh;
   min-height: 350px;
   border: solid black 3px;
   border-radius: 20px;
   overflow-y: auto;
+  margin: 0 auto;
+
   text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*********************
 Admin page
 *********************/
