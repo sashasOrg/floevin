@@ -16,12 +16,9 @@ angular.module('SashasApp').controller('userController', function($scope, $state
   $scope.labels = $localStorage.goodBarData.labels
   $scope.series = $localStorage.goodBarData.series
   $scope.data = [$localStorage.goodBarData.data]
-  $scope.finalPortfolioPrice = $localStorage.portfolioPrice
+  $localStorage.currentUser.portfolioPrice = 0;
+  $scope.calcRunning = false;
 
-  $scope.setUpRecommendations = function() {
-    $scope.getBarInfo();
-    $scope.calculatePortfolioPrice();
-  }
 
   $scope.getBarInfo = function() {
     $localStorage.goodBarData = {};
@@ -46,55 +43,76 @@ angular.module('SashasApp').controller('userController', function($scope, $state
     }
   }
 
-  $scope.changeShareNumber = function(id, number) {
+  $scope.changeShareNumber = function(name, number) {
     if (number) {
-      for (var i = 0; i < $localStorage.currentUser.portfolioNumber.length; i++) {
-        console.log(id)
-        if ($localStorage.currentUser.portfolioNumber.length === 1) {
-          var user = $localStorage.currentUser;
+      for (var i = 0; i < $localStorage.currentUserPortfolio.portfolioNumber.length; i++) {
+        console.log('Yes')
+        if ($localStorage.currentUserPortfolio.portfolioNumber.length === 1) {
+          var user = $localStorage.currentUserPortfolio;
           user.portfolioNumber[0].number = number;
           mainService.updateUser(user)
           mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
             $localStorage.currentUserPortfolio = response.data;
             $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-            $scope.calculatePortfolioPrice();
+            // $scope.calculatePortfolioPrice();
           });
         }
-        if (id === $localStorage.currentUser.portfolioNumber[i]._id) {
+        if (name.toUpperCase() === $localStorage.currentUserPortfolio.portfolioNumber[i].name.toUpperCase() && $localStorage.currentUserPortfolio.portfolioNumber.length > 1) {
           console.log('found')
-          var user = $localStorage.currentUser;
+          var user = $localStorage.currentUserPortfolio;
           user.portfolioNumber[i].number = number;
           number = '';
           mainService.updateUser(user)
           mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
             $localStorage.currentUserPortfolio = response.data;
             $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-            $scope.calculatePortfolioPrice();
+            // $scope.calculatePortfolioPrice();
           });
         }
       }
     }
   }
 
-  $scope.calculatePortfolioPrice = function() {
-    var user = $localStorage.currentUser;
-    user.portfolioPrice = 0;
-    for (var i = 0; i < $localStorage.currentUserPortfolio.portfolio.length; i++) {
-      var number = $localStorage.currentUserPortfolio.portfolioNumber[i].number;
-      mainService.getMutualInfo($localStorage.currentUserPortfolio.portfolio[i].symbol.toUpperCase()).then(function(response) {
-        var price = (parseInt(response.data.list.resources[0].resource.fields.price));
-        var multiply = price * number;
-        user.portfolioPrice = user.portfolioPrice + multiply;
-        mainService.updateUser(user)
-        $localStorage.currentUser = user;
-        mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
-          $localStorage.currentUserPortfolio = response.data;
-          $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-        })
-      })
-    };
-  }
-  $scope.calculatePortfolioPrice();
+  // $scope.calculatePortfolioPrice = function() {
+  //   if (!$scope.calcRunning) {
+  //     $scope.counter = 0;
+  //     $scope.calcRunning = true;
+  //     $localStorage.currentUserPortfolio.portfolioPrice = 0;
+  //     var user = $localStorage.currentUserPortfolio;
+  //     $scope.newNumber = [];
+  //     $scope.newPrice = [];
+  //     $scope.newMultiply = 0;
+  //     user.portfolioPrice = 0;
+  //     for (var i = 0; i < $localStorage.currentUserPortfolio.portfolioNumber.length; i++) {
+  //       $scope.newNumber.push($localStorage.currentUserPortfolio.portfolioNumber[i].number);
+  //       console.log('num', $scope.newNumber)
+  //       console.log($localStorage.currentUserPortfolio.portfolioNumber)
+  //       if ($scope.newNumber.length === $localStorage.currentUserPortfolio.portfolioNumber.length) {
+  //         for (var z = 0; z < $localStorage.currentUserPortfolio.portfolioNumber.length; z++) {
+  //           mainService.getMutualInfo($localStorage.currentUserPortfolio.portfolio[z].symbol.toUpperCase()).then(function(response) {
+  //             $scope.newPrice.push(parseInt(response.data.list.resources[0].resource.fields.price));
+  //             if ($scope.newPrice.length === $localStorage.currentUserPortfolio.portfolioNumber.length) {
+  //               console.log($scope.newPrice)
+  //               for (var x = 0; x < $scope.newPrice.length; x++) {
+  //                 $scope.newMultiply = $scope.newPrice[x] * $scope.newNumber[x];
+  //                 user.portfolioPrice += $scope.newMultiply;
+  //                 console.log(user.portfolioPrice)
+  //                 $localStorage.currentUserPortfolio = user;
+  //                 mainService.updateUser(user)
+  //                 mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+  //                   $localStorage.currentUserPortfolio = response.data;
+  //                   $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+  //                   $scope.calcRunning = false;
+  //                 });
+  //               }
+  //             }
+  //           })
+  //         }
+  //       }
+  //     };
+  //   }
+  // }
+  // $scope.calculatePortfolioPrice();
 
 
 
@@ -306,7 +324,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       }
     }
   };
-  $scope.addRecommendedToPortfolio = function(id, number) {
+  $scope.addRecommendedToPortfolio = function(id, name, number) {
     if (number) {
       var user = $localStorage.currentUser
       for (var i = 0; i < user.portfolio.length; i++) {
@@ -315,7 +333,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
         }
       }
       user.portfolio.push(id)
-      user.portfolioNumber.push({number: number})
+      user.portfolioNumber.push({number: number, name: name})
       number = '';
       $localStorage.currentUser = user;
       $scope.currentUserCookie = $localStorage.currentUser;

@@ -11,12 +11,7 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
   // }
   // $scope.getSymbols();
 
-  $scope.getStuffPlz = function() {
-    mainService.getMutualInfo('Firex').then(function(response) {
-      console.log(response)
-    })
-  }
-  $scope.getStuffPlz();
+
 
   $scope.searchFund = function(symbol) {
     fundService.searchFund(symbol).then(function(response) {

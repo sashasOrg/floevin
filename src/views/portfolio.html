@@ -51,13 +51,12 @@
 
 
   <div class="port-divs">
-    <a ui-sref="recommendations" ng-click="getBarInfo(); calculatePortfolioPrice()"><h1>Our Recommendations</h1></a>
+    <a ui-sref="recommendations" ng-click="getBarInfo()"><h1>Our Recommendations</h1></a>
   </div>
-  <button class="btn btn-info" ng-click="calculatePortfolioPrice()">Calculate That</button>
   <div class="my-mutual-container">
     <div class="my-mutual">
       <h1>My Mutual Funds</h1>
-      <h3>Price: ${{currentUserCookie.portfolioPrice}}</h3>
+      <!-- <h3>Price: ${{currentUserPortfolioCookie.portfolioPrice}}</h3> -->
       <div class="portfolio-container">
         <div>
           <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
@@ -71,7 +70,7 @@
           <div ng-repeat="object in currentUserPortfolioCookie.portfolioNumber">
             <h4>Number of Shares: {{object.number}}</h4>
             <input type="text" class="form-group" ng-model="object.newNumber"/>
-            <button ng-click="changeShareNumber(object._id, object.newNumber)">Change Number</button>
+            <button ng-click="changeShareNumber(object.name, object.newNumber)">Change Number</button>
             <br/>
           </div>
         </div>
