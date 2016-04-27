@@ -49,6 +49,12 @@ angular.module('SashasApp').config(function($stateProvider, $urlRouterProvider) 
       controller: 'fundController',
       access: {restricted: true}
     })
+    .state('recommendations', {
+      url: '/portfolio/recommendations',
+      templateUrl: '/recommendations.html',
+      controller: 'userController',
+      access: {restricted: true}
+    })
 
 
     $urlRouterProvider.otherwise('/')

@@ -44,19 +44,19 @@
   </div>
 
 
- <!-- <div class="fund-bubble-container">
+ <div class="fund-bubble-container">
     <h1> Funds </h1>
     <div id="toolbar">
       <a href="#" id="all"></a>
       <a href="#" id="year"></a>
     </div>
     <div class="container"><div id="vis"></div></div>
-  </div> -->
+  </div>
 
 
     <div class="port-divs">
       <div class="port-div">
-        <h1>Our Recommendations</h1>
+        <a ui-sref="recommendations" ng-click="getBarInfo(); calculatePortfolioPrice()"><h1>Our Recommendations</h1></a>
         <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
           <a ng-click="getChartInfo(company.symbol)">{{company.name}}: {{company.symbol}}</a>
           <br />
@@ -104,12 +104,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="bar-graphs">
-    <div>
-      <h2>Recommended Fund Prices</h2>
-      <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
     </div>
   </div>
 </div>
