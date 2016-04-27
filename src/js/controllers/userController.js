@@ -44,7 +44,6 @@ angular.module('SashasApp').controller('userController', function($scope, $state
   $scope.changeShareNumber = function(id, number) {
     if (number) {
       for (var i = 0; i < $localStorage.currentUser.portfolioNumber.length; i++) {
-        console.log(id)
         if ($localStorage.currentUser.portfolioNumber.length === 1) {
           var user = $localStorage.currentUser;
           user.portfolioNumber[0].number = number;
@@ -56,7 +55,6 @@ angular.module('SashasApp').controller('userController', function($scope, $state
           });
         }
         if (id === $localStorage.currentUser.portfolioNumber[i]._id) {
-          console.log('found')
           var user = $localStorage.currentUser;
           user.portfolioNumber[i].number = number;
           number = '';

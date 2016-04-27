@@ -71,7 +71,6 @@ angular.module('SashasApp').controller('logoutController', function ($scope, $lo
           $localStorage.$reset();
           $location.path('login');
         });
-        console.log('logout')
 
     };
 

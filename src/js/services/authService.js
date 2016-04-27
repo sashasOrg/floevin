@@ -48,7 +48,6 @@ angular.module('SashasApp').factory('AuthService', function ($q, $timeout, $http
         .success(function (data, status) {
           if(status === 200 && data.status){
             user = true;
-            console.log($cookies.get('currentUser'));
             deferred.resolve(data.user);
           } else {
             user = false;
