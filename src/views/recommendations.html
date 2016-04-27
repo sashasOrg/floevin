@@ -2,7 +2,7 @@
   <div>
     <div class="my-mutual-recommendations">
       <h1>My Mutual Funds</h1>
-      <h3>Price: ${{finalPortfolioPrice}}</h3>
+      <h3>Price: ${{currentUserCookie.portfolioPrice}}</h3>
       <div class="portfolio-container">
         <div>
           <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
@@ -32,7 +32,7 @@
           {{company.beta}}
           {{company.expenseRatio}}
           <br/>
-          <input type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
+          <input ng-disabled="checkPortfolio(company._id)" type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
           <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.amount)" class="btn btn-primary">Add to Portfolio</button>
           <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         </div>
@@ -43,7 +43,7 @@
           {{company.beta}}
           {{company.expenseRatio}}
           <br/>
-          <input type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
+          <input ng-disabled="checkPortfolio(company._id)" type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
           <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.amount)" class="btn btn-primary">Add to Portfolio</button>
           <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         </div>
