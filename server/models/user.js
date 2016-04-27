@@ -14,6 +14,7 @@ var userSchema = new schema({
 	suitabilityScore: Number,
 	portfolio: [{type: schema.Types.ObjectId, ref: 'Fund'}],
 	portfolioNumber: [{number: Number}],
+	portfolioPrice: Number,
 	bestMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],
 	bestMatchRatios: [{compatibilityRatio: Number}],
 	goodMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],

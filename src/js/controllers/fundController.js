@@ -159,6 +159,25 @@ $scope.toggle = function(){
     return false;
   }
 
+  $scope.calculatePortfolioPrice = function() {
+    var user = $localStorage.currentUser;
+    user.portfolioPrice = 0;
+    for (var i = 0; i < $localStorage.currentUserPortfolio.portfolio.length; i++) {
+      var number = $localStorage.currentUserPortfolio.portfolioNumber[i].number;
+      mainService.getMutualInfo($localStorage.currentUserPortfolio.portfolio[i].symbol.toUpperCase()).then(function(response) {
+        var price = (parseInt(response.data.list.resources[0].resource.fields.price));
+        var multiply = price * number;
+        user.portfolioPrice = user.portfolioPrice + multiply;
+        mainService.updateUser(user)
+        $localStorage.currentUser = user;
+        mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+          $localStorage.currentUserPortfolio = response.data;
+          $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+        })
+      })
+    };
+  }
+
   $scope.removeFromPortfolio = function(id) {
     if ($localStorage.currentUser.portfolio.length === 1) {
       var user2 = $localStorage.currentUser;
@@ -169,6 +188,7 @@ $scope.toggle = function(){
       mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
         $localStorage.currentUserPortfolio = response.data;
         $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+        $scope.calculatePortfolioPrice();
       })
     }
     mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
@@ -185,6 +205,7 @@ $scope.toggle = function(){
         mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
           $localStorage.currentUserPortfolio = response.data;
           $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio
+          $scope.calculatePortfolioPrice();
         })
       }
     }
