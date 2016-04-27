@@ -52,7 +52,7 @@
 
     <div class="port-divs">
       <div class="port-div">
-        <h1>Our Recommendations</h1>
+        <a ui-sref="recommendations" ng-click="getBarInfo(); calculatePortfolioPrice()"><h1>Our Recommendations</h1></a>
         <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
           <a ng-click="getChartInfo(company.symbol)">{{company.name}}: {{company.symbol}}</a>
           <br />
@@ -60,7 +60,8 @@
           {{company.beta}}
           {{company.expenseRatio}}
           <br/>
-          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id)" class="btn btn-primary">Add to Portfolio</button>
+          <input type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
+          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.amount)" class="btn btn-primary">Add to Portfolio</button>
           <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         </div>
         <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
@@ -70,26 +71,35 @@
           {{company.beta}}
           {{company.expenseRatio}}
           <br/>
-          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id)" class="btn btn-primary">Add to Portfolio</button>
+          <input type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
+          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.amount)" class="btn btn-primary">Add to Portfolio</button>
           <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         </div>
       </div>
   </div>
+  <button class="btn btn-info" ng-click="calculatePortfolioPrice()">Calculate That</button>
   <div class="my-mutual-container">
     <div class="my-mutual">
       <h1>My Mutual Funds</h1>
-      <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
-        <a ng-click="getChartInfo(company.symbol)"><h4>{{company.name}}: {{company.symbol}}</h4></a>
-        <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
-        <br />
+      <h3>Price: ${{finalPortfolioPrice}}</h3>
+      <div class="portfolio-container">
+        <div>
+          <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
+            <a ng-click="getChartInfo(company.symbol)"><h4>{{company.name}}: {{company.symbol}}</h4></a>
+            <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+            <br />
+            <br />
+          </div>
+        </div>
+        <div>
+          <div ng-repeat="object in currentUserPortfolioCookie.portfolioNumber">
+            <h4>Number of Shares: {{object.number}}</h4>
+            <input type="text" class="form-group" ng-model="object.newNumber"/>
+            <button ng-click="changeShareNumber(object._id, object.newNumber)">Change Number</button>
+            <br/>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="bar-graphs">
-    <div>
-      <h2>Recommended Fund Prices</h2>
-      <button class="btn btn-success" ng-click="getBarInfo()">Get Prices</button>
-      <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
     </div>
   </div>
 </div>

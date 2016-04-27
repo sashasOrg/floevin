@@ -1,0 +1,61 @@
+<section>
+  <div>
+    <div class="my-mutual-recommendations">
+      <h1>My Mutual Funds</h1>
+      <h3>Price: ${{finalPortfolioPrice}}</h3>
+      <div class="portfolio-container">
+        <div>
+          <div ng-repeat="company in currentUserPortfolioCookie.portfolio">
+            <h4>{{company.name}}: {{company.symbol}}</h4>
+            <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+            <br />
+            <br />
+          </div>
+        </div>
+        <div>
+          <div ng-repeat="object in currentUserPortfolioCookie.portfolioNumber">
+            <h4>Number of Shares: {{object.number}}</h4>
+            <input type="text" class="form-group" ng-model="object.newNumber"/>
+            <button ng-click="changeShareNumber(object._id, object.newNumber)">Change Number</button>
+            <br/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-container-recommendations">
+      <div>
+      <h1>Our Recommendations</h1>
+        <div ng-repeat="company in currentUserBestMatchesCookie.bestMatches">
+          <a ng-click="getChartInfo(company.symbol)">{{company.name}}: {{company.symbol}}</a>
+          <br />
+          {{company.assetClass}}
+          {{company.beta}}
+          {{company.expenseRatio}}
+          <br/>
+          <input type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
+          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.amount)" class="btn btn-primary">Add to Portfolio</button>
+          <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+        </div>
+        <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
+          <a ng-click="getChartInfo(company.symbol)">{{company.name}}: {{company.symbol}}</a>
+          <br />
+          {{company.assetClass}}
+          {{company.beta}}
+          {{company.expenseRatio}}
+          <br/>
+          <input type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
+          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.amount)" class="btn btn-primary">Add to Portfolio</button>
+          <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
+        </div>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="bar-graphs">
+      <div>
+        <h2>Recommended Fund Prices</h2>
+        <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"></canvas>
+      </div>
+    </div>
+  </div>
+</section>

@@ -16,8 +16,74 @@ angular.module('SashasApp').controller('userController', function($scope, $state
   $scope.labels = $localStorage.goodBarData.labels
   $scope.series = $localStorage.goodBarData.series
   $scope.data = [$localStorage.goodBarData.data]
+  $scope.finalPortfolioPrice = $localStorage.portfolioPrice
 
+  $scope.getBarInfo = function() {
+    $localStorage.goodBarData = {};
+    $localStorage.goodBarData.data = [];
+    $localStorage.goodBarData.labels = [];
+    $localStorage.goodBarData.series = ["Price"];
+    $localStorage.bestBarData = {};
+    $localStorage.bestBarData.data = [];
+    $localStorage.bestBarData.labels = [];
+    $localStorage.bestBarData.series = ["Price"];
+    for (var i = 0; i < $localStorage.currentUser.bestMatches.length; i++) {
+      mainService.getMoreInformation($localStorage.currentUserBestMatches.bestMatches[i].symbol.toUpperCase()).then(function(response) {
+        $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
+        $localStorage.goodBarData.labels.push(response.data.query.results.quote.Symbol)
+      })
+    }
+    for (var i = 0; i < $localStorage.currentUser.goodMatches.length; i++) {
+      mainService.getMoreInformation($localStorage.currentUserGoodMatches.goodMatches[i].symbol.toUpperCase()).then(function(response) {
+        $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
+        $localStorage.goodBarData.labels.push(response.data.query.results.quote.Symbol);
+      })
+    }
+  }
 
+  $scope.changeShareNumber = function(id, number) {
+    if (number) {
+      for (var i = 0; i < $localStorage.currentUser.portfolioNumber.length; i++) {
+        console.log(id)
+        if ($localStorage.currentUser.portfolioNumber.length === 1) {
+          var user = $localStorage.currentUser;
+          user.portfolioNumber[0].number = number;
+          mainService.updateUser(user)
+          mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+            $localStorage.currentUserPortfolio = response.data;
+            $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+            $scope.calculatePortfolioPrice();
+          });
+        }
+        if (id === $localStorage.currentUser.portfolioNumber[i]._id) {
+          console.log('found')
+          var user = $localStorage.currentUser;
+          user.portfolioNumber[i].number = number;
+          number = '';
+          mainService.updateUser(user)
+          mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
+            $localStorage.currentUserPortfolio = response.data;
+            $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+            $scope.calculatePortfolioPrice();
+          });
+        }
+      }
+    }
+  }
+
+  $scope.calculatePortfolioPrice = function() {
+    $scope.portfolioPrice = 0;
+    $localStorage.portfolioPrice = 0;
+    for (var i = 0; i < $localStorage.currentUserPortfolio.portfolio.length; i++) {
+      var number = $localStorage.currentUserPortfolio.portfolioNumber[i].number;
+      mainService.getMutualInfo($localStorage.currentUserPortfolio.portfolio[i].symbol.toUpperCase()).then(function(response) {
+        var price = (parseInt(response.data.list.resources[0].resource.fields.price));
+        var multiply = price * number;
+        $scope.portfolioPrice = $scope.portfolioPrice + multiply;
+        $localStorage.portfolioPrice = $scope.portfolioPrice
+      })
+    }
+  };
 
 
 
@@ -165,6 +231,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
     if ($localStorage.currentUser.portfolio.length === 1) {
       var user2 = $localStorage.currentUser;
       user2.portfolio = [];
+      user2.portfolioNumber = [];
       $localStorage.currentUser = user2;
       mainService.updateUser(user2)
       mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
@@ -181,6 +248,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       if (id === $localStorage.currentUser.portfolio[i]) {
         var user = $localStorage.currentUser;
         user.portfolio.splice(i, 1);
+        user.portfolioNumber.splice(i, 1);
         $localStorage.currentUser = user;
         mainService.updateUser(user)
         mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
@@ -195,6 +263,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
     if ($localStorage.currentUser.portfolio.length === 1) {
       var user2 = $localStorage.currentUser;
       user2.portfolio = [];
+      user2.portfolioNumber = [];
       $localStorage.currentUser = user2;
       mainService.updateUser(user2)
       mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
@@ -211,6 +280,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       if (id === $localStorage.currentUser.portfolio[i]) {
         var user = $localStorage.currentUser;
         user.portfolio.splice(i, 1);
+        user.portfolioNumber.splice(i, 1);
         $localStorage.currentUser = user;
         mainService.updateUser(user)
         mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
@@ -221,22 +291,26 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       }
     }
   };
-  $scope.addRecommendedToPortfolio = function(id) {
-    var user = $localStorage.currentUser
-    for (var i = 0; i < user.portfolio.length; i++) {
-      if (id === $localStorage.currentUser.portfolio[i]) {
-        return false;
+  $scope.addRecommendedToPortfolio = function(id, number) {
+    if (number) {
+      var user = $localStorage.currentUser
+      for (var i = 0; i < user.portfolio.length; i++) {
+        if (id === $localStorage.currentUser.portfolio[i]) {
+          return false;
+        }
       }
-    }
-    user.portfolio.push(id)
-    $localStorage.currentUser = user;
-    $scope.currentUserCookie = $localStorage.currentUser;
-    mainService.updateUser(user)
-    mainService.getUserPortfolio(user.username).then(function(response) {
-      $localStorage.currentUserPortfolio = response.data;
-      $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-      $state.reload();
-    })
+      user.portfolio.push(id)
+      user.portfolioNumber.push({number: number})
+      number = '';
+      $localStorage.currentUser = user;
+      $scope.currentUserCookie = $localStorage.currentUser;
+      mainService.updateUser(user)
+      mainService.getUserPortfolio(user.username).then(function(response) {
+        $localStorage.currentUserPortfolio = response.data;
+        $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+        $state.reload();
+      })
+    };
   };
   $scope.checkUserCookie = function() {
     console.log('yes', $localStorage.currentUser)

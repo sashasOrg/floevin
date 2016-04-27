@@ -2,6 +2,29 @@ angular.module('SashasApp').controller('loginController', function($state, $scop
 
     $scope.isLoggedIn = AuthService.isLoggedIn;
 
+    $scope.getBarInfo = function() {
+      $localStorage.goodBarData = {};
+      $localStorage.goodBarData.data = [];
+      $localStorage.goodBarData.labels = [];
+      $localStorage.goodBarData.series = ["Price"];
+      $localStorage.bestBarData = {};
+      $localStorage.bestBarData.data = [];
+      $localStorage.bestBarData.labels = [];
+      $localStorage.bestBarData.series = ["Price"];
+      for (var i = 0; i < $localStorage.currentUser.bestMatches.length; i++) {
+        mainService.getMoreInformation($localStorage.currentUserBestMatches.bestMatches[i].symbol.toUpperCase()).then(function(response) {
+          $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
+          $localStorage.goodBarData.labels.push(response.data.query.results.quote.Symbol)
+        })
+      }
+      for (var i = 0; i < $localStorage.currentUser.goodMatches.length; i++) {
+        mainService.getMoreInformation($localStorage.currentUserGoodMatches.goodMatches[i].symbol.toUpperCase()).then(function(response) {
+          $localStorage.goodBarData.data.push(parseInt(response.data.query.results.quote.PreviousClose));
+          $localStorage.goodBarData.labels.push(response.data.query.results.quote.Symbol);
+        })
+      }
+    }
+
     $scope.login = function () {
       $scope.error = false;
       $scope.disabled = true;
@@ -21,6 +44,7 @@ angular.module('SashasApp').controller('loginController', function($state, $scop
                   $localStorage.currentUserGoodMatches = responseFive.data
                   mainService.getBestMatches($localStorage.currentUser.username).then(function(responseSix) {
                     $localStorage.currentUserBestMatches = responseSix.data
+                    $scope.getBarInfo();
                     $state.go('portfolio');
                   });
                 });

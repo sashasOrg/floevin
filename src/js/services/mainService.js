@@ -11,7 +11,7 @@ angular.module('SashasApp').service('mainService', function($http, $q, $localSto
   var yearAgo = year + '-' + today[1] + '-' + today[2];
 
 
-  
+
 
   this.getMoreInformation = function(symbol) {
     return $http.get('http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20IN%20(%22' + symbol + '%22,%22' + symbol + '%22)&format=json&env=http://datatables.org/alltables.env')
@@ -36,6 +36,9 @@ angular.module('SashasApp').service('mainService', function($http, $q, $localSto
   }
   this.getChartInfo = function(symbol) {
     return $http.jsonp('http://query.yahooapis.com/v1/public/yql?q= select * from   yahoo.finance.historicaldata          where  symbol    = "' + symbol + '"          and    startDate = "' + yearAgo + '"          and    endDate   = "' + newToday + '" &format=json &diagnostics=true &env=store://datatables.org/alltableswithkeys &callback=JSON_CALLBACK')
+  }
+  this.getMutualInfo = function(symbol) {
+    return $http.jsonp('http://finance.yahoo.com/webservice/v1/symbols/' + symbol + '/quote?format=json&view=detail&callback=JSON_CALLBACK');
   }
 
 

@@ -127,21 +127,27 @@ $scope.toggle = function(){
 };
   $scope.showing = false;
 
-  $scope.addToPortfolio = function(id) {
-    var user = $localStorage.currentUser
-    for (var i = 0; i < user.portfolio.length; i++) {
-      if (id === $localStorage.currentUser.portfolio[i]) {
-        return false;
+  $scope.addToPortfolio = function(id, number) {
+    if (number) {
+      var user = $localStorage.currentUser
+      for (var i = 0; i < user.portfolio.length; i++) {
+        if (id === $localStorage.currentUser.portfolio[i]) {
+          return false;
+        }
       }
+      user.portfolio.push(id)
+      user.portfolioNumber.push({number: number})
+      $localStorage.currentUser = user;
+      $scope.currentUserCookie = $localStorage.currentUser;
+      number = '';
+      mainService.updateUser(user)
+      mainService.getUserPortfolio(user.username).then(function(response) {
+        $localStorage.currentUserPortfolio = response.data;
+        $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
+      })
+    } else {
+      return false;
     }
-    user.portfolio.push(id)
-    $localStorage.currentUser = user;
-    $scope.currentUserCookie = $localStorage.currentUser;
-    mainService.updateUser(user)
-    mainService.getUserPortfolio(user.username).then(function(response) {
-      $localStorage.currentUserPortfolio = response.data;
-      $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-    })
   };
 
 
@@ -159,6 +165,7 @@ $scope.toggle = function(){
     if ($localStorage.currentUser.portfolio.length === 1) {
       var user2 = $localStorage.currentUser;
       user2.portfolio = [];
+      user2.portfolioNumber = [];
       $localStorage.currentUser = user2;
       mainService.updateUser(user2)
       mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
@@ -174,6 +181,7 @@ $scope.toggle = function(){
       if (id === $localStorage.currentUser.portfolio[i]) {
         var user = $localStorage.currentUser;
         user.portfolio.splice(i, 1);
+        user.portfolioNumber.splice(i, 1);
         $localStorage.currentUser = user;
         mainService.updateUser(user)
         mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
