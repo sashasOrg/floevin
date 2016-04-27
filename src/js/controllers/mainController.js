@@ -87,7 +87,7 @@ setInterval(function() {
   $('#slideshow > div:first')
     .fadeOut(6000)
     .next()
-    .fadeIn(1000)
+    .fadeIn(6000)
     .end()
     .appendTo('#slideshow');
 },  10000);
