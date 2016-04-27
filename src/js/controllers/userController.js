@@ -16,12 +16,8 @@ angular.module('SashasApp').controller('userController', function($scope, $state
   $scope.labels = $localStorage.goodBarData.labels
   $scope.series = $localStorage.goodBarData.series
   $scope.data = [$localStorage.goodBarData.data]
-  $scope.finalPortfolioPrice = $localStorage.portfolioPrice
+  $localStorage.currentUser.portfolioPrice = 0;
 
-  $scope.setUpRecommendations = function() {
-    $scope.getBarInfo();
-    $scope.calculatePortfolioPrice();
-  }
 
   $scope.getBarInfo = function() {
     $localStorage.goodBarData = {};
@@ -46,10 +42,9 @@ angular.module('SashasApp').controller('userController', function($scope, $state
     }
   }
 
-  $scope.changeShareNumber = function(id, number) {
+  $scope.changeShareNumber = function(name, number) {
     if (number) {
       for (var i = 0; i < $localStorage.currentUser.portfolioNumber.length; i++) {
-        console.log(id)
         if ($localStorage.currentUser.portfolioNumber.length === 1) {
           var user = $localStorage.currentUser;
           user.portfolioNumber[0].number = number;
@@ -60,7 +55,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
             $scope.calculatePortfolioPrice();
           });
         }
-        if (id === $localStorage.currentUser.portfolioNumber[i]._id) {
+        if (name === $localStorage.currentUser.portfolioNumber[i].name && !$localStorage.currentUser.portfolioNumber.length === 1) {
           console.log('found')
           var user = $localStorage.currentUser;
           user.portfolioNumber[i].number = number;
@@ -77,6 +72,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
   }
 
   $scope.calculatePortfolioPrice = function() {
+    $localStorage.currentUser.portfolioPrice = 0;
     var user = $localStorage.currentUser;
     user.portfolioPrice = 0;
     for (var i = 0; i < $localStorage.currentUserPortfolio.portfolio.length; i++) {
@@ -306,7 +302,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       }
     }
   };
-  $scope.addRecommendedToPortfolio = function(id, number) {
+  $scope.addRecommendedToPortfolio = function(id, name, number) {
     if (number) {
       var user = $localStorage.currentUser
       for (var i = 0; i < user.portfolio.length; i++) {
@@ -315,7 +311,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
         }
       }
       user.portfolio.push(id)
-      user.portfolioNumber.push({number: number})
+      user.portfolioNumber.push({number: number, name: name})
       number = '';
       $localStorage.currentUser = user;
       $scope.currentUserCookie = $localStorage.currentUser;

@@ -16,7 +16,7 @@
           <div ng-repeat="object in currentUserPortfolioCookie.portfolioNumber">
             <h4>Number of Shares: {{object.number}}</h4>
             <input type="text" class="form-group" ng-model="object.newNumber"/>
-            <button ng-click="changeShareNumber(object._id, object.newNumber)">Change Number</button>
+            <button ng-click="changeShareNumber(object.name, object.newNumber)">Change Number</button>
             <br/>
           </div>
         </div>
@@ -33,7 +33,7 @@
           {{company.expenseRatio}}
           <br/>
           <input ng-disabled="checkPortfolio(company._id)" type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
-          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.amount)" class="btn btn-primary">Add to Portfolio</button>
+          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.name, company.amount)" class="btn btn-primary">Add to Portfolio</button>
           <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         </div>
         <div ng-repeat="company in currentUserGoodMatchesCookie.goodMatches">
@@ -44,7 +44,7 @@
           {{company.expenseRatio}}
           <br/>
           <input ng-disabled="checkPortfolio(company._id)" type="text" ng-model="company.amount" class="form-group" placeholder="Share Number"/>
-          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.amount)" class="btn btn-primary">Add to Portfolio</button>
+          <button ng-disabled="checkPortfolio(company._id)" ng-click="addRecommendedToPortfolio(company._id, company.name, company.amount)" class="btn btn-primary">Add to Portfolio</button>
           <button ng-disabled="!checkPortfolio(company._id)" ng-click="removeRecommendedFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
         </div>
       </div>
