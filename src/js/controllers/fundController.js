@@ -125,7 +125,7 @@ $scope.toggle = function(){
 };
   $scope.showing = false;
 
-  $scope.addToPortfolio = function(id, number) {
+  $scope.addToPortfolio = function(id, name, number) {
     if (number) {
       var user = $localStorage.currentUser
       for (var i = 0; i < user.portfolio.length; i++) {
@@ -134,7 +134,7 @@ $scope.toggle = function(){
         }
       }
       user.portfolio.push(id)
-      user.portfolioNumber.push({number: number})
+      user.portfolioNumber.push({number: number, name: name})
       $localStorage.currentUser = user;
       $scope.currentUserCookie = $localStorage.currentUser;
       number = '';

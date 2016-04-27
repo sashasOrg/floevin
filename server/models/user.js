@@ -13,7 +13,7 @@ var userSchema = new schema({
 	email: {type: String, lowercase: true, required: true},
 	suitabilityScore: Number,
 	portfolio: [{type: schema.Types.ObjectId, ref: 'Fund'}],
-	portfolioNumber: [{number: Number}],
+	portfolioNumber: [{number: Number, name: {type: String, unique: true}}],
 	portfolioPrice: Number,
 	bestMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],
 	bestMatchRatios: [{compatibilityRatio: Number}],
