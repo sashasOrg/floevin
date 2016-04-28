@@ -22,7 +22,8 @@ var userSchema = new schema({
 	okayMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],
 	okayMatchRatios: [{compatibilityRatio: Number}],
 	badMatches: [{type: schema.Types.ObjectId, ref: 'Fund'}],
-	badMatchRatios: [{compatibilityRatio: Number}]
+	badMatchRatios: [{compatibilityRatio: Number}],
+	questionaire: {type: Boolean, default: false}
 })
 
 userSchema.plugin(passportLocalMongoose);
