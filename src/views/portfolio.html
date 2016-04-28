@@ -1,23 +1,18 @@
-<section class="port-pic">
-  <div class="fund-bubble-container">
-
-    <div class="user-info">
-
-      <p>You are logged in as {{currentUserCookie.firstName}} {{currentUserCookie.lastName}}
-      click the button below to generate your recommendations</p>
-
-
-
-
-    <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
-
-    <h1> Funds </h1>
 
 
 
     <div class="container"><div id="vis"></div></div>
+<div class="port-pic">
+  <section>
+    <div class="fund-bubble-container">
+      <div class="user-info">
+        <h1 class="page-header">You are logged in as {{currentUserCookie.firstName}} {{currentUserCookie.lastName}}</h1>
+        <p>Click the button below to generate your recommendations</p>
+      <button ng-click="getCompatibleFunds()" class="btn btn-info">Get Matching Mutual Funds</button>
+      <h1 class="fund-title"> Funds Sized by Beta: </h1>
+      <div class="fund-bubble-class"><div id="vis"></div></div>
+    </div>
   </div>
-</div>
 
 
   <div class="port-divs">
@@ -34,19 +29,23 @@
             <button ng-click="removeFromPortfolio(company._id)" class="btn btn-danger">Remove from Portfolio</button>
             <br />
             <br />
+
+
+
           </div>
-        </div>
-        <div>
-          <div ng-repeat="object in currentUserPortfolioCookie.portfolioNumber">
-            <h4>Number of Shares: {{object.number}}</h4>
-            <input type="text" class="form-group" ng-model="object.newNumber"/>
-            <button ng-click="changeShareNumber(object.name, object.newNumber)">Change Number</button>
-            <br/>
+          <div>
+            <div ng-repeat="object in currentUserPortfolioCookie.portfolioNumber">
+              <h4>Number of Shares: {{object.number}}</h4>
+              <input type="text" class="form-group" ng-model="object.newNumber"/>
+              <button ng-click="changeShareNumber(object.name, object.newNumber)">Change Number</button>
+              <br/>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+</div>
 
 
 <script type="text/javascript">

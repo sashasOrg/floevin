@@ -1,12 +1,12 @@
-<div>
-  <h1>{{fundData.name}}: {{fundData.symbol}}</h1>
-  <h3>Type: {{fundData.type}}
-  <h3>Price: {{fundData.price}}</h3>
-  <h3>Days High: {{fundData.day_high}}</h3>
-  <h3>Days Low: {{fundData.day_low}}</h3>
-  <h3>Years High: {{fundData.year_high}}</h3>
-  <h3>Years Low: {{fundData.year_low}}</h3>
-</div>
-<div>
-  <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-click="onClick" height="100px"></canvas>
-</div>
+<section class="recommend-page">
+  <div>
+    <h1>{{fundData.name}}: {{fundData.symbol}}</h1>
+    <h3>Type: {{fundData.type}}
+    <h3>Price: {{fundData.price}}</h3>
+    <h3>Years High: {{fundData.year_high}}</h3>
+    <h3>Years Low: {{fundData.year_low}}</h3>
+  </div>
+  <div>
+    <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" chart-click="onClick" height="100px"></canvas>
+  </div>
+</section>

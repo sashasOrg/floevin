@@ -169,81 +169,86 @@ angular.module('SashasApp').controller('userController', function($scope, $state
 
   $scope.getCompatibleFunds = function() {
     var user = $localStorage.currentUser;
-    user.okayMatches = [];
-    user.bestMatches = [];
-    user.goodMatches = [];
-    user.badMatches = [];
-    user.okayMatchRatios = [];
-    user.bestMatchRatios = [];
-    user.goodMatchRatios = [];
-    user.badMatchRatios = [];
-    fundService.getFund().then(function(response) {
-      for (var i = 0; i < response.data.length; i++) {
-        if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.1 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .90) {
-          if (!user.bestMatches.includes(response.data[i]._id)) {
-            user.bestMatches.push(response.data[i]._id);
-            user.bestMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            mainService.updateUser(user);
-            $localStorage.currentUser = user;
+    if (user.questionaire) {
+      user.okayMatches = [];
+      user.bestMatches = [];
+      user.goodMatches = [];
+      user.badMatches = [];
+      user.okayMatchRatios = [];
+      user.bestMatchRatios = [];
+      user.goodMatchRatios = [];
+      user.badMatchRatios = [];
+      fundService.getFund().then(function(response) {
+        for (var i = 0; i < response.data.length; i++) {
+          if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.1 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .90) {
+            if (!user.bestMatches.includes(response.data[i]._id)) {
+              user.bestMatches.push(response.data[i]._id);
+              user.bestMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+              mainService.updateUser(user);
+              $localStorage.currentUser = user;
+            }
+          } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .90 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .70) {
+            if (!user.goodMatches.includes(response.data[i]._id)) {
+              user.goodMatches.push(response.data[i]._id);
+              user.goodMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+              mainService.updateUser(user);
+              $localStorage.currentUser = user;
+            }
+          } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.3 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.1) {
+            if (!user.goodMatches.includes(response.data[i]._id)) {
+              user.goodMatches.push(response.data[i]._id);
+              user.goodMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+              mainService.updateUser(user);
+              $localStorage.currentUser = user;
+            }
+          } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.5 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.3) {
+            if (!user.goodMatches.includes(response.data[i]._id)) {
+              user.okayMatches.push(response.data[i]._id);
+              user.okayMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+              mainService.updateUser(user);
+              $localStorage.currentUser = user;
+            }
+          } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .70 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .50) {
+            if (!user.okayMatches.includes(response.data[i]._id)) {
+              user.okayMatches.push(response.data[i]._id);
+              user.okayMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+              mainService.updateUser(user);
+              $localStorage.currentUser = user;
+            }
+          } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .50 && (response.data[i].riskCompatibility / user.suitabilityScore) >= 0) {
+            if (!user.badMatches.includes(response.data[i]._id)) {
+              user.badMatches.push(response.data[i]._id);
+              user.badMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+              mainService.updateUser(user);
+              $localStorage.currentUser = user;
+            }
+          } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 2 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.5) {
+            if (!user.badMatches.includes(response.data[i]._id)) {
+              user.badMatches.push(response.data[i]._id);
+              user.badMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
+              mainService.updateUser(user);
+              $localStorage.currentUser = user;
+            }
           }
-        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .90 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .70) {
-          if (!user.goodMatches.includes(response.data[i]._id)) {
-            user.goodMatches.push(response.data[i]._id);
-            user.goodMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            mainService.updateUser(user);
-            $localStorage.currentUser = user;
-          }
-        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.3 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.1) {
-          if (!user.goodMatches.includes(response.data[i]._id)) {
-            user.goodMatches.push(response.data[i]._id);
-            user.goodMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            mainService.updateUser(user);
-            $localStorage.currentUser = user;
-          }
-        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 1.5 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.3) {
-          if (!user.goodMatches.includes(response.data[i]._id)) {
-            user.okayMatches.push(response.data[i]._id);
-            user.okayMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            mainService.updateUser(user);
-            $localStorage.currentUser = user;
-          }
-        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .70 && (response.data[i].riskCompatibility / user.suitabilityScore) >= .50) {
-          if (!user.okayMatches.includes(response.data[i]._id)) {
-            user.okayMatches.push(response.data[i]._id);
-            user.okayMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            mainService.updateUser(user);
-            $localStorage.currentUser = user;
-          }
-        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) < .50 && (response.data[i].riskCompatibility / user.suitabilityScore) >= 0) {
-          if (!user.badMatches.includes(response.data[i]._id)) {
-            user.badMatches.push(response.data[i]._id);
-            user.badMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            mainService.updateUser(user);
-            $localStorage.currentUser = user;
-          }
-        } else if ((response.data[i].riskCompatibility / user.suitabilityScore) <= 2 && (response.data[i].riskCompatibility / user.suitabilityScore) > 1.5) {
-          if (!user.badMatches.includes(response.data[i]._id)) {
-            user.badMatches.push(response.data[i]._id);
-            user.badMatchRatios.push({compatibilityRatio: response.data[i].riskCompatibility / user.suitabilityScore})
-            mainService.updateUser(user);
-            $localStorage.currentUser = user;
-          }
-        }
-      };
-      mainService.getBadMatches($localStorage.currentUser.username).then(function(responseThree) {
-        $localStorage.currentUserBadMatches = responseThree.data
-        mainService.getOkayMatches($localStorage.currentUser.username).then(function(responseFour) {
-          $localStorage.currentUserOkayMatches = responseFour.data
-          mainService.getGoodMatches($localStorage.currentUser.username).then(function(responseFive) {
-            $localStorage.currentUserGoodMatches = responseFive.data
-            mainService.getBestMatches($localStorage.currentUser.username).then(function(responseSix) {
-              $localStorage.currentUserBestMatches = responseSix.data
-              $state.reload();
+        };
+        mainService.getBadMatches($localStorage.currentUser.username).then(function(responseThree) {
+          $localStorage.currentUserBadMatches = responseThree.data
+          mainService.getOkayMatches($localStorage.currentUser.username).then(function(responseFour) {
+            $localStorage.currentUserOkayMatches = responseFour.data
+            mainService.getGoodMatches($localStorage.currentUser.username).then(function(responseFive) {
+              $localStorage.currentUserGoodMatches = responseFive.data
+              mainService.getBestMatches($localStorage.currentUser.username).then(function(responseSix) {
+                $localStorage.currentUserBestMatches = responseSix.data
+                $state.go('recommendations')
+              });
             });
           });
-        });
-      })
-    });
+        })
+      });
+    } else {
+      console.log('false')
+      $state.go('questionaire')
+    }
   };
   $scope.checkPortfolio = function(id) {
     for (var i = 0; i < $localStorage.currentUserPortfolio.portfolio.length; i++) {
@@ -264,7 +269,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
         $localStorage.currentUserPortfolio = response.data;
         $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-        $scope.calculatePortfolioPrice();
+        // $scope.calculatePortfolioPrice();
         $state.reload();
       })
     }
@@ -282,7 +287,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
         mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
           $localStorage.currentUserPortfolio = response.data;
           $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-          $scope.calculatePortfolioPrice();
+          // $scope.calculatePortfolioPrice();
           $state.reload();
         })
       }
@@ -298,7 +303,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
       mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
         $localStorage.currentUserPortfolio = response.data
         $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-        $scope.calculatePortfolioPrice();
+        // $scope.calculatePortfolioPrice();
         $state.reload();
       })
     }
@@ -316,7 +321,7 @@ angular.module('SashasApp').controller('userController', function($scope, $state
         mainService.getUserPortfolio($localStorage.currentUser.username).then(function(response) {
           $localStorage.currentUserPortfolio = response.data;
           $scope.currentUserPortfolioCookie = $localStorage.currentUserPortfolio;
-          $scope.calculatePortfolioPrice();
+          // $scope.calculatePortfolioPrice();
           $state.reload();
         })
       }
