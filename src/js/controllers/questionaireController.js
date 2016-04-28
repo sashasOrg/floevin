@@ -203,7 +203,9 @@ angular.module('SashasApp').controller('questionaireController', function($scope
             user.goodMatchRatios = [];
             user.bestMatches = [];
             user.bestMatchRatios = [];
+            user.questionaire = true;
             $localStorage.currentUser = user;
+            $scope.successMessage = "Score Saved!"
             mainService.updateUser(user).then(function(response) {
               $scope.disabled = false;
               $state.go('portfolio');

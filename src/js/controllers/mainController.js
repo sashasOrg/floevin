@@ -5,7 +5,13 @@ angular.module('SashasApp').controller('mainController', function($scope, $state
 
 
 
-
+  $scope.checkForUser = function() {
+    if ($localStorage.currentUser) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
 
 

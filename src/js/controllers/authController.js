@@ -65,6 +65,14 @@ angular.module('SashasApp').controller('logoutController', function ($scope, $lo
     $scope.userLogged = AuthService.isLoggedIn();
     $scope.$watch($scope.userLogged);
 
+    $scope.checkForUser = function() {
+      if ($localStorage.currentUser) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
     $scope.logout = function () {
       AuthService.logout()
         .then(function () {

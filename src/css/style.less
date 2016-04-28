@@ -56,7 +56,6 @@ html {
     width: 100%;
     background-color: #fff;
     border-bottom: 1.2px solid gray;
-    position: fixed;
     margin-right: 15px;
 }
 
@@ -161,6 +160,9 @@ Questionaire page
 
 ******************/
 
+.fund-title {
+  text-align: center;
+}
 .q-pic{
   background-image: url("./images/3.jpeg");
   width: 100%;
@@ -233,11 +235,16 @@ Portfolio Page
   width: 100%;
   background-repeat: no-repeat;
   background-position: center;
-  margin: 0;
+  margin: auto;
 }
 
 .fund-bubble-container{
   margin-top:65px;
+  display: flex;
+  justify-content: center;
+}
+.fund-bubble-class {
+  margin: auto;
 }
 
 
@@ -310,6 +317,18 @@ Portfolio Page
 
   text-align: center;
 }
+.recommend-page {
+  background-image: url("./images/3.jpeg");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+}
+.user-info {
+  position: flex;
+  justify-content: center;
+  text-align: center;
+}
 
 
 
@@ -348,16 +367,7 @@ Admin page
 // //   margin: auto;
 // // }
 //
-// .user-info {
-//   position: absolute;
-//   top: 5vh;
-//   right: 5vh;
-//   font-size: 2em;
-//   height: 3em;
-//   width: 25%;
-//   padding: 1em;
-//   border: solid gray 2px;
-// }
+
 //
 // user-info p {
 //    color: @brightBlue;

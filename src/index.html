@@ -27,7 +27,7 @@
                 <div class="nav-items">
                   <a ui-sref="admin">Admin</a></div>
                 <div class="nav-items">
-                  <a ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button  class="btn btn-info btn-sm" ng-show="userLogged">Log out</button></a></div>
+                  <a  ng-controller="logoutController" ui-sref="login" ng-click='logout()'><button ng-disabled="checkForUser()" class="btn btn-info btn-sm" ng-show="userLogged">Log out</button></a></div>
               </div>
 
 
