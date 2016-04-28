@@ -3,22 +3,22 @@
 /**********************
        CONSTANTS
 ***********************/
-
-@brightBlue:  #00a5d9;
-@backGray: #f0f0f0;
-@defaultShapesWidth:200px;
-@defaultRadius:30px;
-
-/*********************************
-   OPERATIONS & COLOR FUNCTIONS
-**********************************/
-
-@defaultThemeColor:@brightBlue;
-//@defaultThemeColor:spin(@brightBlue, 100);
-
-@borderSize:@defaultShapesWidth * 0.1;
-@borderColor:@defaultThemeColor - #222;
-//@borderColor:darken(desaturate(@defaultThemeColor, 100%), 20%);
+//
+// @brightBlue:  #00a5d9;
+// @backGray: #f0f0f0;
+// @defaultShapesWidth:200px;
+// @defaultRadius:30px;
+//
+// /*********************************
+//    OPERATIONS & COLOR FUNCTIONS
+// **********************************/
+//
+// @defaultThemeColor:@brightBlue;
+// //@defaultThemeColor:spin(@brightBlue, 100);
+//
+// @borderSize:@defaultShapesWidth * 0.1;
+// @borderColor:@defaultThemeColor - #222;
+// //@borderColor:darken(desaturate(@defaultThemeColor, 100%), 20%);
 
 
 /**********************
@@ -51,11 +51,15 @@ html {
 }
 //
 #nav-container {
-    z-index: 1;
+    // z-index: 1;
     height: 65px;
     width: 100%;
     background-color: #fff;
     border-bottom: 1.2px solid gray;
+<<<<<<< HEAD
+    // position: fixed;
+=======
+>>>>>>> master
     margin-right: 15px;
 }
 
@@ -105,6 +109,7 @@ a:visited {
 }
 
 /******************
+
 Home page
 
 ******************/
@@ -166,8 +171,7 @@ Questionaire page
 .q-pic{
   background-image: url("./images/3.jpeg");
   width: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
+
 
 }
 .q-page-header{
@@ -176,13 +180,10 @@ Questionaire page
 .form-module {
   border-radius: 10px;
   position: relative;
-  top: 8vh;
   height: 850px;;
   width: 65%;
   background: #efefef;
-  padding-top: 5vh;
-  padding-left: 10vh;
-  padding-right: 10vh;
+
   // box-shadow: 0px 4px 10px gray, -10px 4px 10px gray, 10px 8px 10px gray;
   background: rgba(255, 255, 255, 0.0);
   margin-bottom: 30px;
@@ -200,14 +201,12 @@ Questionaire page
   flex-direction: column;
   margin-left: 150px;
 
-
 }
 .q-column-b{
 margin-left: 50px;
 display: inline-flex;
 align-items: flex-start;
 flex-direction: column;
-
 
 }
 .q-column-c{
@@ -267,6 +266,8 @@ Portfolio Page
   margin-top: 20px;
   display: flex;
   justify-content: center;
+  font-family: "Oswald";
+
 }
 .my-mutual {
   width: 80%;
@@ -277,6 +278,8 @@ Portfolio Page
   padding: 10px;
   overflow-y: auto;
   text-align: center;
+  font-family: "Oswald";
+
 }
 .my-mutual-recommendations {
   width: 90%;
@@ -287,10 +290,14 @@ Portfolio Page
   overflow-y: auto;
   margin: 0 auto;
   text-align: center;
+  font-family: "Oswald";
+
 }
 .port-divs {
   display: flex;
   justify-content: space-around;
+  font-family: "Oswald";
+
 }
 .port-div {
   width: 75%;
@@ -300,11 +307,15 @@ Portfolio Page
   border-radius: 20px;
   overflow-y: auto;
   text-align: center;
+  font-family: "Oswald";
+
 }
 
 .portfolio-container {
   display: flex;
   justify-content: space-around;
+  font-family: "Oswald";
+
 }
 .portfolio-container-recommendations {
   width: 90%;
@@ -314,6 +325,7 @@ Portfolio Page
   border-radius: 20px;
   overflow-y: auto;
   margin: 0 auto;
+  font-family: "Oswald";
 
   text-align: center;
 }
@@ -357,9 +369,26 @@ Portfolio Page
 /*********************
 Admin page
 *********************/
+.admin-module {
+  border-radius: 10px;
+  position: relative;
+  height: 1850px;
+  width: 65%;
+  background: #888;
+  box-shadow: 0px 4px 10px gray, -10px 4px 10px gray, 10px 8px 10px gray;
+  background: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: "Oswald";
+  justify-content:flex-start;
+}
 
 
 
+<<<<<<< HEAD
+=======
 // // .filler-foto {
 // //   height: 500px;
 // //   width: 80%;
@@ -522,6 +551,7 @@ Admin page
 //
 //
 //
+>>>>>>> master
 // /**********************
 //         CLOCK
 // ***********************/
