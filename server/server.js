@@ -11,7 +11,6 @@ var express = require('express'),
   cookieParser = require('cookie-parser'),
   localStrategy = require('passport-local').Strategy,
   app = express();
-  MONGO_URI = process.env.MONGO_URI;
   port = process.env.PORT || 12030;
 
 
@@ -20,7 +19,7 @@ var User = require('./models/user.js');
 require('./config/passport.js')(passport);
 
 mongoose.set('debug', true);
-mongoose.connect('mongodb://localhost/sashas-app');
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds023530.mlab.com:23530/floevin');
 mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
