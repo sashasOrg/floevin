@@ -1,6 +1,6 @@
 var express = require('express'),
   bodyParser = require('body-parser'),
-  cors = require('cors'),
+  // cors = require('cors'),
   session = require('express-session'),
   logger = require('morgan'),
   passport = require('passport'),
@@ -11,6 +11,9 @@ var express = require('express'),
   cookieParser = require('cookie-parser'),
   localStrategy = require('passport-local').Strategy,
   app = express();
+  MONGO_URI = process.env.MONGO_URI;
+  port = process.env.PORT || 12030;
+
 
 var Fund = require('./models/fund.js');
 var User = require('./models/user.js');
@@ -245,6 +248,6 @@ app.get('/user', function(req, res){
   });
 });
 
-app.listen(12030, function() {
-  console.log('Listening in on port 12030');
+app.listen(port, function() {
+  console.log('Listening in on port ' + port);
 });
