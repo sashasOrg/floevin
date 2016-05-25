@@ -1,6 +1,6 @@
 var express = require('express'),
   bodyParser = require('body-parser'),
-  cors = require('cors'),
+  // cors = require('cors'),
   session = require('express-session'),
   logger = require('morgan'),
   passport = require('passport'),
@@ -11,13 +11,15 @@ var express = require('express'),
   cookieParser = require('cookie-parser'),
   localStrategy = require('passport-local').Strategy,
   app = express();
+  port = process.env.PORT || 12030;
+
 
 var Fund = require('./models/fund.js');
 var User = require('./models/user.js');
 require('./config/passport.js')(passport);
 
 mongoose.set('debug', true);
-mongoose.connect('mongodb://localhost/sashas-app');
+mongoose.connect('mongodb://user:user@ds023530.mlab.com:23530/floevin');
 mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
@@ -245,6 +247,6 @@ app.get('/user', function(req, res){
   });
 });
 
-app.listen(12030, function() {
-  console.log('Listening in on port 12030');
+app.listen(port, function() {
+  console.log('Listening in on port ' + port);
 });
