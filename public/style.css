@@ -1,0 +1,297 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Merriweather);
+/**********************
+       CONSTANTS
+***********************/
+/*********************************
+   OPERATIONS & COLOR FUNCTIONS
+**********************************/
+/**********************
+        MIXINS
+***********************/
+.Round {
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  border-radius: 9999px;
+}
+/**********************
+         STYLES
+***********************/
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+#nav-container {
+  height: 65px;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1.2px solid gray;
+  margin-right: 15px;
+}
+.logo-container {
+  display: inline-block;
+  background-color: #fff;
+  color: #00a5d9;
+  font-size: 2em;
+  padding-left: 3vh;
+  padding-top: 1vh;
+}
+.desktop-navigation {
+  float: right;
+  background-color: #fff;
+  height: 100%;
+  padding-top: 2vh;
+  color: #00a5d9;
+}
+.nav-items {
+  display: inline-block;
+  background-color: #fff;
+  color: #00a5d9;
+  margin: 5px;
+  font-size: 1.2em;
+}
+.homepage-pic {
+  background-image: url("images/3.jpeg");
+  height: 900px;
+}
+a:link {
+  color: #000;
+  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+  text-decoration: none;
+  font-family: 'Open Sans', 'Merriweather', sans-serif;
+}
+a:visited {
+  color: #000;
+  text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff;
+  text-decoration: none;
+  font-family: 'Open Sans', 'Merriweather', sans-serif;
+}
+/******************
+
+Home page
+
+******************/
+.login-section {
+  display: inline-flex;
+  justify-content: flex-start;
+  border-radius: 10px;
+  height: 650px;
+  width: 50%;
+  margin-top: 200px;
+  margin-left: 10%;
+  background: #ffffff;
+  /* The Fallback */
+  background: rgba(255, 255, 255, 0);
+}
+.login-module {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0);
+  align-items: flex-start;
+  text-align: center;
+  height: 650px;
+  width: 40%;
+}
+.login-module-two {
+  display: inline-flex;
+  align-items: flex-start;
+  text-align: center;
+  background: rgba(255, 255, 255, 0);
+  height: 650px;
+  width: 50%;
+  margin-left: 20px;
+}
+.page-module {
+  position: relative;
+  top: -8vh;
+  height: 200vh;
+  width: 70%;
+  background: white;
+  padding-top: 5vh;
+  box-shadow: 0px 4px 10px gray, -10px 4px 10px gray, 10px 8px 10px gray;
+  margin: auto;
+}
+/******************
+Questionaire page
+
+******************/
+.fund-title {
+  text-align: center;
+}
+.q-pic {
+  background-image: url("images/3.jpeg");
+  width: 100%;
+}
+.q-page-header {
+  text-align: center;
+}
+.form-module {
+  border-radius: 10px;
+  position: relative;
+  height: 850px;
+  width: 65%;
+  background: #efefef;
+  background: rgba(255, 255, 255, 0);
+  margin-bottom: 30px;
+  margin-left: 17.5%;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: "Oswald";
+  justify-content: flex-start;
+}
+.q-column-a {
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 150px;
+}
+.q-column-b {
+  margin-left: 50px;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.q-column-c {
+  margin-left: 50px;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.q-submit {
+  text-align: center;
+  margin-bottom: 50px;
+}
+/*************************
+Portfolio Page
+
+*************************/
+.port-pic {
+  background-image: url("images/3.jpeg");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+}
+.fund-bubble-container {
+  margin-top: 65px;
+  display: flex;
+  justify-content: center;
+}
+.fund-bubble-class {
+  margin: auto;
+}
+.shape {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: #00a5d9;
+  margin: 20px;
+  border: 20px solid #0083b7;
+}
+#shape1 {
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  border-radius: 9999px;
+}
+#shape2 {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+#shape3 {
+  -webkit-border-radius: 60px;
+  -moz-border-radius: 60px;
+  border-radius: 60px;
+}
+.my-mutual-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: "Oswald";
+}
+.my-mutual {
+  width: 80%;
+  height: 60vh;
+  min-height: 350px;
+  border: solid black 3px;
+  border-radius: 20px;
+  padding: 10px;
+  overflow-y: auto;
+  text-align: center;
+  font-family: "Oswald";
+}
+.my-mutual-recommendations {
+  width: 90%;
+  height: 350px;
+  border: solid black 3px;
+  border-radius: 20px;
+  padding: 10px;
+  overflow-y: auto;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Oswald";
+}
+.port-divs {
+  display: flex;
+  justify-content: space-around;
+  font-family: "Oswald";
+}
+.port-div {
+  width: 75%;
+  height: 65vh;
+  min-height: 350px;
+  border: solid black 3px;
+  border-radius: 20px;
+  overflow-y: auto;
+  text-align: center;
+  font-family: "Oswald";
+}
+.portfolio-container {
+  display: flex;
+  justify-content: space-around;
+  font-family: "Oswald";
+}
+.portfolio-container-recommendations {
+  width: 90%;
+  height: 75vh;
+  min-height: 350px;
+  border: solid black 3px;
+  border-radius: 20px;
+  overflow-y: auto;
+  margin: 0 auto;
+  font-family: "Oswald";
+  text-align: center;
+}
+.recommend-page {
+  background-image: url("images/3.jpeg");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+}
+.user-info {
+  position: flex;
+  justify-content: center;
+  text-align: center;
+}
+/*********************
+Admin page
+*********************/
+.admin-module {
+  border-radius: 10px;
+  position: relative;
+  height: 1850px;
+  width: 65%;
+  background: #888;
+  box-shadow: 0px 4px 10px gray, -10px 4px 10px gray, 10px 8px 10px gray;
+  background: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+  display: inline-flex;
+  align-items: flex-start;
+  flex-direction: column;
+  font-family: "Oswald";
+  justify-content: flex-start;
+}

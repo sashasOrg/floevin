@@ -1,0 +1,551 @@
+[
+  {
+    "grant_title": "Fidelity OTC Portfolio",
+    "id": 1,
+    "total_amount": 1.2,
+    "group": 3,
+    "start_month": 2,
+    "start_day": 4,
+    "start_year": 2010
+  },
+  {
+    "grant_title": "Centaur Total Return Fund",
+    "id": 2,
+    "total_amount": 0.6,
+    "group": 1,
+    "start_month": 8,
+    "start_day": 3,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "T Rowe Price Media & Telecommunications Fund",
+    "id": 3,
+    "total_amount": 1.09,
+    "group": 4,
+    "start_month": 11,
+    "start_day": 12,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "T Rowe Price Health Sciences Fund",
+    "id": 4,
+    "total_amount": 0.95,
+    "group": 4,
+    "start_month": 3,
+    "start_day": 11,
+    "start_year": 2010
+  },
+  {
+    "grant_title": "AMG SouthernSun Small Cap Fund;Investor",
+    "id": 5,
+    "total_amount": 1.26,
+    "group": 4,
+    "start_month": 10,
+    "start_day": 12,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Saratoga Technology & Communications Portfolio",
+    "id": 6,
+    "total_amount": 1.04,
+    "group": 3,
+    "start_month": 6,
+    "start_day": 30,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Reynolds Blue Chip Growth Fund",
+    "id": 7,
+    "total_amount": 0.95,
+    "group": 4,
+    "start_month": 9,
+    "start_day": 24,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Pin Oak Equity Fund",
+    "id": 8,
+    "total_amount": 1.11,
+    "group": 3,
+    "start_month": 10,
+    "start_day": 29,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Victory Munder Multi-Cap Fund",
+    "id": 9,
+    "total_amount": 1.03,
+    "group": 4,
+    "start_month": 11,
+    "start_day": 16,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Janus Triton Fund;D",
+    "id": 10,
+    "total_amount": 1.03,
+    "group": 3,
+    "start_month": 10,
+    "start_day": 28,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "ICON Energy Fund;S",
+    "id": 11,
+    "total_amount": 1.09,
+    "group": 2,
+    "start_month": 11,
+    "start_day": 2,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Integrity Williston Basin/Mid-North America Stock Fund;A",
+    "id": 12,
+    "total_amount": 1.2,
+    "group": 5,
+    "start_month": 11,
+    "start_day": 2,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Voya Large-Cap Growth Portfolio Service",
+    "id": 13,
+    "total_amount": 0,
+    "group": 3,
+    "start_month": 11,
+    "start_day": 2,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "ICON Energy Fund;S",
+    "id": 14,
+    "total_amount": 1.09,
+    "group": 2,
+    "start_month": 11,
+    "start_day": 2,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Hancock Horizon Burkenroad Small Cap Fund;A",
+    "id": 15,
+    "total_amount": 0.97,
+    "group": 3,
+    "start_month": 10,
+    "start_day": 28,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Fidelity Small Cap Discovery Fund",
+    "id": 16,
+    "total_amount": 1,
+    "group": 3,
+    "start_month": 11,
+    "start_day": 10,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Fidelity Select Retailing Portfolio",
+    "id": 17,
+    "total_amount": 1.03,
+    "group": 5,
+    "start_month": 11,
+    "start_day": 13,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Fidelity Select Consumer Staples Portfolio",
+    "id": 18,
+    "total_amount": 0.83,
+    "group": 5,
+    "start_month": 11,
+    "start_day": 1,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Berkshire Focus Fund",
+    "id": 19,
+    "total_amount": 1.19,
+    "group": 3,
+    "start_month": 3,
+    "start_day": 24,
+    "start_year": 2010
+  },
+  {
+    "grant_title": "Alger Spectra Fund;A",
+    "id": 20,
+    "total_amount": 1.01,
+    "group": 4,
+    "start_month": 10,
+    "start_day": 29,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "T Rowe Price Health Sciences Fund",
+    "id": 21,
+    "total_amount": 0.95,
+    "group": 3,
+    "start_month": 11,
+    "start_day": 4,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Intrepid Small Cap",
+    "id": 22,
+    "total_amount": 0.29,
+    "group": 3,
+    "start_month": 10,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Yacktman",
+    "id": 23,
+    "total_amount": 1.2,
+    "group": 3,
+    "start_month": 10,
+    "start_day": 30,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Reynolds Blue Chip Growth",
+    "id": 24,
+    "total_amount": 0.95,
+    "group": 3,
+    "start_month": 1,
+    "start_day": 28,
+    "start_year": 2010
+  },
+  {
+    "grant_title": "Transamerica Small/Mid Cap Value;A",
+    "id": 25,
+    "total_amount": 1.08,
+    "group": 4,
+    "start_month": 11,
+    "start_day": 17,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Aberdeen China Opportunities Fund;A",
+    "id": 26,
+    "total_amount": 0.89,
+    "group": 5,
+    "start_month": 5,
+    "start_day": 13,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Aberdeen Emerging Markets Fund;A",
+    "id": 27,
+    "total_amount": 1.03,
+    "group": 5,
+    "start_month": 3,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Alger Global Growth Fund;A",
+    "id": 28,
+    "total_amount": 0.96,
+    "group": 5,
+    "start_month": 10,
+    "start_day": 1,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Calamos International Growth Fund;A",
+    "id": 29,
+    "total_amount": 0.99,
+    "group": 5,
+    "start_month": 4,
+    "start_day": 30,
+    "start_year": 2010
+  },
+  {
+    "grant_title": "Fidelity Advisor Emerging Asia Fund;A",
+    "id": 30,
+    "total_amount": 0.99,
+    "group": 4,
+    "start_month": 3,
+    "start_day": 18,
+    "start_year": 2010
+  },
+  {
+    "grant_title": "Fidelity Canada Fund",
+    "id": 31,
+    "total_amount": 0.93,
+    "group": 4,
+    "start_month": 11,
+    "start_day": 4,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "First Eagle Overseas Fund",
+    "id": 32,
+    "total_amount": 0.59,
+    "group": 2,
+    "start_month": 6,
+    "start_day": 19,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Henderson European Focus Fund;A",
+    "id": 33,
+    "total_amount": 1.04,
+    "group": 4,
+    "start_month": 7,
+    "start_day": 22,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Matthews Asia Growth Fund;Investor",
+    "id": 34,
+    "total_amount": 0.91,
+    "group": 4,
+    "start_month": 2,
+    "start_day": 26,
+    "start_year": 2010
+  },
+  {
+    "grant_title": "Matthews China Fund;Investor",
+    "id": 35,
+    "total_amount": 1.14,
+    "group": 5,
+    "start_month": 7,
+    "start_day": 28,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Oakmark Global Select Fund",
+    "id": 36,
+    "total_amount": 1.18,
+    "group": 2,
+    "start_month": 11,
+    "start_day": 9,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Old Westbury Small & Mid Cap Fund",
+    "id": 37,
+    "total_amount": 0.91,
+    "group": 2,
+    "start_month": 11,
+    "start_day": 20,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Oppenheimer Developing Markets Fund",
+    "id": 38,
+    "total_amount": 1.18,
+    "group": 5,
+    "start_month": 11,
+    "start_day": 6,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Oppenheimer International Small-Mid Company Fund;A",
+    "id": 39,
+    "total_amount": 0.76,
+    "group": 4,
+    "start_month": 3,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Saturna Sextant International Fund",
+    "id": 40,
+    "total_amount": 0.93,
+    "group": 2,
+    "start_month": 10,
+    "start_day": 9,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "T Rowe Price New Asia Fund",
+    "id": 41,
+    "total_amount": 0.95,
+    "group": 2,
+    "start_month": 10,
+    "start_day": 27,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Thornburg Global Opportunities Fund;A",
+    "id": 42,
+    "total_amount": 0.87,
+    "group": 2,
+    "start_month": 7,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Virtus Global Infrastructure Fund;A",
+    "id": 43,
+    "total_amount": 0.64,
+    "group": 2,
+    "start_month": 8,
+    "start_day": 29,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Wasatch World Innovators Fund;InvestorA",
+    "id": 44,
+    "total_amount": 0.95,
+    "group": 3,
+    "start_month": 3,
+    "start_day": 2,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Wells Fargo Emerging Markets Equity Fund;A",
+    "id": 45,
+    "total_amount": 1.06,
+    "group": 4,
+    "start_month": 9,
+    "start_day": 29,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Westcore International Small-Cap Fund;Retail",
+    "id": 46,
+    "total_amount": 0.95,
+    "group": 4,
+    "start_month": 1,
+    "start_day": 1,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "AB High Income Fund",
+    "id": 47,
+    "total_amount": 0.37,
+    "group": 2,
+    "start_month": 2,
+    "start_day": 25,
+    "start_year": 2010
+  },
+  {
+    "grant_title": "CM Advisors Fixed Income Fund",
+    "id": 48,
+    "total_amount": 0.06,
+    "group": 2,
+    "start_month": 10,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Delaware Corporate Bond Fund;A",
+    "id": 49,
+    "total_amount": 0.15,
+    "group": 2,
+    "start_month": 12,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Dreyfus International Bond Fund;A",
+    "id": 50,
+    "total_amount": 0.15,
+    "group": 2,
+    "start_month": 9,
+    "start_day": 10,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Fidelity Capital & Income Fund",
+    "id": 51,
+    "total_amount": 0.48,
+    "group": 2,
+    "start_month": 3,
+    "start_day": 26,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "VY Pioneer High Yield Portfolio Service",
+    "id": 52,
+    "total_amount": 0.48,
+    "group": 2,
+    "start_month": 5,
+    "start_day": 18,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Janus Flexible Bond Fund;D",
+    "id": 53,
+    "total_amount": 0.03,
+    "group": 2,
+    "start_month": 6,
+    "start_day": 23,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Natixis Loomis Sayles Core Plus Bond Fund;A",
+    "id": 54,
+    "total_amount": 0.22,
+    "group": 2,
+    "start_month": 11,
+    "start_day": 21,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Lord Abbett Income Fund;A",
+    "id": 55,
+    "total_amount": 0.22,
+    "group": 2,
+    "start_month": 10,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Metropolitan West Total Return Bond Fund;M",
+    "id": 56,
+    "total_amount": 0.01,
+    "group": 2,
+    "start_month": 11,
+    "start_day": 10,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "PIMCO Foreign Bond Fund (Unhedged);D",
+    "id": 57,
+    "total_amount": 0.24,
+    "group": 2,
+    "start_month": 11,
+    "start_day": 6,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "PIMCO Investment Grade Corporate Bond Fund;A",
+    "id": 58,
+    "total_amount": 0.15,
+    "group": 2,
+    "start_month": 6,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Putnam US Government Income Trust;A",
+    "id": 59,
+    "total_amount": 0.15,
+    "group": 1,
+    "start_month": 11,
+    "start_day": 10,
+    "start_year": 2009
+  },
+  {
+    "grant_title": "Waddell & Reed Asset Strategy Fund",
+    "id": 60,
+    "total_amount": 0.82,
+    "group": 4,
+    "start_month": 10,
+    "start_day": 1,
+    "start_year": 2008
+  },
+  {
+    "grant_title": "Waddell & Reed Asset Strategy Fund",
+    "id": 61,
+    "total_amount": 0.82,
+    "group": 4,
+    "start_month": 11,
+    "start_day": 19,
+    "start_year": 2009
+  }
+]
