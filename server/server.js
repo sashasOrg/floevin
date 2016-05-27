@@ -19,7 +19,7 @@ var User = require('./models/user.js');
 require('./config/passport.js')(passport);
 
 mongoose.set('debug', true);
-mongoose.connect('mongodb://user:user@ds023530.mlab.com:23530/floevin');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://user:user@ds023530.mlab.com:23530/floevin');
 mongoose.connection.once("open", function() {
   console.log("Connected to MongoDB")
 })
